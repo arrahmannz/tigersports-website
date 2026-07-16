@@ -1,125 +1,143 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tigers Sports | Official Community Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-slate-950">
 
-const App = () => {
-  const tournaments = [
-    { date: "Sunday, 25 October 2026", name: "BDCL Day 01", type: "Team Tigers" },
-    { date: "Sunday, 08 November 2026", name: "BDCL Day 02", type: "Team Tigers" },
-    { date: "Sunday, 22 November 2026", name: "BDCL Day 03", type: "Team Tigers" },
-    { date: "Sunday, 06 December 2026", name: "Sweet 16", type: "Team Tigers" },
-    { date: "Sunday, 20 December 2026", name: "Bengal Bash", type: "Team Tigers" },
-    { date: "Sunday, 03 January 2027", name: "Tigers Cup", type: "Team Tigers" },
-    { date: "Sunday, 17 January 2027", name: "Divisional Clash", type: "Team Tigers" },
-  ];
-
-  return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-slate-950">
-      
-      {/* Header / Navigation */}
-      <header className="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {/* Replace with your vector logo asset from Adobe Illustrator */}
-            <div className="h-10 w-10 bg-gradient-to-tr from-amber-500 to-orange-600 rounded-lg flex items-center justify-center font-black text-slate-950 tracking-tighter">
-              TSI
-            </div>
-            <span className="font-black text-xl tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-              TIGERS SPORTS
-            </span>
-          </div>
-          <span className="text-xs font-semibold tracking-widest text-amber-500 bg-amber-500/10 px-3 py-1.5 rounded-full border border-amber-500/20 uppercase">
-            Official Community Hub
-          </span>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-24 pb-16 border-b border-slate-900">
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 uppercase">
-            Elevating Community <br />
-            <span className="bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 bg-clip-text text-transparent">
-              Sports Infrastructure
-            </span>
-          </h1>
-          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-            Welcome to Tigers Community Sports Incorporated (TSI). We are dedicated to delivering premier sports tournaments, grassroots pathways, and migrant community integration initiatives across Auckland.
-          </p>
-        </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.05)_0%,transparent_70%)] pointer-events-none" />
-      </section>
-
-      {/* Main Content Area */}
-      <main className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-          
-          {/* Left / Schedule Column */}
-          <div className="lg:col-span-2 space-y-8">
-            <div>
-              <h2 className="text-2xl font-black uppercase text-white tracking-tight flex items-center gap-3">
-                <span className="h-6 w-1 bg-amber-500 rounded-full" />
-                Upcoming Events Calendar
-              </h2>
-              <p className="text-sm text-slate-400 mt-1">Organized by Team Tigers for the 2026-2027 competitive season.</p>
-            </div>
-
-            <div className="bg-slate-900/40 border border-slate-800/80 rounded-2xl overflow-hidden divide-y divide-slate-800/60 backdrop-blur-sm">
-              {tournaments.map((fixtures, index) => (
-                <div key={index} className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
-                  <div className="space-y-1">
-                    <span className="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">
-                      {fixtures.date}
-                    </span>
-                    <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
-                      {fixtures.name}
-                    </h3>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50">
-                      {fixtures.type}
-                    </span>
-                  </div>
+    <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="h-10 w-10 bg-gradient-to-tr from-amber-500 to-orange-600 rounded-lg flex items-center justify-center font-black text-slate-950 tracking-tighter">
+                    TSI
                 </div>
-              ))}
+                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                    TIGERS SPORTS
+                </span>
             </div>
-          </div>
+            <span class="text-xs font-semibold tracking-widest text-amber-500 bg-amber-500/10 px-3 py-1.5 rounded-full border border-amber-500/20 uppercase">
+                Official Community Hub
+            </span>
+        </div>
+    </header>
 
-          {/* Right / Notice Board Column */}
-          <div className="space-y-8 lg:sticky lg:top-28">
-            {/* TSI Specific Card */}
-            <div className="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-6 rounded-2xl shadow-xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 h-24 w-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-all" />
-              <h2 className="text-xl font-black uppercase text-white tracking-tight mb-3">
-                TSI Development Calendar
-              </h2>
-              <p className="text-sm text-slate-400 leading-relaxed mb-6">
-                Official regulatory frameworks, junior development pathways, and comprehensive community sports integration initiatives organized directly under Tigers Community Sports Incorporated (TSI).
-              </p>
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-500 bg-amber-500/5 border border-amber-500/20 px-3 py-2 rounded-lg w-full justify-center">
-                Calendar Schedule Will Be Announced Soon
-              </div>
+    <section class="relative overflow-hidden pt-24 pb-16 border-b border-slate-900">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 uppercase">
+                Elevating Community <br>
+                <span class="bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 bg-clip-text text-transparent">
+                    Sports Infrastructure
+                </span>
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                Welcome to Tigers Community Sports Incorporated (TSI). We are dedicated to delivering premier sports tournaments, grassroots pathways, and migrant community integration initiatives across Auckland.
+            </p>
+        </div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.05)_0%,transparent_70%)] pointer-events-none"></div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+            
+            <div class="lg:col-span-2 space-y-8">
+                <div>
+                    <h2 class="text-2xl font-black uppercase text-white tracking-tight flex items-center gap-3">
+                        <span class="h-6 w-1 bg-amber-500 rounded-full"></span>
+                        Upcoming Events Calendar
+                    </h2>
+                    <p class="text-sm text-slate-400 mt-1">Organized by Team Tigers for the 2026-2027 competitive season.</p>
+                </div>
+
+                <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl overflow-hidden divide-y divide-slate-800/60 backdrop-blur-sm">
+                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 25 October 2026</span>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">BDCL Day 01</h3>
+                        </div>
+                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
+                    </div>
+
+                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 08 November 2026</span>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">BDCL Day 02</h3>
+                        </div>
+                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
+                    </div>
+
+                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 22 November 2026</span>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">BDCL Day 03</h3>
+                        </div>
+                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
+                    </div>
+
+                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 06 December 2026</span>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Sweet 16</h3>
+                        </div>
+                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
+                    </div>
+
+                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 20 December 2026</span>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Bengal Bash</h3>
+                        </div>
+                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
+                    </div>
+
+                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 03 January 2027</span>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Tigers Cup</h3>
+                        </div>
+                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
+                    </div>
+
+                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
+                        <div class="space-y-1">
+                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 17 January 2027</span>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Divisional Clash</h3>
+                        </div>
+                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
+                    </div>
+                </div>
             </div>
 
-            {/* Governance Information */}
-            <div className="bg-slate-900/20 border border-slate-800/60 p-6 rounded-2xl space-y-4">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">Governance & Status</h3>
-              <div className="text-xs text-slate-500 space-y-2">
-                <p>Incorporated Society Registration: <span className="text-slate-300 font-mono">50264993</span></p>
-                <p>Charitable Status: <span className="text-slate-300">Application Under Assessment</span></p>
-                <p>Location: <span className="text-slate-300">Auckland, New Zealand</span></p>
-              </div>
+            <div class="space-y-8 lg:sticky lg:top-28">
+                <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-6 rounded-2xl shadow-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 h-24 w-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-all"></div>
+                    <h2 class="text-xl font-black uppercase text-white tracking-tight mb-3">TSI Development Calendar</h2>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                        Official regulatory frameworks, junior development pathways, and comprehensive community sports integration initiatives organized directly under Tigers Community Sports Incorporated (TSI).
+                    </p>
+                    <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-500 bg-amber-500/5 border border-amber-500/20 px-3 py-2 rounded-lg w-full justify-center">
+                        Calendar Schedule Will Be Announced Soon
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/20 border border-slate-800/60 p-6 rounded-2xl space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Governance & Status</h3>
+                    <div class="text-xs text-slate-500 space-y-2">
+                        <p>Incorporated Society Registration: <span class="text-slate-300 font-mono">50264993</span></p>
+                        <p>Charitable Status: <span class="text-slate-300">Application Under Assessment</span></p>
+                        <p>Location: <span class="text-slate-300">Auckland, New Zealand</span></p>
+                    </div>
+                </div>
             </div>
-          </div>
 
         </div>
-      </main>
+    </main>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-8 text-center text-xs text-slate-600">
-        <p>&copy; {new Date().getFullYear()} Tigers Community Sports Incorporated & Team Tigers. All rights reserved.</p>
-      </footer>
+    <footer class="border-t border-slate-900 bg-slate-950 py-8 text-center text-xs text-slate-600">
+        <p>&copy; 2026 Tigers Community Sports Incorporated & Team Tigers. All rights reserved.</p>
+    </footer>
 
-    </div>
-  );
-};
-
-export default App;
+</body>
+</html>
