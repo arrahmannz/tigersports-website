@@ -73,14 +73,14 @@
             </a>
             
             <!-- Professional Navigation Links -->
-            <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-[11px] font-bold tracking-widest uppercase">
+            <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-[10px] xl:text-[11px] font-bold tracking-widest uppercase">
                 <a href="#home" onclick="navigateTo('home')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Home</a>
                 <a href="#about" onclick="navigateTo('about')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">About & Team</a>
                 <a href="#cricket" onclick="navigateTo('cricket')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Cricket</a>
                 <a href="#football" onclick="navigateTo('football')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Football</a>
                 <a href="#indoor" onclick="navigateTo('indoor')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Indoor Sports</a>
                 <a href="#youth-family" onclick="navigateTo('youth-family')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Youth & Family</a>
-                <a href="#gallery" onclick="navigateTo('gallery')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Photo Gallery</a>
+                <a href="#partners" onclick="navigateTo('partners')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Sponsors & Partners</a>
                 <a href="#members" onclick="navigateTo('members')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Player Registry</a>
             </nav>
 
@@ -106,7 +106,7 @@
             <a href="#football" onclick="navigateTo('football'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Football</a>
             <a href="#indoor" onclick="navigateTo('indoor'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Indoor Sports</a>
             <a href="#youth-family" onclick="navigateTo('youth-family'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Youth & Family</a>
-            <a href="#gallery" onclick="navigateTo('gallery'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Photo Gallery</a>
+            <a href="#partners" onclick="navigateTo('partners'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Sponsors & Partners</a>
             <a href="#members" onclick="navigateTo('members'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2">Player Registry</a>
         </div>
     </header>
@@ -524,7 +524,7 @@
                                         <span class="font-bold text-emerald-400 block font-oswald tracking-wide text-xs">TEAM A (1ST INNINGS)</span>
                                         <input type="text" id="teamName1" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200" value="Tigers Blue" required>
                                         <input type="number" id="runs1" placeholder="Total Runs Scored" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200" required>
-                                        <input type="text" id="overs1" pattern="^\d{1,2}\.[0-5]$" placeholder="Overs faced (e.g. 8.0)" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200" required>
+                                        <input type="text" id="overs1" pattern="^\d{1,2}\.[0-5}$" placeholder="Overs faced (e.g. 8.0)" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200" required>
                                         <label class="flex items-center gap-2.5 text-slate-400 text-[11px] font-mono cursor-pointer">
                                             <input type="checkbox" id="isAllOut1" class="rounded h-4 w-4 bg-slate-900 text-emerald-500 border-slate-850 focus:ring-0"> 
                                             <span>Dismissed All Out</span>
@@ -708,7 +708,7 @@
             <div class="glass-card p-6 rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-xl border border-slate-800 bg-slate-950/20">
                 <div class="h-16 w-16 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center shrink-0 border border-indigo-500/20 font-bold font-oswald text-xl">ZR</div>
                 <div class="space-y-1 text-center sm:text-left flex-grow">
-                    <span class="text-[9px] text-indigo-400 font-mono uppercase tracking-widest font-bold bg-indigo-500/10 px-2.5 py-0.5 rounded border border-indigo-500/20">Sector Leadership</span>
+                    <span class="text-[9px] text-indigo-400 font-mono uppercase tracking-widest font-bold bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">Sector Leadership</span>
                     <h3 class="font-bold text-white text-lg font-oswald uppercase tracking-wider mt-1.5">Md Zubaer Rahman</h3>
                     <p class="text-xs text-slate-400 font-mono uppercase">Head of Indoor Operations & Development</p>
                     <p class="text-xs text-slate-500 font-light mt-1">Coordinating indoor badminton matches, table tennis schedules, and strategic indoor micro sports rosters.</p>
@@ -806,27 +806,100 @@
             </div>
         </section>
 
-        <!-- PAGE 7: WEEKLY & EVENT PHOTO GALLERY -->
-        <section id="view-gallery" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+        <!-- PAGE 7: STRATEGIC PARTNERS & SPONSORS (DEDICATED PAGE) -->
+        <section id="view-partners" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
             <div class="space-y-4 border-b border-slate-900 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase font-mono">Visual Archives</span>
+                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase font-mono">TSI Coalitions</span>
                     <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3 mt-1">
-                        <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> TSI Media & Event Gallery
+                        <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Strategic Partners & Sponsors
                     </h1>
                 </div>
-                <div class="flex flex-wrap gap-2 text-xs font-mono">
-                    <button onclick="filterGallery('all')" id="btn-gal-all" class="px-4 py-2 bg-slate-900 border border-emerald-500/30 text-emerald-400 rounded-xl transition font-bold shadow-md">All Events</button>
-                    <button onclick="filterGallery('cricket')" id="btn-gal-cricket" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Cricket</button>
-                    <button onclick="filterGallery('football')" id="btn-gal-football" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Football</button>
-                    <button onclick="filterGallery('indoor')" id="btn-gal-indoor" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Indoor Sports</button>
-                    <button onclick="filterGallery('youth_family')" id="btn-gal-youth_family" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Community & Youth</button>
+                <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] uppercase font-mono rounded-full border border-emerald-500/20">Operational Support Network</span>
+            </div>
+
+            <!-- Intro text -->
+            <div class="glass-card p-8 rounded-2xl space-y-4 text-slate-300 font-light leading-relaxed text-sm">
+                <h3 class="text-xl font-bold text-white font-oswald uppercase tracking-wide">Fostering Growth via Synergistic Alliances</h3>
+                <p>
+                    Tigers Sports Incorporated works in close synergy with regional travel providers, technology designers, and local business councils across New Zealand. These strategic partnerships help keep our registration costs free, support junior coaching clinics, and safely organize regional inter-island goodwill match tours.
+                </p>
+            </div>
+
+            <!-- Active Sponsors Grid -->
+            <div class="space-y-8">
+                <h3 class="text-2xl font-bold font-oswald text-white uppercase tracking-wider">Our Active Partners</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+                    <!-- Partner 1 -->
+                    <div class="glass-card p-8 rounded-2xl flex flex-col justify-between space-y-6 hover:border-emerald-500/40 transition-all">
+                        <div class="h-24 flex items-center justify-start">
+                            <img src="images/Tigers-new-logo.jpg" alt="Team Tigers" class="max-h-20 w-auto object-contain filter grayscale hover:grayscale-0 transition duration-300" onerror="this.onerror=null; this.outerHTML='<div class=&quot;h-14 px-6 bg-slate-900 border border-slate-800 text-emerald-400 font-bold font-oswald text-lg flex items-center justify-center rounded-xl shadow-inner&quot;>TEAM TIGERS</div>'">
+                        </div>
+                        <div class="space-y-2 border-t border-slate-800 pt-4">
+                            <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-widest bg-emerald-500/10 px-2 py-1 rounded">Technology & Operational Partner</span>
+                            <h4 class="text-lg font-bold text-white font-oswald uppercase mt-2">Team Tigers</h4>
+                            <p class="text-xs text-slate-400 font-light leading-relaxed">Directs match-day digital software scoring matrices, handles user census registry security, and oversees administrative database hosting structures.</p>
+                        </div>
+                    </div>
+
+                    <!-- Partner 2 -->
+                    <div class="glass-card p-8 rounded-2xl flex flex-col justify-between space-y-6 hover:border-amber-500/40 transition-all">
+                        <div class="h-24 flex items-center justify-start">
+                            <img src="images/Trips%20n%20logo.jpg" alt="Trips n Tours Ltd" class="max-h-20 w-auto object-contain filter grayscale hover:grayscale-0 transition duration-300" onerror="this.onerror=null; this.outerHTML='<div class=&quot;h-14 px-6 bg-slate-900 border border-slate-800 text-amber-400 font-bold font-oswald text-lg flex items-center justify-center rounded-xl shadow-inner&quot;>TRIPS N TOURS LTD</div>'">
+                        </div>
+                        <div class="space-y-2 border-t border-slate-800 pt-4">
+                            <span class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-widest bg-amber-500/10 px-2 py-1 rounded">Official Travel Partner</span>
+                            <h4 class="text-lg font-bold text-white font-oswald uppercase mt-2">Trips n Tours Ltd</h4>
+                            <p class="text-xs text-slate-400 font-light leading-relaxed">Coalesces regional tournament bus routes, arranges inter-city player travel, and helps safely manage Christchurch goodwill match tours.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Photos Display Grid -->
-            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Cards will render dynamically by JS with fallbacks -->
+            <!-- Future sponsorship tier placeholders -->
+            <div class="space-y-8">
+                <div class="space-y-2">
+                    <h3 class="text-2xl font-bold font-oswald text-white uppercase tracking-wider">Sponsorship Opportunities</h3>
+                    <p class="text-xs text-slate-400 font-light">Join TSI in removing play barriers and promoting community health. Multiple strategic tiers are currently open for 2026-2027 season support.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card p-6 rounded-2xl border border-dashed border-slate-800 flex flex-col justify-between space-y-4">
+                        <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/5 border border-emerald-500/10 px-2.5 py-1 rounded self-start">Premium Tier</span>
+                        <h4 class="font-bold text-white font-oswald uppercase text-base tracking-wide">Seasonal Cup Sponsor</h4>
+                        <p class="text-xs text-slate-500 font-light">Title naming rights for summer cricket tournaments, premium branding on jerseys, and dedicated social coverage.</p>
+                        <span class="text-xs text-emerald-500/80 font-mono font-semibold">Status: Available</span>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-dashed border-slate-800 flex flex-col justify-between space-y-4">
+                        <span class="text-[10px] font-mono text-teal-400 bg-teal-500/5 border border-teal-500/10 px-2.5 py-1 rounded self-start">Development Tier</span>
+                        <h4 class="font-bold text-white font-oswald uppercase text-base tracking-wide">Junior Clinic Sponsor</h4>
+                        <p class="text-xs text-slate-500 font-light">Directly subsidize equipment, training kits, and coaching programs for young Kiwi children and youth classes.</p>
+                        <span class="text-xs text-teal-500/80 font-mono font-semibold">Status: Available</span>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-dashed border-slate-800 flex flex-col justify-between space-y-4">
+                        <span class="text-[10px] font-mono text-amber-400 bg-amber-500/5 border border-amber-500/10 px-2.5 py-1 rounded self-start">Logistics Tier</span>
+                        <h4 class="font-bold text-white font-oswald uppercase text-base tracking-wide">Equipment & Fields Sponsor</h4>
+                        <p class="text-xs text-slate-500 font-light">Support facility rental, field maintenance costs, and secure premier gear for underprivileged families.</p>
+                        <span class="text-xs text-amber-500/80 font-mono font-semibold">Status: Available</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsor call to action -->
+            <div class="glass-card p-8 rounded-3xl border border-slate-800 flex flex-col md:flex-row items-center gap-8 shadow-xl bg-slate-950/20">
+                <div class="h-16 w-16 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center shrink-0 border border-emerald-500/20">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="space-y-2 text-center md:text-left flex-grow">
+                    <h4 class="font-bold text-white text-lg font-oswald uppercase tracking-wider">Become a TSI Partner</h4>
+                    <p class="text-sm text-slate-300 font-light">Partner with Tigers Sports Incorporated to elevate your brand while driving meaningful local social integration.</p>
+                </div>
+                <div class="flex flex-col gap-2 shrink-0 w-full md:w-auto">
+                    <a href="mailto:arrahman_01@yahoo.com" class="text-center bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition text-xs uppercase font-mono tracking-wider shadow-md">
+                        Email Operations Team
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -874,7 +947,7 @@
             <!-- Database Live Filter Grid Board -->
             <div class="space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-950/50 p-3 rounded-2xl border border-slate-900">
-                    <input type="text" id="member-search" oninput="drawPlayersTable()" placeholder="Search members by name or team..." class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-light">
+                    <input type="text" id="member-search" oninput="drawPlayersTable()" placeholder="Search players by name or team..." class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-light">
                     <select id="member-filter-gender" onchange="drawPlayersTable()" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none">
                         <option value="all">All Genders</option>
                         <option value="Male">Male</option>
@@ -959,7 +1032,7 @@
         </div>
     </footer>
 
-    <!-- UNDER-FOOTER PARTNERS AREA (Fades in dynamically on all non-home route states) -->
+    <!-- UNDER-FOOTER PARTNERS AREA (Fades in dynamically on all non-home and non-partners route states) -->
     <div id="partners-footer-wrapper" class="hidden border-t border-slate-900 bg-slate-950 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-xl mx-auto mb-10 space-y-2">
@@ -1002,37 +1075,27 @@
         // Structured directory data of TSI - Re-aligned to Board/EC Council, Advisory, and Life time member categories
         const directoryData = [
             // THE BOARD AND EXECUTIVE COUNCIL (board_ec)
-            { name: "Md Mehedi Hasan Khan Chowdhury", role: "Board President", group: "board_ec", desc: "Principal operational officer representing Tigers Sports Incorporated globally.", initials: "MC", image: "images/board/mehedi-hasan.jpg" },
-            { name: "Arifur Rahman", role: "Board Secretary & Founding Exec Director", group: "board_ec", desc: "Leading general administration, public compliance schedules, and technical regulatory matrices.", initials: "AR", image: "images/board/arifur-rahman.jpg" },
-            { name: "Md Mahbubul Alam Khan", role: "Board Treasurer", group: "board_ec", desc: "Managing accounting compliance and financial auditing books.", initials: "MK", image: "images/board/mahbubul-alam.jpg" },
-            { name: "Enamul Haque", role: "Vice President", group: "board_ec", desc: "Assisting governance strategies and cross-city partnership architectures.", initials: "EH", image: "images/board/enamul-haque.jpg" },
-            { name: "Saiful Islam", role: "Vice President", group: "board_ec", desc: "Providing execution oversight across tournament calendars and facility allocations.", initials: "SI", image: "images/board/saiful-islam.jpg" },
-            { name: "Md Moniruzzaman", role: "Vice President", group: "board_ec", desc: "Steering structural development policies and community support frameworks.", initials: "MM", image: "images/board/moniruzzaman.jpg" },
+            { name: "Md Mehedi Hasan Khan Chowdhury", role: "Board President", group: "board_ec", desc: "Principal operational officer representing Tigers Sports Incorporated globally.", initials: "MC" },
+            { name: "Arifur Rahman", role: "Board Secretary & Founding Exec Director", group: "board_ec", desc: "Leading general administration, public compliance schedules, and technical regulatory matrices.", initials: "AR" },
+            { name: "Md Mahbubul Alam Khan", role: "Board Treasurer", group: "board_ec", desc: "Managing accounting compliance and financial auditing books.", initials: "MK" },
+            { name: "Enamul Haque", role: "Vice President", group: "board_ec", desc: "Assisting governance strategies and cross-city partnership architectures.", initials: "EH" },
+            { name: "Saiful Islam", role: "Vice President", group: "board_ec", desc: "Providing execution oversight across tournament calendars and facility allocations.", initials: "SI" },
+            { name: "Md Moniruzzaman", role: "Vice President", group: "board_ec", desc: "Steering structural development policies and community support frameworks.", initials: "MM" },
             
             // GROWTH AND PORTFOLIO STRATEGISTS (board_ec)
-            { name: "Anowar Shuvo", role: "Corporate Relations & Growth Director", group: "board_ec", desc: "Supervising strategic sponsorships, capital partnerships, and long-term business alliances. Specialist in Strategic Partnerships, Capital and Alliances.", initials: "AS", image: "images/board/anowar-shuvo.jpg" },
-            { name: "Md Sakil", role: "Community Engagement & Membership Director", group: "board_ec", desc: "Managing database enrollment, digital registry logs, and player membership metrics. Specialist in Digital Registry and Member Retention.", initials: "MS", image: "images/board/md-sakil.jpg" },
-            { name: "Nazmul Hasan Roni", role: "Head of Cricket Operations & Development", group: "board_ec", desc: "Overseeing data-driven tournament formats, pitch schedules, and junior systems. Specialist in Data Driven Leagues and Youth Pathways.", initials: "NR", image: "images/board/nazmul-hasan.jpg" },
-            { name: "Md Tanvir Hasan Saikat", role: "Head of Football Operations & Development", group: "board_ec", desc: "Directing seasonal football cups, tournament architecture, and talent growth pools. Specialist in Tournament Architecture and Talent Growth.", initials: "TS", image: "images/board/tanvir-hasan.jpg" },
-            { name: "Mir Tayef Ali", role: "Executive Committee Member", group: "board_ec", desc: "Assisting general assembly alignments and volunteer execution networks.", initials: "MT", image: "images/board/mir-tayef.jpg" },
-            { name: "Md Nazmul Islam", role: "Executive Committee Member", group: "board_ec", desc: "Coordinating ground logistical operations and equipment distribution.", initials: "NI", image: "images/board/nazmul-islam.jpg" },
-            { name: "S M Mohasin", role: "Executive Committee Member", group: "board_ec", desc: "Supervising code of conduct adherence and match day logistics.", initials: "SM", image: "images/board/mohasin.jpg" },
-            { name: "Md Zubaer Rahman", role: "Head of Indoor Operations & Development", group: "board_ec", desc: "Coordinating badminton, table tennis, and strategic indoor micro sports rosters. Specialist in Badminton, Chess and Micro Sports Logistics.", initials: "ZR", image: "images/board/zubaer-rahman.jpg" },
+            { name: "Anowar Shuvo", role: "Corporate Relations & Growth Director", group: "board_ec", desc: "Supervising strategic sponsorships, capital partnerships, and long-term business alliances. Specialist in Strategic Partnerships, Capital and Alliances.", initials: "AS" },
+            { name: "Md Sakil", role: "Community Engagement & Membership Director", group: "board_ec", desc: "Managing database enrollment, digital registry logs, and player membership metrics. Specialist in Digital Registry and Member Retention.", initials: "MS" },
+            { name: "Nazmul Hasan Roni", role: "Head of Cricket Operations & Development", group: "board_ec", desc: "Overseeing data-driven tournament formats, pitch schedules, and junior systems. Specialist in Data Driven Leagues and Youth Pathways.", initials: "NR" },
+            { name: "Md Tanvir Hasan Saikat", role: "Head of Football Operations & Development", group: "board_ec", desc: "Directing seasonal football cups, tournament architecture, and talent growth pools. Specialist in Tournament Architecture and Talent Growth.", initials: "TS" },
+            { name: "Mir Tayef Ali", role: "Executive Committee Member", group: "board_ec", desc: "Assisting general assembly alignments and volunteer execution networks.", initials: "MT" },
+            { name: "Md Nazmul Islam", role: "Executive Committee Member", group: "board_ec", desc: "Coordinating ground logistical operations and equipment distribution.", initials: "NI" },
+            { name: "S M Mohasin", role: "Executive Committee Member", group: "board_ec", desc: "Supervising code of conduct adherence and match day logistics.", initials: "SM" },
+            { name: "Md Zubaer Rahman", role: "Head of Indoor Operations & Development", group: "board_ec", desc: "Coordinating badminton, table tennis, and strategic indoor micro sports rosters. Specialist in Badminton, Chess and Micro Sports Logistics.", initials: "ZR" },
             
             // ADVISORY BOARD (advisory)
-            { name: "Faisal Alam", role: "Advisory Board Lead", group: "advisory", desc: "Directing strategic governance, independent audits, and structural development alignments.", initials: "FA", image: "images/board/faisal-alam.jpg" }
+            { name: "Faisal Alam", role: "Advisory Board Lead", group: "advisory", desc: "Directing strategic governance, independent audits, and structural development alignments.", initials: "FA" }
 
             // LIFETIME MEMBERS (lifetime) - Left empty as requested
-        ];
-
-        // Global Gallery Data Array
-        const galleryData = [
-            { id: 1, category: "cricket", title: "Tigers Summer Cup - Match Day 1", desc: "High-intensity action under the afternoon sun at our local tournament ring setup.", date: "Jan 2026", image: "images/gallery-cricket-1.jpg" },
-            { id: 2, category: "football", title: "Football Premier Fixtures", desc: "Strong defensive showing at Mt Wellington Park during the regional league blocks.", date: "Feb 2026", image: "images/gallery-football-1.jpg" },
-            { id: 3, category: "indoor", title: "Badminton Doubles Tournament", desc: "Fast reflection rallies inside the Auckland Indoor Sports Center winter league.", date: "May 2026", image: "images/gallery-indoor-1.jpg" },
-            { id: 4, category: "youth_family", title: "Multi-Cultural Sports Gala", desc: "Subsidized junior clinics and family gatherings encouraging unity and community.", date: "Jun 2026", image: "images/gallery-youth-1.jpg" },
-            { id: 5, category: "cricket", title: "Christchurch Goodwill Tour", desc: "TSI's regional inter-island tour promoting national sports connections.", date: "Mar 2026", image: "images/gallery-cricket-2.jpg" },
-            { id: 6, category: "youth_family", title: "Junior Badminton Training", desc: "Nurturing healthy active habits and skill sets for youth athletes.", date: "Jul 2026", image: "images/gallery-youth-2.jpg" }
         ];
 
         // Global variable for fetched players
@@ -1077,7 +1140,7 @@
 
             // Dynamic Partners display location toggler based on page state
             const partnersFooter = document.getElementById('partners-footer-wrapper');
-            if (targetPageId === 'home') {
+            if (targetPageId === 'home' || targetPageId === 'partners') {
                 partnersFooter.classList.add('hidden');
             } else {
                 partnersFooter.classList.remove('hidden');
@@ -1135,10 +1198,7 @@
                 card.innerHTML = `
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <div class="relative h-12 w-12 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 flex items-center justify-center">
-                                <img src="${item.image}" alt="${item.name}" class="absolute inset-0 h-full w-full object-cover" onerror="this.style.display='none';">
-                                <span class="font-bold font-oswald text-slate-400 text-sm tracking-wider uppercase">${item.initials}</span>
-                            </div>
+                            <div class="h-10 w-10 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-center font-bold font-oswald text-slate-300">${item.initials}</div>
                             <span class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${groupBadgeColor}">${groupLabel}</span>
                         </div>
                         <div>
@@ -1147,46 +1207,6 @@
                         </div>
                     </div>
                     <p class="text-[11px] text-slate-500 font-light leading-relaxed border-t border-slate-850 pt-3">${item.desc}</p>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Render Professional Photos Gallery List
-        function filterGallery(category) {
-            const grid = document.getElementById('gallery-grid');
-            grid.innerHTML = '';
-
-            const buttons = ['all', 'cricket', 'football', 'indoor', 'youth_family'];
-            buttons.forEach(b => {
-                const el = document.getElementById(`btn-gal-${b}`);
-                if (el) {
-                    if (b === category) {
-                        el.className = "px-4 py-2 bg-slate-900 border border-emerald-500/30 text-emerald-400 rounded-xl transition font-bold shadow-md";
-                    } else {
-                        el.className = "px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200";
-                    }
-                }
-            });
-
-            const items = category === 'all' ? galleryData : galleryData.filter(g => g.category === category);
-
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = "glass-card overflow-hidden rounded-2xl flex flex-col justify-between shadow-xl group";
-
-                card.innerHTML = `
-                    <div class="relative aspect-video w-full overflow-hidden bg-slate-950 flex items-center justify-center border-b border-slate-900">
-                        <img src="${item.image}" alt="${item.title}" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display='none';">
-                        <div class="h-full w-full bg-gradient-to-tr from-slate-950 via-slate-900/40 to-emerald-950/20 flex flex-col items-center justify-center p-4">
-                            <span class="text-[11px] text-emerald-400 font-mono tracking-widest font-black uppercase bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">${item.category}</span>
-                            <span class="text-[10px] text-slate-500 font-mono font-semibold mt-2">${item.date}</span>
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-2">
-                        <h4 class="font-bold text-white text-base font-oswald uppercase tracking-wide leading-tight">${item.title}</h4>
-                        <p class="text-xs text-slate-400 font-light leading-relaxed">${item.desc}</p>
-                    </div>
                 `;
                 grid.appendChild(card);
             });
@@ -1464,6 +1484,18 @@
             });
         }
 
+        function getResource(oversRemaining, wicketsLost) {
+            if (oversRemaining <= 0 || wicketsLost >= 10) return 0.0;
+            wicketsLost = Math.max(0, Math.min(9, wicketsLost));
+            oversRemaining = Math.max(0, Math.min(TABLE_MAX_OVERS, oversRemaining));
+            const floorOvers = Math.floor(oversRemaining);
+            const fraction = oversRemaining - floorOvers;
+            if (fraction === 0) return T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - floorOvers];
+            const resFloor = T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - floorOvers];
+            const resCeil = T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - Math.ceil(oversRemaining)];
+            return resFloor + (resCeil - resFloor) * fraction;
+        }
+
         // DLS target calculation
         function setupDLS_Calculator() {
             const check = document.getElementById('isTeamAInterrupted');
@@ -1602,7 +1634,6 @@
             const initialHash = window.location.hash.substring(1) || 'home';
             navigateTo(initialHash);
             filterDirectory('all');
-            filterGallery('all');
 
             loadPlayersDatabase();
 
