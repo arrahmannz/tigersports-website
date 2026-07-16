@@ -3,236 +3,709 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tigers Sports Incorporated (TSI) | Official Community Hub</title>
+    <title>Tigers Sports Incorporated | Official Organization Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; }
         .font-oswald { font-family: 'Oswald', sans-serif; }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #059669; border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 5px rgba(5, 150, 105, 0.4); }
-            50% { box-shadow: 0 0 20px rgba(5, 150, 105, 0.8); }
-        }
-        #ask-arif-button { animation: pulse-glow 2.5s infinite; }
-        .tab-button { transition: all 0.15s ease-in-out; }
-        .tab-button.active { color: #ffffff; background-color: #059669; border-color: #047857; }
-        .cricket-field { position: relative; width: 100%; max-width: 340px; aspect-ratio: 1 / 1; background-color: #0f766e; border-radius: 50%; margin: 1.5rem auto; border: 4px solid #ffffff; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #020617; }
+        
+        /* Premium Navigation Blurs */
+        .glass-nav { background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(30, 41, 59, 0.5); }
+        .glass-card { background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px); border: 1px solid rgba(30, 41, 59, 0.7); }
+        
+        /* Interactive Field Graphics */
+        .cricket-field { position: relative; width: 100%; max-width: 320px; aspect-ratio: 1 / 1; background-color: #0f766e; border-radius: 50%; margin: 1.5rem auto; border: 4px solid #ffffff; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         .inner-circle { position: absolute; top: 25%; left: 25%; width: 50%; height: 50%; border: 2px dashed #f59e0b; border-radius: 50%; z-index: 1; }
         .pitch { position: absolute; top: 50%; left: 50%; width: 55%; height: 10%; background-color: #cbd5e1; transform: translate(-50%, -50%); border-radius: 2px; }
-        .fielder { position: absolute; width: 14px; height: 14px; border-radius: 50%; transform: translate(-50%, -50%); border: 2px solid white; }
+        .fielder { position: absolute; width: 12px; height: 12px; border-radius: 50%; transform: translate(-50%, -50%); border: 2px solid white; }
         .fielder-inner { background-color: #ef4444; }
         .fielder-outer { background-color: #10b981; }
-        .interactive-toggle.active { background-color: #059669; color: white; }
-        #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.3; }
+        .interactive-toggle.active { background-color: #059669; color: white; border-color: #047857; }
+        
+        #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.2; }
+        
+        /* Page Transition Animations */
+        .page-view { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased min-h-screen">
+<body class="text-slate-100 antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-950">
 
     <canvas id="particle-canvas"></canvas>
 
-    <header class="bg-slate-950/90 border-b border-slate-900 sticky top-0 z-40 backdrop-blur-md">
+    <!-- Global Header -->
+    <header class="glass-nav sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="h-11 w-11 bg-gradient-to-tr from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center font-black text-slate-950 tracking-tighter font-oswald text-xl">
+            <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                <div class="h-11 w-11 bg-gradient-to-tr from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center font-black text-slate-950 tracking-tighter font-oswald text-xl shadow-lg shadow-emerald-500/10">
                     TSI
                 </div>
                 <div>
-                    <span class="font-black text-xl tracking-wider font-oswald block text-white leading-none">TIGERS SPORTS</span>
-                    <span class="text-[10px] text-emerald-500 uppercase tracking-widest font-semibold">Incorporated Society</span>
+                    <span class="font-black text-xl tracking-wider font-oswald block text-white leading-none group-hover:text-emerald-400 transition-colors">TIGERS SPORTS</span>
+                    <span class="text-[10px] text-emerald-500 uppercase tracking-widest font-semibold font-mono">Incorporated Society</span>
                 </div>
-            </div>
+            </a>
             
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                <a href="#about" class="hover:text-emerald-400 transition-colors">About TSI</a>
-                <a href="#pillars" class="hover:text-emerald-400 transition-colors">Our Pillars</a>
-                <a href="#events" class="hover:text-emerald-400 transition-colors">Fixtures</a>
-                <a href="#rulebook" class="hover:text-emerald-400 transition-colors">Official Rules</a>
-                <a href="#governance" class="hover:text-emerald-400 transition-colors">Governance</a>
+            <!-- Professional Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-widest uppercase">
+                <a href="#home" onclick="navigateTo('home')" class="nav-link text-slate-300 hover:text-white transition-colors">Home</a>
+                <a href="#about" onclick="navigateTo('about')" class="nav-link text-slate-300 hover:text-white transition-colors">About TSI</a>
+                <a href="#cricket" onclick="navigateTo('cricket')" class="nav-link text-slate-300 hover:text-white transition-colors">Cricket</a>
+                <a href="#football" onclick="navigateTo('football')" class="nav-link text-slate-300 hover:text-white transition-colors">Football</a>
+                <a href="#indoor" onclick="navigateTo('indoor')" class="nav-link text-slate-300 hover:text-white transition-colors">Indoor</a>
             </nav>
 
-            <span class="text-xs font-bold tracking-widest text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20 uppercase">
-                Charity Hub
-            </span>
+            <div class="hidden sm:flex items-center gap-4">
+                <span class="text-[11px] font-mono font-medium text-slate-400 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg shadow-inner flex items-center gap-2">
+                    <span class="h-1.5 w-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+                    <span id="nav-clock">00:00:00</span> NZST
+                </span>
+            </div>
         </div>
     </header>
 
-    <section class="relative overflow-hidden py-20 sm:py-32 border-b border-slate-900 bg-gradient-to-b from-slate-950 via-slate-900/40 to-slate-950">
-        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
-            <h1 class="text-4xl sm:text-7xl font-black tracking-tight font-oswald text-white mb-6 uppercase leading-none">
-                Elevating Community <br>
-                <span class="bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-500 bg-clip-text text-transparent">
-                    Sports Infrastructure
-                </span>
-            </h1>
-            <p class="text-base sm:text-xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed mb-8">
-                Welcome to Tigers Community Sports Incorporated (TSI). We are a registered non-profit organization dedicated to delivering premier sports tournaments, pathways, and migrant integration frameworks across Auckland.
-            </p>
-            <div class="flex justify-center gap-4">
-                <a href="#events" class="bg-emerald-600 hover:bg-emerald-700 text-slate-950 font-bold px-6 py-3 rounded-xl transition font-oswald tracking-wide uppercase text-sm">View Fixtures</a>
-                <a href="#rulebook" class="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 font-semibold px-6 py-3 rounded-xl transition text-sm">Read Lawbook</a>
-            </div>
-        </div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.06)_0%,transparent_60%)] pointer-events-none"></div>
-    </section>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
-            
-            <aside class="space-y-6 lg:sticky lg:top-28">
-                <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl text-center backdrop-blur-sm shadow-xl">
-                    <div id="time-display" class="font-oswald text-4xl font-bold text-emerald-400 tracking-wider">00:00:00</div>
-                    <div id="date-display" class="text-xs text-slate-400 mt-1 font-medium">Loading Date...</div>
-                    <div class="text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1">
-                        <span class="h-2 w-2 bg-emerald-500 rounded-full animate-ping"></span>
-                        Auckland, New Zealand
-                    </div>
-                </div>
-
-                <div id="status-banner" class="bg-gradient-to-r from-emerald-950 to-slate-900 border border-emerald-800/40 p-4 rounded-xl text-center text-xs font-bold text-emerald-400 uppercase tracking-wider shadow-md">
-                    Status: Tracking Competitive Season
-                </div>
-
-                <div class="bg-slate-900/30 border border-slate-900 p-5 rounded-2xl space-y-3">
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 font-oswald">Entity Status</h3>
-                    <div class="text-xs space-y-2.5 text-slate-400">
-                        <p class="flex justify-between"><span>Incorporation ID:</span> <span class="text-slate-200 font-mono">50264993</span></p>
-                        <p class="flex justify-between"><span>Charitable Class:</span> <span class="text-slate-200">Assessment Phase</span></p>
-                        <p class="flex justify-between"><span>Headquarters:</span> <span class="text-slate-200">Auckland, NZ</span></p>
-                    </div>
-                </div>
-            </aside>
-            
-            <main class="lg:col-span-3 space-y-16">
-                
-                <section id="about" class="bg-slate-900/40 border border-slate-900 p-8 rounded-3xl backdrop-blur-sm space-y-4">
-                    <h2 class="text-2xl sm:text-3xl font-black uppercase text-white font-oswald tracking-tight flex items-center gap-3">
-                        <span class="h-6 w-1.5 bg-emerald-500 rounded-full"></span> About Tigers Sports Inc.
-                    </h2>
-                    <p class="text-slate-300 leading-relaxed font-light">
-                        Founded on foundational community principles, TSI works actively to bridge social development through athletic tournament operations. We structure safe, competitive environments that foster inclusion, build long-term development strategies for youth pathways, and champion community harmony.
+    <!-- Content Router Views Container -->
+    <main class="flex-grow">
+        
+        <!-- PAGE 1: HOME (THE face of the organization) -->
+        <section id="view-home" class="page-view hidden">
+            <!-- Hero Space -->
+            <div class="relative overflow-hidden py-24 sm:py-36 border-b border-slate-900/60 bg-gradient-to-b from-slate-950 via-slate-900/20 to-slate-950">
+                <div class="max-w-5xl mx-auto px-4 text-center relative z-10 space-y-6">
+                    <span class="text-xs font-bold tracking-widest text-emerald-400 bg-emerald-500/10 px-4 py-2 rounded-full border border-emerald-500/20 uppercase font-mono">
+                        New Zealand Registered Community Organization
+                    </span>
+                    <h1 class="text-5xl sm:text-8xl font-black tracking-tight font-oswald text-white uppercase leading-none pt-2">
+                        CHAMPIONING EMPOWERMENT <br>
+                        <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500 bg-clip-text text-transparent">
+                            THROUGH SPORT
+                        </span>
+                    </h1>
+                    <p class="text-sm sm:text-lg text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                        Tigers Sports Incorporated (TSI) designs and operates high-performance sporting frameworks, digital infrastructure, and inclusion systems across Auckland to connect and enrich lives.
                     </p>
-                </section>
-
-                <section id="pillars" class="space-y-6">
-                    <h2 class="text-2xl sm:text-3xl font-black uppercase text-white font-oswald tracking-tight flex items-center gap-3">
-                        <span class="h-6 w-1.5 bg-emerald-500 rounded-full"></span> Strategic Pillars
-                    </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl shadow-sm">
-                            <div class="h-10 w-10 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl flex items-center justify-center font-bold mb-4">01</div>
-                            <h4 class="font-bold text-white mb-2 font-oswald uppercase text-lg">Social Integration</h4>
-                            <p class="text-xs text-slate-400 leading-relaxed">Providing foundational sports platforms to integrate ethnic communities smoothly into the broader New Zealand ecosystem.</p>
-                        </div>
-                        <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl shadow-sm">
-                            <div class="h-10 w-10 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl flex items-center justify-center font-bold mb-4">02</div>
-                            <h4 class="font-bold text-white mb-2 font-oswald uppercase text-lg">Tournament Delivery</h4>
-                            <p class="text-xs text-slate-400 leading-relaxed">Operating structural frameworks, elite refereeing, digital statistics engines, and robust rulebook compliance models.</p>
-                        </div>
-                        <div class="bg-slate-900/20 border border-slate-900 p-6 rounded-2xl shadow-sm">
-                            <div class="h-10 w-10 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl flex items-center justify-center font-bold mb-4">03</div>
-                            <h4 class="font-bold text-white mb-2 font-oswald uppercase text-lg">Community Welfare</h4>
-                            <p class="text-xs text-slate-400 leading-relaxed">Promoting physical wellbeing, religious values, strict codes of sportsmanship, and mental health structures through team sports.</p>
-                        </div>
+                    <div class="pt-4 flex justify-center gap-4">
+                        <button onclick="navigateTo('about')" class="bg-emerald-600 hover:bg-emerald-700 text-slate-950 font-bold px-7 py-3.5 rounded-xl transition font-oswald tracking-wide uppercase text-xs shadow-lg shadow-emerald-600/10">Explore Governance</button>
+                        <button onclick="navigateTo('cricket')" class="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 font-semibold px-7 py-3.5 rounded-xl transition text-xs tracking-wider uppercase">Our Sporting Sectors</button>
                     </div>
-                </section>
+                </div>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.05)_0%,transparent_60%)] pointer-events-none"></div>
+            </div>
 
-                <section id="events" class="space-y-6">
-                    <div>
-                        <h2 class="text-2xl sm:text-3xl font-black uppercase text-white font-oswald tracking-tight flex items-center gap-3">
-                            <span class="h-6 w-1.5 bg-emerald-500 rounded-full"></span> Tournament Calendars
-                        </h2>
-                        <p class="text-xs text-slate-400 mt-1">Official fixtures map for our incoming seasonal sports tournaments.</p>
+            <!-- Operational Core Values Area -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-3xl font-black uppercase font-oswald text-white tracking-wide">Our Strategic Intent</h2>
+                    <p class="text-sm text-slate-400">Delivering sustainable structural sports solutions under internationally aligned management protocols.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-2xl space-y-4 shadow-xl">
+                        <div class="h-12 w-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-bold font-mono border border-emerald-500/20">01</div>
+                        <h3 class="font-bold text-white text-xl font-oswald uppercase tracking-tight">Social Capital</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed font-light">Fostering deep-level cultural alignment and offering migrant groups structural pathways to smoothly establish foundations in New Zealand.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl space-y-4 shadow-xl">
+                        <div class="h-12 w-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-bold font-mono border border-emerald-500/20">02</div>
+                        <h3 class="font-bold text-white text-xl font-oswald uppercase tracking-tight">Digital Governance</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed font-light">Deploying customized calculation metrics, dynamic mathematical dashboards, and automated verification codes to protect league compliance.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl space-y-4 shadow-xl">
+                        <div class="h-12 w-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-bold font-mono border border-emerald-500/20">03</div>
+                        <h3 class="font-bold text-white text-xl font-oswald uppercase tracking-tight">Athletic Welfare</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed font-light">Nurturing continuous health execution, discipline parameters, strict administrative compliance, and youth community development structures.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: ABOUT TSI & EXECUTIVE COMMITTEE -->
+        <section id="view-about" class="page-view hidden max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+            <div class="space-y-4 border-b border-slate-900 pb-8">
+                <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3">
+                    <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Institutional Profile & Governance
+                </h1>
+                <p class="text-sm text-slate-400 font-medium">Tigers Sports Incorporated (Registered Society Status: 50264993)</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+                <div class="md:col-span-2 space-y-6 text-slate-300 font-light leading-relaxed text-sm">
+                    <h3 class="text-xl font-bold text-white font-oswald uppercase tracking-wide">Our Mission</h3>
+                    <p>
+                        Established as a cornerstone body in Auckland, Tigers Sports Incorporated (TSI) transforms the community landscape by standardizing organizational execution in ethnic sports. We merge operational expertise with a passion for community building to implement leagues that mirror national tournament configurations.
+                    </p>
+                    <p>
+                        By maintaining deep governance pathways, transparent financial reporting standards, and consistent regulatory oversight, TSI ensures that grassroot players acquire premium club exposure. Our systems are built purposefully to sustain cross-regional sporting engagement models throughout New Zealand.
+                    </p>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <h4 class="font-bold text-white font-oswald uppercase tracking-wider text-xs border-b border-slate-800 pb-2">Compliance Registries</h4>
+                    <div class="text-xs space-y-3 font-mono text-slate-400">
+                        <div class="flex justify-between"><span>Registry Class:</span> <span class="text-slate-200">Incorporated Society</span></div>
+                        <div class="flex justify-between"><span>Operating Status:</span> <span class="text-emerald-400 font-bold">Active / Compliant</span></div>
+                        <div class="flex justify-between"><span>Oversight Area:</span> <span class="text-slate-200">Auckland Region</span></div>
+                        <div class="flex justify-between"><span>Audit Cycle:</span> <span class="text-slate-200">Annual Review</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Committee Directory Gallery -->
+            <div class="space-y-6 pt-8">
+                <div class="space-y-1">
+                    <h2 class="text-2xl font-black font-oswald uppercase tracking-wide text-white">Executive Committee (EC) Members</h2>
+                    <p class="text-xs text-slate-400">The corporate board directing operations, financial risk frameworks, and regulatory league policies.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Leader 1 -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 text-center space-y-3 shadow-lg hover:border-emerald-500/40 transition-colors">
+                        <div class="h-20 w-24 bg-gradient-to-br from-slate-800 to-slate-950 rounded-2xl mx-auto flex items-center justify-center font-bold text-emerald-400 font-oswald text-xl border border-slate-800">AR</div>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Arifur Rahman</h4>
+                            <p class="text-[11px] text-emerald-400 font-medium font-mono uppercase tracking-wider mt-0.5">Principal Board Executive</p>
+                        </div>
+                        <p class="text-xs text-slate-400 font-light leading-snug">Directing operations, regulatory tournament mechanics, infrastructure protocols, and board governance loops.</p>
+                    </div>
+                    <!-- Mock slots for international polish showing full scale of a top board -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 text-center space-y-3 shadow-lg text-slate-500">
+                        <div class="h-20 w-20 bg-slate-950 rounded-full mx-auto flex items-center justify-center font-bold border border-slate-900 text-slate-700">TSI</div>
+                        <div>
+                            <h4 class="font-bold text-slate-400 text-base">To Be Appointed</h4>
+                            <p class="text-[11px] font-medium font-mono uppercase tracking-wider mt-0.5">General Secretary</p>
+                        </div>
+                        <p class="text-xs font-light leading-snug">Managing documentation records, institutional compliance filings, and external legal asset routing loops.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 text-center space-y-3 shadow-lg text-slate-500">
+                        <div class="h-20 w-20 bg-slate-950 rounded-full mx-auto flex items-center justify-center font-bold border border-slate-900 text-slate-700">TSI</div>
+                        <div>
+                            <h4 class="font-bold text-slate-400 text-base">To Be Appointed</h4>
+                            <p class="text-[11px] font-medium font-mono uppercase tracking-wider mt-0.5">Treasurer Controller</p>
+                        </div>
+                        <p class="text-xs font-light leading-snug">Administering financial statements, nonprofit balancing entries, registry books, and audit compliance vectors.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 text-center space-y-3 shadow-lg text-slate-500">
+                        <div class="h-20 w-20 bg-slate-950 rounded-full mx-auto flex items-center justify-center font-bold border border-slate-900 text-slate-700">TSI</div>
+                        <div>
+                            <h4 class="font-bold text-slate-400 text-base">To Be Appointed</h4>
+                            <p class="text-[11px] font-medium font-mono uppercase tracking-wider mt-0.5">Operations Coordinator</p>
+                        </div>
+                        <p class="text-xs font-light leading-snug">Supervising dynamic matches on-ground, facility allocation structures, kit logistics, and volunteer boards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: CRICKET SECTOR & RULEBOOK CONSOLE -->
+        <section id="view-cricket" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+                
+                <!-- Internal Context Navigator Menu -->
+                <aside class="space-y-4 lg:sticky lg:top-28">
+                    <div class="glass-card p-4 rounded-2xl space-y-1">
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-slate-500 font-mono block px-3 mb-1">Cricket Console Nav</span>
+                        <button onclick="scrollInsideSector('cricket-overview')" class="w-full text-left px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800/50 rounded-lg transition-colors block">Overview</button>
+                        <button onclick="scrollInsideSector('cricket-rulebook')" class="w-full text-left px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800/50 rounded-lg transition-colors block">TSI Official Rulebook</button>
+                        <button onclick="scrollInsideSector('cricket-fielding')" class="w-full text-left px-3 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-800/50 rounded-lg transition-colors block">Field Placement Matrix</button>
                     </div>
 
-                    <div class="bg-slate-900/40 border border-slate-900 rounded-2xl overflow-hidden divide-y divide-slate-900/60 backdrop-blur-sm">
-                        <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all group">
-                            <div class="space-y-1">
-                                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider block">Sunday, 25 October 2026</span>
-                                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">BDCL Tournament - Match Day 01</h3>
+                    <!-- Rule Calculator Tools Widget Trigger Box -->
+                    <div class="glass-card p-5 rounded-2xl text-center space-y-3 shadow-xl">
+                        <h4 class="font-bold text-white font-oswald uppercase tracking-wide text-xs">AI Computational Toolkit</h4>
+                        <p class="text-[11px] text-slate-400">Access built-in math matrices for live Net Run Rate computing or Duckworth-Lewis target adjustments during rain disruptions.</p>
+                        <button id="ask-arif-button-trigger" class="w-full bg-emerald-600 hover:bg-emerald-700 text-slate-950 font-bold py-2 rounded-xl text-xs uppercase tracking-wide font-oswald">Open AI Calculators</button>
+                    </div>
+                </aside>
+
+                <!-- Cricket Sector Dynamic Display Column -->
+                <div class="lg:col-span-3 space-y-16">
+                    
+                    <!-- Overview section -->
+                    <div id="cricket-overview" class="space-y-4">
+                        <h1 class="text-3xl font-black uppercase font-oswald text-white tracking-tight flex items-center gap-3">
+                            <span class="h-6 w-1.5 bg-emerald-500 rounded-full"></span> Cricket Division Framework
+                        </h1>
+                        <p class="text-sm text-slate-300 font-light leading-relaxed">
+                            The Cricket Division represents TSI’s signature operational ecosystem. We manage multi-tiered summer competitions and short-format execution loops (like T10 and Sweet 16 configurations) utilizing proprietary technology trackers and expert panel configurations to align fully under elite match environments.
+                        </p>
+                    </div>
+
+                    <!-- Consolidated Integrated Rulebook Section -->
+                    <div id="cricket-rulebook" class="bg-slate-900/30 border border-slate-900 p-8 rounded-3xl space-y-6">
+                        <div class="border-b border-slate-800 pb-4">
+                            <h2 class="text-2xl font-black uppercase font-oswald text-white tracking-tight">TSI Official Cricket Lawbook</h2>
+                            <p class="text-xs text-emerald-400 font-mono mt-0.5">Codified System Override Framework — Preceding Alternate Local Regulations</p>
+                        </div>
+
+                        <div class="space-y-6 text-sm text-slate-300 font-light leading-relaxed">
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-white uppercase text-base font-oswald text-emerald-400 tracking-wide">1. General Core Principles</h4>
+                                <p>All operations strictly enforce the official ICC Spirit of Cricket parameter metrics. Any form of behavioral dissent or administrative subversion towards officiating staff triggers immediate multi-match penalty metrics under Match Referee reviews.</p>
                             </div>
-                            <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Cricket Format</span>
-                        </div>
-                        <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all group">
-                            <div class="space-y-1">
-                                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider block">Sunday, 06 December 2026</span>
-                                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">Sweet 16 Cup</h3>
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-white uppercase text-base font-oswald text-emerald-400 tracking-wide">2. Strategic Over-Rate Caps</h4>
+                                <p>Short format blocks are timed explicitly at 4.5 minutes per over. Fielding systems failing to deliver the opening delivery of their final over parameter inside allotments proceed under a strict penalty of dropping one mandatory defensive fielder inside the ring perimeter.</p>
                             </div>
-                            <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">T10 Elimination</span>
-                        </div>
-                        <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all group">
-                            <div class="space-y-1">
-                                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider block">Sunday, 20 December 2026</span>
-                                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">Bengal Bash 5.0 Arena</h3>
+                            <div class="space-y-2">
+                                <h4 class="font-bold text-white uppercase text-base font-oswald text-emerald-400 tracking-wide">3. Adaptive Playing Conditions</h4>
+                                <ul class="list-disc list-inside space-y-1.5 ml-2 text-xs text-slate-400">
+                                    <li><strong class="text-slate-200">No LBW Bounds:</strong> Leg Before Wicket dismissals are completely suspended. Stance obstruction monitoring remains strictly monitored under umpire panels.</li>
+                                    <li><strong class="text-slate-200">Mankad Warning Requirements:</strong> Bowlers must issue a single formal verbal caution directly to non-strikers before performing a valid Mankad run-out execution.</li>
+                                    <li><strong class="text-slate-200">Wicket-keeping Stumpings:</strong> Legitimate clean stumpings and hit-wickets are strictly validated across game profiles.</li>
+                                </ul>
                             </div>
-                            <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Mount Wellington</span>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="rulebook" class="bg-slate-900/20 border border-slate-900 p-8 rounded-3xl space-y-6">
-                    <div>
-                        <h2 class="text-2xl sm:text-3xl font-black uppercase text-white font-oswald tracking-tight mb-2">Tournament Lawbook Framework</h2>
-                        <p class="text-sm text-slate-400">All TSI activities are bound under structured playing codes combining official ICC lawbooks with local adaptive tournament standards.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-300">
-                        <div class="p-4 bg-slate-950 rounded-xl border border-slate-900 space-y-2">
-                            <h4 class="font-bold text-white uppercase font-oswald text-sm text-emerald-400">01. Match Duration Quotas</h4>
-                            <p>Standard tournament play operates tightly under an 8-over or 10-over per-side format. Slow over-rates result in immediate defensive ring placement penalties.</p>
-                        </div>
-                        <div class="p-4 bg-slate-950 rounded-xl border border-slate-900 space-y-2">
-                            <h4 class="font-bold text-white uppercase font-oswald text-sm text-emerald-400">02. Equipment & Safety Regulations</h4>
-                            <p>Only verified tennis-balls wrapped in white insulating electrical tape are authorized. Use of fiber-bats remains completely prohibited across leagues.</p>
                         </div>
                     </div>
 
-                    <div class="p-6 bg-slate-950 rounded-2xl border border-slate-900">
-                        <h4 class="text-base font-bold text-white font-oswald mb-4 text-center uppercase tracking-wide">Interactive Fielding Ring Bounds</h4>
-                        <div class="flex justify-center gap-3 mb-4">
-                            <button id="powerplay-toggle-on" class="interactive-toggle text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold py-2 px-4 rounded-lg">PowerPlay (Overs 1-3)</button>
-                            <button id="powerplay-toggle-off" class="interactive-toggle text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold py-2 px-4 rounded-lg">Standard (Overs 4-10)</button>
+                    <!-- Interactive Field Map Component -->
+                    <div id="cricket-fielding" class="bg-slate-900/50 border border-slate-900 p-8 rounded-3xl space-y-6">
+                        <div class="text-center max-w-md mx-auto">
+                            <h3 class="text-xl font-bold font-oswald text-white uppercase tracking-wider">Tactical Field Placement Ring</h3>
+                            <p class="text-xs text-slate-400 mt-1">Select competitive frames to trace the exact defensive configuration parameters allowed inside standard ring restrictions.</p>
                         </div>
-                        <div class="cricket-field">
-                            <div class="pitch"></div>
-                            <div class="inner-circle"></div>
-                            <div id="fielders-container"></div>
-                        </div>
-                        <p id="fielding-rule-text" class="text-center text-xs text-slate-400 font-medium mt-3"></p>
-                    </div>
-                </section>
-
-                <section id="governance" class="border-t border-slate-900 pt-8 space-y-6">
-                    <h2 class="text-2xl sm:text-3xl font-black uppercase text-white font-oswald tracking-tight flex items-center gap-3">
-                        <span class="h-6 w-1.5 bg-emerald-500 rounded-full"></span> Endorsement & Board Governance
-                    </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-900 p-6 rounded-2xl">
-                            <p class="font-bold text-emerald-400 font-oswald text-lg">Arifur Rahman</p>
-                            <p class="text-xs text-slate-500 font-medium uppercase tracking-wider mb-3">Principal Executive Officer</p>
-                            <ul class="text-xs text-slate-400 space-y-1 font-light">
-                                <li>— Tournament Referee Board Chair</li>
-                                <li>— Director, Tigers FC Social & Sporting Club</li>
-                            </ul>
-                        </div>
-                        <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-900 p-6 rounded-2xl">
-                            <p class="font-bold text-emerald-400 font-oswald text-lg">Technical Administration</p>
-                            <p class="text-xs text-slate-500 font-medium uppercase tracking-wider mb-3">Support Coordination</p>
-                            <p class="text-xs text-slate-400 font-light leading-relaxed">
-                                Managed directly via the executive committee board of Team Tigers Sports New Zealand. For governance queries or partnership intakes, contact executive oversight modules.
-                            </p>
+                        <div class="p-4 bg-slate-950 rounded-2xl border border-slate-900 max-w-lg mx-auto">
+                            <div class="flex justify-center gap-3 mb-4">
+                                <button id="powerplay-toggle-on" class="interactive-toggle text-[11px] bg-slate-900 border border-slate-800 text-slate-400 font-bold py-2 px-4 rounded-xl">PowerPlay (Overs 1-3)</button>
+                                <button id="powerplay-toggle-off" class="interactive-toggle text-[11px] bg-slate-900 border border-slate-800 text-slate-400 font-bold py-2 px-4 rounded-xl">Standard (Overs 4-10)</button>
+                            </div>
+                            <div class="cricket-field">
+                                <div class="pitch"></div>
+                                <div class="inner-circle"></div>
+                                <div id="fielders-container"></div>
+                            </div>
+                            <p id="fielding-rule-text" class="text-center text-xs text-slate-400 font-medium mt-3 px-4 leading-relaxed"></p>
                         </div>
                     </div>
-                </section>
 
-            </main>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: FOOTBALL SECTOR -->
+        <section id="view-football" class="page-view hidden max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
+            <div class="space-y-4 border-b border-slate-900 pb-6">
+                <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3">
+                    <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Football Division Ecosystem
+                </h1>
+                <p class="text-sm text-slate-400">Managing professional football fixtures and community integration platforms.</p>
+            </div>
+            
+            <div class="glass-card p-8 rounded-3xl space-y-4 leading-relaxed font-light text-slate-300 text-sm">
+                <h3 class="text-lg font-bold text-white font-oswald uppercase tracking-wider text-emerald-400">Structural Frameworks</h3>
+                <p>
+                    TSI's Football Board coordinates seasonal leagues across premium facility allocations in Auckland. This division implements rigid tournament criteria, ensuring strict code-of-conduct enforcement, transparent scheduling, and official matching frameworks that meet international administrative levels.
+                </p>
+                <p>
+                    We emphasize elite local sportsmanship, community engagement development, and systematic team registrations. Detailed seasonal fixture parameters and team registration slots are broadcasted through proper channels before the start of each competition cycle.
+                </p>
+            </div>
+        </section>
+
+        <!-- PAGE 5: INDOOR GAMES SECTOR -->
+        <section id="view-indoor" class="page-view hidden max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
+            <div class="space-y-4 border-b border-slate-900 pb-6">
+                <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3">
+                    <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Indoor Sports Portfolio
+                </h1>
+                <p class="text-sm text-slate-400">Operating professional winter schedules and rapid corporate athletic engagements.</p>
+            </div>
+            
+            <div class="glass-card p-8 rounded-3xl space-y-4 leading-relaxed font-light text-slate-300 text-sm">
+                <h3 class="text-lg font-bold text-white font-oswald uppercase tracking-wider text-emerald-400">Indoor Sports Management</h3>
+                <p>
+                    TSI's Indoor Sports Portfolio handles fast-paced winter programs and short-form corporate matches. This framework provides continuous athletic engagement, even during weather challenges, across premium indoor arenas.
+                </p>
+                <p>
+                    From multi-bracket badminton tournaments to indoor soccer and cricket setups, TSI applies professional management models to indoor sports. These programs focus on rapid tournament execution, health parameters, and connecting local businesses and communities.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-12 text-center text-xs text-slate-500 tracking-wide mt-12">
+        <p>&copy; 2026 Tigers Sports Incorporated. All rights reserved.</p>
+        <p class="mt-1 font-light text-slate-600 font-mono">Incorporated Society Registry ID: 50264993 • Auckland, New Zealand</p>
+    </footer>
+
+    <!-- Master AI Compute Console Overlay -->
+    <div id="chat-modal" class="hidden fixed inset-0 bg-slate-950/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl w-full max-w-xl flex flex-col h-full max-h-[82vh]">
+            
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-950/50 rounded-t-2xl">
+                <h3 class="text-base font-bold text-emerald-400 font-oswald uppercase tracking-wider">TSI Artificial Intelligence System</h3>
+                <button id="chat-close-button" class="text-slate-400 hover:text-slate-200 transition p-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+
+            <!-- Dashboard Internal Tab Headers -->
+            <div class="tab-button-container flex bg-slate-950/30 text-[11px] text-slate-400 border-b border-slate-800 p-1 divide-x divide-slate-800 overflow-x-auto custom-scrollbar">
+                <button id="tab-consultation" class="tab-button px-4 py-2 flex-1 font-semibold uppercase whitespace-nowrap tracking-wider">AI Support</button>
+                <button id="tab-report" class="tab-button px-4 py-2 flex-1 font-semibold uppercase whitespace-nowrap tracking-wider">Match Writer</button>
+                <button id="tab-nrr" class="tab-button px-4 py-2 flex-1 font-semibold uppercase whitespace-nowrap tracking-wider">NRR Matrix</button>
+                <button id="tab-dls" class="tab-button px-4 py-2 flex-1 font-semibold uppercase whitespace-nowrap tracking-wider">DLS Curve</button>
+                <button id="tab-trophy" class="tab-button px-4 py-2 flex-1 font-semibold uppercase whitespace-nowrap tracking-wider">Crest Gen</button>
+            </div>
+
+            <!-- AI Tab 1 Panel -->
+            <div id="section-consultation" class="flex flex-col flex-grow bg-slate-900 overflow-hidden">
+                <div id="chat-log" class="flex-grow p-4 space-y-3 overflow-y-auto custom-scrollbar bg-slate-950/20 text-xs">
+                    <div class="flex justify-start">
+                        <div class="bg-slate-950 border border-slate-800 text-slate-300 p-3 rounded-xl rounded-tl-none max-w-[85%] leading-relaxed font-light">
+                            Welcome to the TSI AI Console. I am calibrated to analyze tournament rule files, schedule parameters, or non-profit compliance models. How can I assist you?
+                        </div>
+                    </div>
+                </div>
+                <form id="chat-form" class="p-3 border-t border-slate-800 bg-slate-950/40">
+                    <div class="flex gap-2">
+                        <input type="text" id="chat-input" placeholder="Ask a question..." class="flex-grow px-3 py-2 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-light" required>
+                        <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs font-oswald uppercase tracking-wider">Send</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- AI Tab 2 Panel -->
+            <div id="section-report" class="hidden flex-col flex-grow p-5 space-y-4 overflow-y-auto custom-scrollbar">
+                <div class="space-y-0.5">
+                    <h4 class="font-bold text-white text-sm font-oswald uppercase tracking-wider">Social Summary Engine</h4>
+                    <p class="text-[10px] text-slate-400">Generate formatted tournament summaries ready for immediate social media distribution.</p>
+                </div>
+                <form id="report-form" class="space-y-3 text-xs">
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" id="report-team1-name" placeholder="Team 1 Name" class="w-full p-2 bg-slate-950 border border-slate-800 rounded-md text-slate-200" required>
+                        <input type="text" id="report-team1-score" placeholder="Score (e.g. 84/6)" class="w-full p-2 bg-slate-950 border border-slate-800 rounded-md text-slate-200" required>
+                        <input type="text" id="report-team2-name" placeholder="Team 2 Name" class="w-full p-2 bg-slate-950 border border-slate-800 rounded-md text-slate-200" required>
+                        <input type="text" id="report-team2-score" placeholder="Score (e.g. 85/3)" class="w-full p-2 bg-slate-950 border border-slate-800 rounded-md text-slate-200" required>
+                    </div>
+                    <textarea id="report-performances" placeholder="Performances (e.g. Arif 42(14), Shuvo 2/11)" class="w-full p-2 bg-slate-950 border border-slate-800 rounded-md text-slate-200 font-light" rows="2" required></textarea>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-slate-950 font-bold py-2 rounded-md font-oswald uppercase text-xs tracking-wider">Generate Story Block</button>
+                </form>
+                <div id="report-output-container" class="hidden p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs space-y-2">
+                    <p id="report-output" class="text-slate-300 whitespace-pre-wrap font-mono font-light leading-relaxed text-[11px] bg-slate-900 p-2.5 rounded-lg"></p>
+                    <button id="copy-report-btn" class="w-full bg-slate-800 hover:bg-slate-700 text-emerald-400 font-semibold py-1.5 rounded text-[11px]">Copy Article Context</button>
+                </div>
+            </div>
+
+            <!-- AI Tab 3 Panel -->
+            <div id="section-nrr" class="hidden flex-col flex-grow p-5 space-y-4 overflow-y-auto custom-scrollbar">
+                <h4 class="font-bold text-white text-sm font-oswald uppercase tracking-wider">Net Run Rate Processor</h4>
+                <form id="nrr-form" class="space-y-4 text-xs">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="p-3 bg-slate-950 border border-slate-800 rounded-xl space-y-2">
+                            <span class="font-bold text-emerald-400 block font-oswald tracking-wide">1ST INNINGS (Team A)</span>
+                            <input type="text" id="teamName1" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200" value="Team A" required>
+                            <input type="number" id="runs1" placeholder="Runs Scored" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200" required>
+                            <input type="text" id="overs1" pattern="^\d{1,2}\.[0-5]$" placeholder="Overs faced (e.g. 8.0)" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200" required>
+                            <label class="flex items-center gap-2 text-slate-400 text-[10px] mt-1 font-mono"><input type="checkbox" id="isAllOut1" class="rounded bg-slate-900 text-emerald-600 border-slate-800 shadow-inner"> Team All Out</label>
+                        </div>
+                        <div class="p-3 bg-slate-950 border border-slate-800 rounded-xl space-y-2">
+                            <span class="font-bold text-teal-400 block font-oswald tracking-wide">2ND INNINGS (Team B)</span>
+                            <input type="text" id="teamName2" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200" value="Team B" required>
+                            <input type="number" id="runs2" placeholder="Runs Scored" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200" required>
+                            <input type="text" id="overs2" pattern="^\d{1,2}\.[0-5]$" placeholder="Overs faced (e.g. 7.3)" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200" required>
+                            <label class="flex items-center gap-2 text-slate-400 text-[10px] mt-1 font-mono"><input type="checkbox" id="isAllOut2" class="rounded bg-slate-900 text-emerald-600 border-slate-800 shadow-inner"> Team All Out</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-slate-950 font-bold py-2.5 rounded-md font-oswald uppercase text-xs tracking-wider">Process Run Rate Vector</button>
+                </form>
+                <div id="nrrResult" class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-center text-xs text-slate-400 font-light leading-relaxed">
+                    Statistical calculations follow exact tournament criteria (forces full overs allocation if dismissed all out).
+                </div>
+            </div>
+
+            <!-- AI Tab 4 Panel -->
+            <div id="section-dls" class="hidden flex-col flex-grow p-5 space-y-4 overflow-y-auto custom-scrollbar">
+                <h4 class="font-bold text-white text-sm font-oswald uppercase tracking-wider">DLS Resource Curve Targeter</h4>
+                <form id="dls-form" class="space-y-3 text-xs">
+                    <label class="flex items-center gap-2 p-2.5 bg-slate-950 rounded-xl border border-slate-800 text-[11px] text-slate-300">
+                        <input type="checkbox" id="isTeamAInterrupted" class="rounded bg-slate-900 text-emerald-600 border-slate-800 shadow-inner">
+                        <span>First innings play suffered rain interruption intervals</span>
+                    </label>
+                    <div id="interruption-details" class="space-y-2 p-3 bg-slate-950 border border-slate-800 rounded-xl hidden">
+                        <input type="number" id="scoreTeamAInterruption" placeholder="Runs at Interruption Point" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200">
+                        <input type="text" id="oversTeamAInterruption" pattern="^\d{1,2}\.[0-5]$" placeholder="Overs faced at point (e.g. 5.4)" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200">
+                        <input type="number" id="wicketsTeamAInterruption" min="0" max="10" placeholder="Wickets down" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200" value="0">
+                    </div>
+                    <div class="p-3 bg-slate-950 border border-slate-800 rounded-xl space-y-2">
+                        <input type="number" id="scoreTeamA" placeholder="Team A Total Flat Score (If No Interruption)" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200">
+                        <input type="number" id="oversTeamBRevised" min="5" max="8" placeholder="Revised target overs allocated to Team B (5-8)" class="w-full p-2 bg-slate-900 border border-slate-800 rounded text-slate-200" required>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-slate-950 font-bold py-2.5 rounded-md font-oswald uppercase text-xs tracking-wider">Calculate Revised Targets</button>
+                </form>
+                <div id="dlsResult" class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-center text-xs text-slate-400 font-light">
+                    Calculations run against structured internal T10 mathematical decay resource tables.
+                </div>
+            </div>
+
+            <!-- AI Tab 5 Panel -->
+            <div id="section-trophy" class="hidden flex-col flex-grow p-5 space-y-4 overflow-y-auto custom-scrollbar">
+                <h4 class="font-bold text-white text-sm font-oswald uppercase tracking-wider">Man of the Match Graphics Studio</h4>
+                <form id="certificate-form" class="space-y-2 text-xs">
+                    <input type="text" id="player-name-input" maxlength="25" placeholder="Player Complete Name" class="w-full p-2 bg-slate-950 border border-slate-800 rounded text-slate-200" required>
+                    <input type="text" id="achievement-input" maxlength="40" placeholder="Performance Showcase (e.g. 52 Runs & 3 Wkts)" class="w-full p-2 bg-slate-950 border border-slate-800 rounded text-slate-200" required>
+                    <input type="text" id="match-opponent-input" maxlength="25" placeholder="Opponent Team Name" class="w-full p-2 bg-slate-950 border border-slate-800 rounded text-slate-200" required>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-slate-950 font-bold py-2 rounded-md font-oswald uppercase text-xs tracking-wider">Render Graphic Plate</button>
+                </form>
+                <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-950">
+                    <canvas id="certificate-canvas" class="w-full h-auto" width="1080" height="1080"></canvas>
+                </div>
+                <button id="download-certificate-button" class="w-full bg-teal-600 hover:bg-teal-700 text-slate-950 font-bold py-2 rounded-md font-oswald uppercase text-xs tracking-wider hidden">Download Media Asset</button>
+                <div id="trophy-loader" class="hidden text-center text-xs text-emerald-400 font-mono">Compiling pixels...</div>
+            </div>
+
         </div>
     </div>
 
-    <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-xs text-slate-500">
-        <p>&copy; 2026 Tigers Community Sports Incorporated (TSI). All rights reserved.</p>
-        <p class="mt-1 font-light text-slate-600">Registered Non-Profit Frameworks • Auckland, New Zealand</p>
+    <script>
+        // System variables
+        const apiKey = ""; 
+        const FULL_OVERS = 8.0;
+        const TABLE_MAX_OVERS = 10;
+
+        const T10_RESOURCE_TABLE = [
+            [100.0, 94.5, 88.0, 80.5, 71.5, 61.0, 49.5, 37.0, 24.5, 12.5, 0.0],
+            [92.0,  87.5, 82.0, 75.0, 66.5, 57.0, 46.0, 34.5, 22.5, 11.0, 0.0],
+            [83.0,  79.5, 74.5, 68.0, 60.0, 51.5, 41.5, 31.0, 20.0, 10.0, 0.0],
+            [73.0,  70.0, 66.0, 60.5, 53.5, 46.0, 37.0, 27.5, 17.5, 8.5,  0.0],
+            [62.0,  59.5, 56.0, 51.5, 46.0, 39.5, 31.5, 23.5, 15.0, 7.0,  0.0],
+            [50.0,  48.0, 45.5, 42.0, 37.5, 32.0, 25.5, 19.0, 12.0, 5.5,  0.0],
+            [38.0,  36.5, 34.5, 31.5, 28.0, 24.0, 19.0, 14.0, 9.0,  4.0,  0.0],
+            [26.0,  25.0, 23.5, 21.5, 19.0, 16.5, 13.0, 9.5,  6.0,  2.5,  0.0],
+            [15.0,  14.0, 13.0, 12.0, 10.5, 9.0,  7.0,  5.0,  3.0,  1.0,  0.0],
+            [6.0,   5.5,  5.0,  4.5,  4.0,  3.5,  2.5,  1.5,  1.0,  0.5,  0.0]
+        ];
+
+        // Multi-page UI Navigation Engine
+        function navigateTo(targetPageId) {
+            // Hide all views
+            document.querySelectorAll('.page-view').forEach(view => view.classList.add('hidden'));
+            // Remove active states from nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-emerald-400', 'border-b-2', 'border-emerald-500', 'text-white');
+                link.classList.add('text-slate-300');
+            });
+
+            // Activate target view
+            const targetView = document.getElementById(`view-${targetPageId}`);
+            if (targetView) targetView.classList.remove('hidden');
+
+            // Find clicked link to style it
+            const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(link => link.getAttribute('href') === `#${targetPageId}`);
+            if (activeLink) {
+                activeLink.classList.remove('text-slate-300');
+                activeLink.classList.add('text-emerald-400', 'text-white');
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        function scrollInsideSector(id) {
+            const element = document.getElementById(id);
+            if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function oversToDecimal(oversString) {
+            if (typeof oversString === 'number') return oversString;
+            const parts = oversString.split('.');
+            const fullOvers = parseInt(parts[0]);
+            let balls = parts.length > 1 ? parseInt(parts[1]) : 0;
+            if (isNaN(fullOvers) || isNaN(balls) || balls < 0 || balls > 5) return NaN;
+            return fullOvers + (balls / 6);
+        }
+
+        function setupFieldingDiagram() {
+            const toggleOn = document.getElementById('powerplay-toggle-on');
+            const toggleOff = document.getElementById('powerplay-toggle-off');
+            const container = document.getElementById('fielders-container');
+            const ruleText = document.getElementById('fielding-rule-text');
+
+            function updateDiagram(isPowerPlay) {
+                container.innerHTML = '';
+                toggleOn.classList.toggle('active', isPowerPlay);
+                toggleOff.classList.toggle('active', !isPowerPlay);
+                const outerCount = isPowerPlay ? 2 : 5;
+                ruleText.innerHTML = `Field Restrictions Code: Maximum of <span class="text-emerald-400 font-bold">${outerCount} players</span> permitted outside the inner 30-yard boundary ring line.`;
+
+                for (let i = 0; i < outerCount; i++) {
+                    const angle = (i / outerCount) * 2 * Math.PI;
+                    const f = document.createElement('div');
+                    f.className = 'fielder fielder-outer animate-pulse';
+                    f.style.left = `${50 + 38 * Math.cos(angle)}%`;
+                    f.style.top = `${50 + 38 * Math.sin(angle)}%`;
+                    container.appendChild(f);
+                }
+                for (let i = 0; i < (11 - outerCount); i++) {
+                    const angle = i * 0.8 + 0.4;
+                    const r = 7 + i * 2.4;
+                    const f = document.createElement('div');
+                    f.className = 'fielder fielder-inner';
+                    f.style.left = `${50 + r * Math.cos(angle)}%`;
+                    f.style.top = `${50 + r * Math.sin(angle)}%`;
+                    container.appendChild(f);
+                }
+            }
+            toggleOn.addEventListener('click', () => updateDiagram(true));
+            toggleOff.addEventListener('click', () => updateDiagram(false));
+            updateDiagram(true);
+        }
+
+        function setupParticleAnimation() {
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            let pts = [];
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            for(let i=0; i<35; i++) {
+                pts.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*1.2+0.8, s: Math.random()*0.3+0.1 });
+            }
+            function draw() {
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.fillStyle = "rgba(16, 185, 129, 0.3)";
+                pts.forEach(p => {
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+                    p.y -= p.s; if(p.y < 0) p.y = canvas.height;
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        function setupNRRCalculator() {
+            document.getElementById('nrr-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const runs1 = parseInt(document.getElementById('runs1').value);
+                const overs1Dec = oversToDecimal(document.getElementById('overs1').value);
+                const runs2 = parseInt(document.getElementById('runs2').value);
+                const overs2Dec = oversToDecimal(document.getElementById('overs2').value);
+                const den1 = document.getElementById('isAllOut1').checked ? FULL_OVERS : overs1Dec;
+                const den2 = document.getElementById('isAllOut2').checked ? FULL_OVERS : overs2Dec;
+                const nrr = (runs1 / den1) - (runs2 / den2);
+                document.getElementById('nrrResult').innerHTML = `<span class="text-slate-400 block font-medium">Computed NRR Result:</span> <span class="text-2xl text-emerald-400 font-black font-mono">${nrr >= 0 ? '+' : ''}${nrr.toFixed(3)}</span>`;
+            });
+        }
+
+        function getResource(oversRemaining, wicketsLost) {
+            if (oversRemaining <= 0 || wicketsLost >= 10) return 0.0;
+            wicketsLost = Math.max(0, Math.min(9, wicketsLost));
+            oversRemaining = Math.max(0, Math.min(TABLE_MAX_OVERS, oversRemaining));
+            const floorOvers = Math.floor(oversRemaining);
+            const fraction = oversRemaining - floorOvers;
+            if (fraction === 0) return T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - floorOvers];
+            const resFloor = T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - floorOvers];
+            const resCeil = T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - Math.ceil(oversRemaining)];
+            return resFloor + (resCeil - resFloor) * fraction;
+        }
+
+        function setupDLS_Calculator() {
+            const check = document.getElementById('isTeamAInterrupted');
+            const details = document.getElementById('interruption-details');
+            check.addEventListener('change', () => details.classList.toggle('hidden', !check.checked));
+
+            document.getElementById('dls-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const revOvers = parseFloat(document.getElementById('oversTeamBRevised').value);
+                const r2 = getResource(revOvers, 0);
+                let r1 = getResource(FULL_OVERS, 0);
+                let scoreA = parseFloat(document.getElementById('scoreTeamA').value);
+
+                if (check.checked) {
+                    scoreA = parseFloat(document.getElementById('scoreTeamAInterruption').value);
+                    const ovDec = oversToDecimal(document.getElementById('oversTeamAInterruption').value);
+                    const wk = parseInt(document.getElementById('wicketsTeamAInterruption').value);
+                    r1 = getResource(FULL_OVERS, 0) - getResource(FULL_OVERS - ovDec, wk);
+                }
+                const target = Math.floor(scoreA * (r2 / r1)) + 1;
+                document.getElementById('dlsResult').innerHTML = `<span class="text-slate-400 block font-medium">DLS Par Target Required:</span> <span class="text-3xl text-emerald-400 font-black font-mono">${target} Runs</span> (in ${revOvers} overs)`;
+            });
+        }
+
+        function setupGraphicsStudio() {
+            const canvas = document.getElementById('certificate-canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#090d16'; ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle = '#475569'; ctx.textAlign = 'center'; ctx.font = '22px sans-serif';
+            ctx.fillText("Graphics Engine Awaiting Compilation", canvas.width/2, canvas.height/2);
+
+            document.getElementById('certificate-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('player-name-input').value.toUpperCase();
+                const stats = document.getElementById('achievement-input').value;
+                const opp = document.getElementById('match-opponent-input').value.toUpperCase();
+
+                ctx.fillStyle = '#0f172a'; ctx.fillRect(0,0,canvas.width,canvas.height);
+                ctx.strokeStyle = '#10b981'; ctx.lineWidth = 24; ctx.strokeRect(40,40,canvas.width-80,canvas.height-80);
+                ctx.fillStyle = '#ffffff'; ctx.font = 'bold 44px sans-serif'; ctx.fillText("TIGERS SPORTS INCORPORATED", canvas.width/2, 160);
+                ctx.fillStyle = '#059669'; ctx.font = 'bold 64px sans-serif'; ctx.fillText("MAN OF THE MATCH", canvas.width/2, 380);
+                ctx.fillStyle = '#ffffff'; ctx.font = 'bold 74px sans-serif'; ctx.fillText(name, canvas.width/2, 550);
+                ctx.fillStyle = '#64748b'; ctx.font = '30px sans-serif'; ctx.fillText(`MATCH DAY vs ${opp}`, canvas.width/2, 650);
+                ctx.fillStyle = '#f59e0b'; ctx.font = 'italic 38px sans-serif'; ctx.fillText(`"${stats}"`, canvas.width/2, 780);
+                ctx.fillStyle = '#475569'; ctx.font = 'bold 24px sans-serif'; ctx.fillText("Official Refereed Endorsement Matrix", canvas.width/2, 960);
+            });
+        }
+
+        // Global Orchestration Run Loop
+        window.onload = function() {
+            // Read URL hash route directly to offer absolute deep-linking capability
+            const initialHash = window.location.hash.substring(1) || 'home';
+            navigateTo(initialHash);
+
+            setupFieldingDiagram();
+            setupParticleAnimation();
+            setupNRRCalculator();
+            setupDLS_Calculator();
+            setupGraphicsStudio();
+
+            // Set up ticking global nav clock module
+            setInterval(() => {
+                document.getElementById('nav-clock').textContent = new Date().toLocaleTimeString('en-NZ', { timeZone: 'Pacific/Auckland', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+            }, 1000);
+        };
+
+        // Modal triggers binding loops
+        const modal = document.getElementById('chat-modal');
+        document.getElementById('ask-arif-button').addEventListener('click', () => { modal.classList.remove('hidden'); document.getElementById('tab-consultation').click(); });
+        document.getElementById('ask-arif-button-trigger').addEventListener('click', () => { modal.classList.remove('hidden'); document.getElementById('tab-consultation').click(); });
+        document.getElementById('chat-close-button').addEventListener('click', () => modal.classList.add('hidden'));
+
+        const tabs = document.querySelectorAll('.tab-button');
+        const panels = document.querySelectorAll('[id^="section-"]');
+        tabs.forEach(t => {
+            t.addEventListener('click', () => {
+                tabs.forEach(b => b.classList.remove('active')); panels.forEach(p => p.classList.add('hidden'));
+                t.classList.add('active'); document.getElementById(t.id.replace('tab-', 'section-')).classList.remove('hidden');
+            });
+        });
+
+        document.getElementById('chat-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const log = document.getElementById('chat-log');
+            const val = document.getElementById('chat-input').value;
+            log.innerHTML += `<div class="flex justify-end"><div class="bg-emerald-600 text-slate-950 p-2.5 rounded-xl font-bold max-w-[85%]">${val}</div></div>`;
+            document.getElementById('chat-input').value = '';
+            setTimeout(() => {
+                log.innerHTML += `<div class="flex justify-start"><div class="bg-slate-950 border border-slate-800 text-slate-400 p-2.5 rounded-xl max-w-[85%]">Request processed under executive board rule contexts. Management overrides remain valid.</div></div>`;
+                log.scrollTop = log.scrollHeight;
+            }, 700);
+        });
+
+        document.getElementById('report-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const out = `🏆 MATCH DAY LOG: ${document.getElementById('report-team1-name').value} [${document.getElementById('report-team1-score').value}] vs ${document.getElementById('report-team2-name').value} [${document.getElementById('report-team2-score').value}]. Performance highlights: ${document.getElementById('report-performances').value}. Authorized under Tigers Sports Inc. coordination protocols. #BengalBash50`;
+            document.getElementById('report-output').textContent = out;
+            document.getElementById('report-output-container').classList.remove('hidden');
+        });
+
+        document.getElementById('copy-report-btn').addEventListener('click', () => {
+            navigator.clipboard.writeText(document.getElementById('report-output').textContent);
+            document.getElementById('copy-report-btn').textContent = "Copied!";
+            setTimeout(() => document.getElementById('copy-report-btn').textContent = "Copy Article Context", 1500);
+        });
+    </script>
+</body>
+</html>
