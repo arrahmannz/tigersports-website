@@ -7,7 +7,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=Oswald:wght=500;600;700&display=swap" rel="stylesheet">
     <style>
         :root { scroll-behavior: smooth; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; }
@@ -47,19 +47,19 @@
 
     <canvas id="particle-canvas"></canvas>
 
-  <!-- Global Header -->
-<header class="glass-nav sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
-            
-            <!-- NEW IMAGE FOLDER PATH -->
-            <img src="images/tsi-logo.png" alt="TSI Logo" class="h-12 w-auto object-contain transition-transform group-hover:scale-105">
-            
-            <div>
-                <span class="font-black text-2xl tracking-wider font-oswald block text-white leading-none group-hover:text-emerald-400 transition-colors">TIGERS SPORTS</span>
-                <span class="text-[10px] text-emerald-400 uppercase tracking-widest font-semibold font-mono">Incorporated Society</span>
-            </div>
-        </a>
+    <!-- Global Header -->
+    <header class="glass-nav sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                
+                <!-- NEW IMAGE FOLDER PATH -->
+                <img src="images/tsi-logo.png" alt="TSI Logo" class="h-12 w-auto object-contain transition-transform group-hover:scale-105">
+                
+                <div>
+                    <span class="font-black text-2xl tracking-wider font-oswald block text-white leading-none group-hover:text-emerald-400 transition-colors">TIGERS SPORTS</span>
+                    <span class="text-[10px] text-emerald-400 uppercase tracking-widest font-semibold font-mono">Incorporated Society</span>
+                </div>
+            </a>
             
             <!-- Professional Navigation Links -->
             <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-[11px] font-bold tracking-widest uppercase">
@@ -219,7 +219,7 @@
             </div>
         </section>
 
-        <!-- PAGE 2: ABOUT TSI & EXECUTIVE COMMITTEE -->
+        <!-- PAGE 2: ABOUT TSI & EXECUTIVE COMMITTEE (UPDATED DIRECTORY SYSTEM) -->
         <section id="view-about" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
             <div class="space-y-4 border-b border-slate-900 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
@@ -272,14 +272,14 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                     <div class="space-y-1">
                         <h2 class="text-2xl font-black font-oswald uppercase tracking-wide text-white">The Board and Executive Directory</h2>
-                        <p class="text-xs text-slate-400">Filtering through active boards, strategists, and operations portfolios directing corporate athletic mandates.</p>
+                        <p class="text-xs text-slate-400">Filtering through Board/EC Council parameters, specialized advisors, and dedicated Lifetime members.</p>
                     </div>
                     <!-- Directory Filter Buttons -->
                     <div class="flex flex-wrap gap-2 text-xs font-mono">
                         <button onclick="filterDirectory('all')" id="btn-dir-all" class="px-4 py-2 bg-slate-900 border border-emerald-500/30 text-emerald-400 rounded-xl transition font-bold shadow-md">Show All</button>
-                        <button onclick="filterDirectory('board')" id="btn-dir-board" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Board & EC</button>
-                        <button onclick="filterDirectory('strategist')" id="btn-dir-strategist" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Growth & Ops</button>
-                        <button onclick="filterDirectory('advisory')" id="btn-dir-advisory" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Advisory & Comm</button>
+                        <button onclick="filterDirectory('board_ec')" id="btn-dir-board_ec" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Board/EC Council</button>
+                        <button onclick="filterDirectory('advisory')" id="btn-dir-advisory" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Advisory</button>
+                        <button onclick="filterDirectory('lifetime')" id="btn-dir-lifetime" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Life time member</button>
                     </div>
                 </div>
 
@@ -497,7 +497,7 @@
                                     </div>
                                     <div class="p-4 bg-slate-950/80 border border-slate-850 rounded-2xl space-y-3">
                                         <input type="number" id="scoreTeamA" placeholder="First Innings Score (If no interruptions)" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200">
-                                        <input type="number" id="oversTeamBRevised" min="5" max="10" placeholder="Revised target overs allocated to Team B (5-10)" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200" required>
+                                        <input type="number" id="oversTeamBRevised" min="5" max="10" placeholder="Revised target overs allocated to Team B (5-10)" class="w-full p-2.5 bg-slate-900 border border-slate-850 rounded-xl text-slate-200" required>
                                     </div>
                                     <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold py-3 rounded-xl font-oswald uppercase text-xs tracking-wider transition">Calculate DLS Target</button>
                                 </form>
@@ -759,28 +759,42 @@
 
     </main>
 
+    <!-- Global Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-12 text-center text-xs text-slate-500 tracking-wide mt-12">
+        <p>&copy; 2026 Tigers Sports Incorporated. All rights reserved.</p>
+        <p class="mt-2 font-semibold text-slate-400 font-mono">Incorporated Society Registry ID: 50264993 • Auckland, New Zealand</p>
+    </footer>
+
     <!-- Scripting Infrastructure -->
     <script>
         const FULL_OVERS = 8.0;
         const TABLE_MAX_OVERS = 10;
 
-        // Structured directory data of TSI
+        // Structured directory data of TSI - Re-aligned to Board/EC Council, Advisory, and Life time member categories
         const directoryData = [
-            { name: "Md Mehedi Hasan Khan Chowdhury", role: "Board President", group: "board", desc: "Principal operational officer representing Tigers Sports Incorporated globally.", initials: "MC" },
-            { name: "Arifur Rahman", role: "Board Secretary & Founding Exec Director", group: "board", desc: "Leading general administration, public compliance schedules, and technical regulatory matrices.", initials: "AR" },
-            { name: "Md Mahbubul Alam Khan", role: "Board Treasurer", group: "board", desc: "Managing accounting compliance and financial auditing books.", initials: "MK" },
-            { name: "Enamul Haque", role: "Vice President", group: "board", desc: "Assisting governance strategies and cross-city partnership architectures.", initials: "EH" },
-            { name: "Saiful Islam", role: "Vice President", group: "board", desc: "Providing execution oversight across tournament calendars and facility allocations.", initials: "SI" },
-            { name: "Md Moniruzzaman", role: "Vice President", group: "board", desc: "Steering structural development policies and community support frameworks.", initials: "MM" },
+            // THE BOARD AND EXECUTIVE COUNCIL (board_ec)
+            { name: "Md Mehedi Hasan Khan Chowdhury", role: "Board President", group: "board_ec", desc: "Principal operational officer representing Tigers Sports Incorporated globally.", initials: "MC" },
+            { name: "Arifur Rahman", role: "Board Secretary & Founding Exec Director", group: "board_ec", desc: "Leading general administration, public compliance schedules, and technical regulatory matrices.", initials: "AR" },
+            { name: "Md Mahbubul Alam Khan", role: "Board Treasurer", group: "board_ec", desc: "Managing accounting compliance and financial auditing books.", initials: "MK" },
+            { name: "Enamul Haque", role: "Vice President", group: "board_ec", desc: "Assisting governance strategies and cross-city partnership architectures.", initials: "EH" },
+            { name: "Saiful Islam", role: "Vice President", group: "board_ec", desc: "Providing execution oversight across tournament calendars and facility allocations.", initials: "SI" },
+            { name: "Md Moniruzzaman", role: "Vice President", group: "board_ec", desc: "Steering structural development policies and community support frameworks.", initials: "MM" },
+            
+            // GROWTH AND PORTFOLIO STRATEGISTS (board_ec)
+            { name: "Anowar Shuvo", role: "Corporate Relations & Growth Director", group: "board_ec", desc: "Supervising strategic sponsorships, capital partnerships, and long-term business alliances. Specialist in Strategic Partnerships, Capital and Alliances.", initials: "AS" },
+            { name: "Md Sakil", role: "Community Engagement & Membership Director", group: "board_ec", desc: "Managing database enrollment, digital registry logs, and player membership metrics. Specialist in Digital Registry and Member Retention.", initials: "MS" },
+            { name: "Nazmul Hasan Roni", role: "Head of Cricket Operations & Development", group: "board_ec", desc: "Overseeing data-driven tournament formats, pitch schedules, and junior systems. Specialist in Data Driven Leagues and Youth Pathways.", initials: "NR" },
+            { name: "Md Tanvir Hasan Saikat", role: "Head of Football Operations & Development", group: "board_ec", desc: "Directing seasonal football cups, tournament architecture, and talent growth pools. Specialist in Tournament Architecture and Talent Growth.", initials: "TS" },
+            { name: "Mir Tayef Ali", role: "Executive Committee Member", group: "board_ec", desc: "Assisting general assembly alignments and volunteer execution networks.", initials: "MT" },
+            { name: "Md Nazmul Islam", role: "Executive Committee Member", group: "board_ec", desc: "Coordinating ground logistical operations and equipment distribution.", initials: "NI" },
+            { name: "S M Mohasin", role: "Executive Committee Member", group: "board_ec", desc: "Supervising code of conduct adherence and match day logistics.", initials: "SM" },
+            { name: "Md Zubaer Rahman", role: "Head of Indoor Operations & Development", group: "board_ec", desc: "Coordinating badminton, table tennis, and strategic indoor micro sports rosters. Specialist in Badminton, Chess and Micro Sports Logistics.", initials: "ZR" },
+            
+            // ADVISORY BOARD (advisory)
             { name: "Faisal Alam", role: "Advisory Board Lead", group: "advisory", desc: "Directing strategic governance, independent audits, and structural development alignments.", initials: "FA" },
-            { name: "Anowar Shuvo", role: "Corporate Relations & Growth Director", group: "strategist", desc: "Supervising strategic sponsorships, capital partnerships, and long-term business alliances.", initials: "AS" },
-            { name: "Md Sakil", role: "Community Engagement & Membership Director", group: "strategist", desc: "Managing database enrollment, digital registry logs, and player membership metrics.", initials: "MS" },
-            { name: "Nazmul Hasan Roni", role: "Head of Cricket Operations & Development", group: "strategist", desc: "Overseeing data-driven tournament formats, pitch schedules, and junior systems.", initials: "NR" },
-            { name: "Md Tanvir Hasan Saikat", role: "Head of Football Operations & Development", group: "strategist", desc: "Directing seasonal football cups, tournament architecture, and talent growth pools.", initials: "TS" },
-            { name: "Md Zubaer Rahman", role: "Head of Indoor Operations & Development", group: "strategist", desc: "Coordinating badminton, table tennis, and strategic indoor micro sports rosters.", initials: "ZR" },
-            { name: "Mir Tayef Ali", role: "Executive Committee Member", group: "advisory", desc: "Assisting general assembly alignments and volunteer execution networks.", initials: "MT" },
-            { name: "Md Nazmul Islam", role: "Executive Committee Member", group: "advisory", desc: "Coordinating ground logistical operations and equipment distribution.", initials: "NI" },
-            { name: "S M Mohasin", role: "Executive Committee Member", group: "advisory", desc: "Supervising code of conduct adherence and match day logistics.", initials: "SM" }
+
+            // LIFETIME MEMBERS (lifetime)
+            { name: "Arifur Rahman", role: "Founding Executive Director & Life Time Member", group: "lifetime", desc: "Inducted as a permanent Lifetime Member for outstanding operational development, founding administrative sacrifice, and strategic dedication to Tigers Sports Incorporated.", initials: "AR" }
         ];
 
         // T10 Resource Decay Table
@@ -822,18 +836,20 @@
             window.scrollTo({ top: 0, behavior: 'instant' });
         }
 
-        // Render Professional Directory List
+        // Render Professional Directory List with Updated Groups (board_ec, advisory, lifetime)
         function filterDirectory(group) {
             const grid = document.getElementById('directory-grid');
             grid.innerHTML = '';
             
-            const buttons = ['all', 'board', 'strategist', 'advisory'];
+            const buttons = ['all', 'board_ec', 'advisory', 'lifetime'];
             buttons.forEach(b => {
                 const el = document.getElementById(`btn-dir-${b}`);
-                if (b === group) {
-                    el.className = "px-4 py-2 bg-slate-900 border border-emerald-500/30 text-emerald-400 rounded-xl transition font-bold shadow-md";
-                } else {
-                    el.className = "px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200";
+                if (el) {
+                    if (b === group) {
+                        el.className = "px-4 py-2 bg-slate-900 border border-emerald-500/30 text-emerald-400 rounded-xl transition font-bold shadow-md";
+                    } else {
+                        el.className = "px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200";
+                    }
                 }
             });
 
@@ -844,14 +860,23 @@
                 card.className = "glass-card p-6 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg";
                 
                 let groupBadgeColor = "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
-                if (item.group === "strategist") groupBadgeColor = "bg-teal-500/10 text-teal-400 border-teal-500/20";
-                if (item.group === "advisory") groupBadgeColor = "bg-amber-500/10 text-amber-400 border-amber-500/20";
+                let groupLabel = item.group;
+                if (item.group === "board_ec") {
+                    groupBadgeColor = "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+                    groupLabel = "Board/EC Council";
+                } else if (item.group === "advisory") {
+                    groupBadgeColor = "bg-amber-500/10 text-amber-400 border-amber-500/20";
+                    groupLabel = "Advisory";
+                } else if (item.group === "lifetime") {
+                    groupBadgeColor = "bg-indigo-500/10 text-indigo-400 border-indigo-500/20";
+                    groupLabel = "Life time member";
+                }
 
                 card.innerHTML = `
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
                             <div class="h-10 w-10 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-center font-bold font-oswald text-slate-300">${item.initials}</div>
-                            <span class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${groupBadgeColor}">${item.group}</span>
+                            <span class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${groupBadgeColor}">${groupLabel}</span>
                         </div>
                         <div>
                             <h4 class="font-bold text-white text-sm font-oswald tracking-wide leading-tight">${item.name}</h4>
@@ -888,12 +913,10 @@
             const hours = parseInt(document.getElementById('sim-hours').value);
             const players = parseInt(document.getElementById('sim-players').value);
 
-            // Calculate values
             const value = (hours * players * 34.5).toLocaleString('en-NZ', { style: 'currency', currency: 'NZD', maximumFractionDigits: 0 });
             const deterrence = Math.min(95, Math.floor((hours * players) / 12));
             const hardship = players > 250 ? 'Severe' : (players > 120 ? 'Moderate' : 'Low');
 
-            // Render output values
             document.getElementById('sim-hours-val').textContent = `${hours} Hrs`;
             document.getElementById('sim-players-val').textContent = `${players} Players`;
             document.getElementById('sim-hardship').textContent = hardship;
@@ -936,10 +959,8 @@
                 ruleText.innerHTML = `Field Limit Rule: Maximum of <span class="text-emerald-400 font-bold">${outerCount} players</span> outside the 30-yard ring.`;
 
                 const powerplayFielders = [
-                    // Boundary (2 Out)
                     { name: "Deep Mid-Wicket", x: 80, y: 35, outer: true },
                     { name: "Long On", x: 60, y: 88, outer: true },
-                    // Inner Circle (9 In)
                     { name: "Wicket Keeper", x: 50, y: 16, outer: false },
                     { name: "First Slip", x: 44, y: 18, outer: false },
                     { name: "Point", x: 26, y: 40, outer: false },
@@ -952,13 +973,11 @@
                 ];
 
                 const standardFielders = [
-                    // Boundary (5 Out)
                     { name: "Deep Point", x: 15, y: 32, outer: true },
                     { name: "Deep Mid-Wicket", x: 82, y: 40, outer: true },
                     { name: "Long On", x: 62, y: 88, outer: true },
                     { name: "Long Off", x: 38, y: 88, outer: true },
                     { name: "Deep Fine Leg", x: 75, y: 18, outer: true },
-                    // Inner Circle (6 In)
                     { name: "Wicket Keeper", x: 50, y: 16, outer: false },
                     { name: "Bowler", x: 50, y: 64, outer: false },
                     { name: "Point", x: 28, y: 40, outer: false },
@@ -1079,6 +1098,18 @@
                         <span class="text-slate-500 block text-[10px]">Required in ${revOvers} Overs (Target Rate: ${(target/revOvers).toFixed(2)} RPO)</span>
                     </div>`;
             });
+        }
+
+        function getResource(oversRemaining, wicketsLost) {
+            if (oversRemaining <= 0 || wicketsLost >= 10) return 0.0;
+            wicketsLost = Math.max(0, Math.min(9, wicketsLost));
+            oversRemaining = Math.max(0, Math.min(TABLE_MAX_OVERS, oversRemaining));
+            const floorOvers = Math.floor(oversRemaining);
+            const fraction = oversRemaining - floorOvers;
+            if (fraction === 0) return T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - floorOvers];
+            const resFloor = T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - floorOvers];
+            const resCeil = T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - Math.ceil(oversRemaining)];
+            return resFloor + (resCeil - resFloor) * fraction;
         }
 
         // Professional MOTM Social Card Renderer with Direct Save Functionality
