@@ -713,97 +713,86 @@
             </div>
         </section>
 
-        <!-- PAGE 7: REGISTERED MEMBERS & DATABASE -->
-<section id="view-members" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
-    <div class="space-y-4 border-b border-slate-900 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div>
-            <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase font-mono">Official Census</span>
-            <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3 mt-1">
-                <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Member Database & Statistics
-            </h1>
-        </div>
-        <button onclick="exportCSV()" class="bg-slate-900 hover:bg-slate-850 text-emerald-400 border border-slate-800 px-5 py-2.5 rounded-xl transition text-xs font-mono font-bold shadow-inner">
-            📥 Export CSV Ledger
-        </button>
-    </div>
+        <!-- PAGE 7: MEMBER & TEAM REGISTRY (PULLS players.json DIRECTLY FROM GITHUB) -->
+        <section id="view-members" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+            <div class="space-y-4 border-b border-slate-900 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase font-mono">Tigers Sports Registry</span>
+                    <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3 mt-1">
+                        <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Member Database & Stats
+                    </h1>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+                    <button onclick="exportRegistryCSV()" class="bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/20 px-5 py-2.5 rounded-xl transition font-bold flex items-center gap-2 shadow-inner">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        Export CSV Ledger
+                    </button>
+                </div>
+            </div>
 
-    <!-- Real-time Stats Scoreboards -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="glass-card p-4 rounded-xl text-center"><span class="text-[10px] uppercase text-slate-500 font-mono font-bold block">Total Roster</span><span id="stat-total" class="text-3xl font-black font-oswald text-emerald-400 mt-1 block">0</span></div>
-        <div class="glass-card p-4 rounded-xl text-center"><span class="text-[10px] uppercase text-slate-500 font-mono font-bold block">Male Athletes</span><span id="stat-male" class="text-2xl font-black font-oswald text-slate-200 mt-1 block">0</span></div>
-        <div class="glass-card p-4 rounded-xl text-center"><span class="text-[10px] uppercase text-slate-500 font-mono font-bold block">Female Athletes</span><span id="stat-female" class="text-2xl font-black font-oswald text-slate-200 mt-1 block">0</span></div>
-        <div class="glass-card p-4 rounded-xl text-center"><span class="text-[10px] uppercase text-slate-500 font-mono font-bold block">Affiliated Teams</span><span id="stat-teams" class="text-2xl font-black font-oswald text-amber-400 mt-1 block">0</span></div>
-    </div>
+            <!-- Live Community Counts (Direct outputs from loaded JSON file) -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Total Registered</span>
+                    <div id="stat-total-players" class="text-3xl font-black text-white font-oswald">0</div>
+                    <span class="text-[10px] text-emerald-400/80 block leading-none font-mono">Across All Portfolios</span>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Male Division</span>
+                    <div id="stat-male-players" class="text-3xl font-black text-teal-400 font-oswald">0</div>
+                    <span id="stat-male-pct" class="text-[10px] text-slate-500 block leading-none font-mono">0% representation</span>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Female Division</span>
+                    <div id="stat-female-players" class="text-3xl font-black text-pink-400 font-oswald">0</div>
+                    <span id="stat-female-pct" class="text-[10px] text-slate-500 block leading-none font-mono">0% representation</span>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Affiliated Teams</span>
+                    <div id="stat-affiliated-teams" class="text-3xl font-black text-amber-400 font-oswald">0</div>
+                    <span class="text-[10px] text-slate-500 block leading-none font-mono">Active Community Clubs</span>
+                </div>
+            </div>
 
-    <!-- Searching Filter Panels -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-slate-950/50 p-3 rounded-2xl border border-slate-900">
-        <input type="text" id="member-search" oninput="filterMembers()" placeholder="Search active names or teams..." class="px-4 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
-        <select id="member-sport-filter" onchange="filterMembers()" class="px-3 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-emerald-500">
-            <option value="all">All Sports Disciplines</option>
-            <option value="Cricket">Cricket</option>
-            <option value="Football">Football</option>
-            <option value="Badminton">Badminton</option>
-        </select>
-        <select id="member-gender-filter" onchange="filterMembers()" class="px-3 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-emerald-500">
-            <option value="all">All Gender Roster</option>
-            <option value="Male">Male Roster</option>
-            <option value="Female">Female Roster</option>
-        </select>
-    </div>
+            <!-- Database Live Filter Grid Board -->
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-950/50 p-3 rounded-2xl border border-slate-900">
+                    <input type="text" id="member-search" oninput="drawPlayersTable()" placeholder="Search members by name or team..." class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-light">
+                    <select id="member-filter-gender" onchange="drawPlayersTable()" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none">
+                        <option value="all">All Genders</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <select id="member-filter-sport" onchange="drawPlayersTable()" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none">
+                        <option value="all">All Sports</option>
+                        <option value="Cricket">Cricket</option>
+                        <option value="Football">Football</option>
+                        <option value="Badminton">Badminton</option>
+                        <option value="Micro Sports">Micro Sports</option>
+                    </select>
+                </div>
 
-    <!-- Main Live Roster Spreadsheet Table View -->
-    <div class="glass-card rounded-2xl overflow-hidden shadow-2xl border border-slate-850">
-        <div class="overflow-x-auto custom-scrollbar">
-            <table class="w-full text-left border-collapse text-xs">
-                <thead>
-                    <tr class="bg-slate-950 text-slate-400 font-mono uppercase border-b border-slate-850 tracking-wider">
-                        <th class="p-4 font-semibold">Player Name</th>
-                        <th class="p-4 font-semibold">Community Team</th>
-                        <th class="p-4 font-semibold">Sport</th>
-                        <th class="p-4 font-semibold">Gender</th>
-                        <th class="p-4 font-semibold">Joined (Year)</th>
-                    </tr>
-                </thead>
-                <tbody id="member-table-body" class="divide-y divide-slate-900/60 bg-slate-950/10 font-light">
-                    <!-- Loaded dynamically via JSON file -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
+                <!-- Scrollable Registry Table Container -->
+                <div class="border border-slate-900 rounded-2xl overflow-hidden bg-slate-950/20 max-h-[500px] overflow-y-auto custom-scrollbar">
+                    <table class="min-w-full text-left border-collapse text-xs">
+                        <thead class="sticky top-0 bg-slate-950/90 text-slate-400 font-mono border-b border-slate-900 select-none z-10">
+                            <tr>
+                                <th class="px-5 py-3">Player Name</th>
+                                <th class="px-5 py-3">Gender</th>
+                                <th class="px-5 py-3">Affiliation / Team</th>
+                                <th class="px-5 py-3">Discipline</th>
+                                <th class="px-5 py-3 text-right">Joined (Year)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="player-table-rows" class="divide-y divide-slate-900/60 font-light text-slate-300">
+                            <!-- Data elements mapped dynamically via players.json loader -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
     </main>
-
-    <!-- Admin Pin Verification Modal (To avoid native browser prompts) -->
-    <div id="admin-passcode-modal" class="hidden fixed inset-0 bg-slate-950/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl w-full max-w-sm text-center space-y-4">
-            <span class="text-3xl block">🔑</span>
-            <h4 class="text-white font-bold font-oswald uppercase tracking-wider">Administrative Security Key</h4>
-            <p class="text-xs text-slate-400">Please provide the executive system PIN to enable registry and synchronization tools.</p>
-            <input type="password" id="admin-pin-input" placeholder="Enter PIN (Default is 1993)" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-center text-slate-200 placeholder-slate-700 font-light focus:outline-none focus:border-emerald-500">
-            <div id="admin-pin-error" class="hidden text-xs text-red-500 font-mono">Invalid code credential provided.</div>
-            <div class="flex gap-2 text-xs">
-                <button onclick="closeAdminPromptModal()" class="flex-1 bg-slate-950 text-slate-400 border border-slate-850 py-2.5 rounded-xl">Cancel</button>
-                <button onclick="verifyAdminPin()" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-2.5 rounded-xl font-oswald uppercase">Verify</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sync Modal for Syncing Database with Github JSON strings -->
-    <div id="sync-db-modal" class="hidden fixed inset-0 bg-slate-950/80 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl w-full max-w-lg space-y-4">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h4 class="text-white font-bold font-oswald uppercase tracking-wider">GitHub JSON Sync Engine</h4>
-                <button onclick="toggleSyncModal(false)" class="text-slate-400 hover:text-white p-1">✕</button>
-            </div>
-            <p class="text-xs text-slate-400 leading-relaxed">Copy this database JSON and commit it into your GitHub repository for a permanent backup. To restore or upload from GitHub, paste the JSON payload here and click Import.</p>
-            <textarea id="db-json-textarea" rows="8" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-xs font-mono text-emerald-400 placeholder-slate-800 focus:outline-none"></textarea>
-            <div class="flex gap-2 text-xs">
-                <button onclick="copySyncDBJson()" class="flex-1 bg-slate-950 border border-slate-850 py-2.5 text-slate-300 rounded-xl transition hover:bg-slate-850">📋 Copy JSON</button>
-                <button onclick="importSyncDBJson()" class="flex-1 bg-emerald-500 hover:bg-emerald-600 font-bold text-slate-950 py-2.5 rounded-xl transition font-oswald uppercase">📥 Import Database</button>
-            </div>
-            <div id="sync-success-indicator" class="hidden text-xs text-center text-emerald-400 font-mono">Operation executed successfully!</div>
-        </div>
-    </div>
 
     <!-- Global Footer -->
     <footer class="border-t border-slate-900 bg-slate-950 py-16 mt-16 text-xs text-slate-500 tracking-wide">
@@ -858,9 +847,6 @@
         const FULL_OVERS = 8.0;
         const TABLE_MAX_OVERS = 10;
 
-        // Admin mode state control (starts locked)
-        let isAdminUnlocked = false;
-
         // Structured directory data of TSI - Re-aligned to Board/EC Council, Advisory, and Life time member categories
         const directoryData = [
             // THE BOARD AND EXECUTIVE COUNCIL (board_ec)
@@ -884,11 +870,11 @@
             // ADVISORY BOARD (advisory)
             { name: "Faisal Alam", role: "Advisory Board Lead", group: "advisory", desc: "Directing strategic governance, independent audits, and structural development alignments.", initials: "FA" }
 
-            // LIFETIME MEMBERS (lifetime) - Leave empty for now as requested
+            // LIFETIME MEMBERS (lifetime) - Left empty as requested
         ];
 
-        // All existing players removed as requested. Starts with a clean array.
-        const DEFAULT_PLAYERS = [];
+        // Global variable for fetched players
+        let activePlayersList = [];
 
         // T10 Resource Decay Table
         const T10_RESOURCE_TABLE = [
@@ -1011,92 +997,111 @@
             });
         }
 
-        // Admin Security Pin Flow
-        function toggleAdminModePrompt() {
-            if (isAdminUnlocked) {
-                // Lock Admin Mode
-                isAdminUnlocked = false;
-                document.getElementById('admin-status-dot').className = "h-2 w-2 bg-amber-500 rounded-full";
-                document.getElementById('admin-status-text').textContent = "Unlock Admin Mode";
-                document.getElementById('admin-lock-btn').className = "bg-slate-900 text-amber-400 border border-amber-500/30 px-4 py-2.5 rounded-xl transition font-bold flex items-center gap-2 hover:bg-slate-850";
-                
-                document.getElementById('registration-locked-notice').classList.remove('hidden');
-                document.getElementById('registration-form-card').classList.add('hidden');
-                document.getElementById('admin-sync-btn').classList.add('hidden');
-                drawPlayersTable();
-            } else {
-                // Open Prompt Modal
-                document.getElementById('admin-pin-error').classList.add('hidden');
-                document.getElementById('admin-pin-input').value = "";
-                document.getElementById('admin-passcode-modal').classList.remove('hidden');
-            }
-        }
-
-        function closeAdminPromptModal() {
-            document.getElementById('admin-passcode-modal').classList.add('hidden');
-        }
-
-        function verifyAdminPin() {
-            const val = document.getElementById('admin-pin-input').value;
-            // Admin PIN defaults to 1993
-            if (val === '1993') {
-                isAdminUnlocked = true;
-                document.getElementById('admin-status-dot').className = "h-2 w-2 bg-emerald-500 rounded-full";
-                document.getElementById('admin-status-text').textContent = "Admin Mode Unlocked";
-                document.getElementById('admin-lock-btn').className = "bg-slate-900 text-emerald-400 border border-emerald-500/40 px-4 py-2.5 rounded-xl transition font-bold flex items-center gap-2 hover:bg-slate-850";
-                
-                document.getElementById('registration-locked-notice').classList.add('hidden');
-                document.getElementById('registration-form-card').classList.remove('hidden');
-                document.getElementById('admin-sync-btn').classList.remove('hidden');
-                closeAdminPromptModal();
-                drawPlayersTable();
-            } else {
-                document.getElementById('admin-pin-error').classList.remove('hidden');
-            }
-        }
-
-        // Database Sync Handlers
-        function toggleSyncModal(show) {
-            const modal = document.getElementById('sync-db-modal');
-            const indicator = document.getElementById('sync-success-indicator');
-            if (show) {
-                indicator.classList.add('hidden');
-                modal.classList.remove('hidden');
-                // Export current DB as string
-                const players = getRegisteredPlayers();
-                document.getElementById('db-json-textarea').value = JSON.stringify(players, null, 2);
-            } else {
-                modal.classList.add('hidden');
-            }
-        }
-
-        function copySyncDBJson() {
-            const textarea = document.getElementById('db-json-textarea');
-            textarea.select();
-            document.execCommand('copy');
-            const indicator = document.getElementById('sync-success-indicator');
-            indicator.textContent = "Copied JSON payload to clipboard!";
-            indicator.classList.remove('hidden');
-        }
-
-        function importSyncDBJson() {
+        // Live Dynamic Census loader from GitHub players.json
+        async function loadPlayersDatabase() {
             try {
-                const text = document.getElementById('db-json-textarea').value;
-                const parsed = JSON.parse(text);
-                if (Array.isArray(parsed)) {
-                    localStorage.setItem('tsi_registered_players', JSON.stringify(parsed));
-                    updatePlayerStats();
-                    drawPlayersTable();
-                    const indicator = document.getElementById('sync-success-indicator');
-                    indicator.textContent = "Database imported and synchronized successfully!";
-                    indicator.classList.remove('hidden');
-                    setTimeout(() => toggleSyncModal(false), 1200);
-                } else {
-                    alert("Sync failed: Data must be a valid JSON Array list of players.");
+                const response = await fetch('players.json');
+                if (!response.ok) {
+                    throw new Error("Local players.json ledger file could not be fetched.");
                 }
-            } catch (e) {
-                alert("Import failed: Bad JSON payload formatting.");
+                activePlayersList = await response.json();
+                updatePlayerStats();
+                drawPlayersTable();
+            } catch (err) {
+                console.warn("Using empty array. Check GitHub for players.json file.", err);
+                activePlayersList = [];
+                updatePlayerStats();
+                drawPlayersTable();
             }
+        }
+
+        // Recalculate metrics on the stat cards
+        function updatePlayerStats() {
+            const total = activePlayersList.length;
+            const male = activePlayersList.filter(p => p.gender === 'Male').length;
+            const female = activePlayersList.filter(p => p.gender === 'Female').length;
+            
+            // Unique Teams count (excluding "Independent" or "none")
+            const uniqueTeams = new Set(
+                activePlayersList
+                    .map(p => p.team.trim().toLowerCase())
+                    .filter(t => t !== '' && t !== 'independent' && t !== 'none')
+            );
+
+            document.getElementById('stat-total-players').textContent = total;
+            document.getElementById('stat-male-players').textContent = male;
+            document.getElementById('stat-female-players').textContent = female;
+            document.getElementById('stat-affiliated-teams').textContent = uniqueTeams.size;
+
+            const malePct = total > 0 ? Math.round((male / total) * 100) : 0;
+            const femalePct = total > 0 ? Math.round((female / total) * 100) : 0;
+
+            document.getElementById('stat-male-pct').textContent = `${malePct}% representation`;
+            document.getElementById('stat-female-pct').textContent = `${femalePct}% representation`;
+        }
+
+        // Populate table lines with respect to search parameters & selection filters
+        function drawPlayersTable() {
+            const query = document.getElementById('member-search').value.toLowerCase();
+            const genderFilter = document.getElementById('member-filter-gender').value;
+            const sportFilter = document.getElementById('member-filter-sport').value;
+
+            const tableBody = document.getElementById('player-table-rows');
+            tableBody.innerHTML = '';
+
+            activePlayersList.forEach((player) => {
+                const matchesSearch = player.name.toLowerCase().includes(query) || player.team.toLowerCase().includes(query);
+                const matchesGender = (genderFilter === 'all' || player.gender === genderFilter);
+                const matchesSport = (sportFilter === 'all' || player.sport === sportFilter);
+
+                if (matchesSearch && matchesGender && matchesSport) {
+                    const row = document.createElement('tr');
+                    row.className = "hover:bg-slate-900/40 transition-colors";
+                    
+                    row.innerHTML = `
+                        <td class="px-5 py-3 font-semibold text-white">${player.name}</td>
+                        <td class="px-5 py-3">
+                            <span class="px-2.5 py-0.5 text-[10px] rounded-full border ${
+                                player.gender === 'Male' ? 'bg-teal-500/10 text-teal-400 border-teal-500/20' : 'bg-pink-500/10 text-pink-400 border-pink-500/20'
+                            }">${player.gender}</span>
+                        </td>
+                        <td class="px-5 py-3 text-slate-400 font-mono">${player.team}</td>
+                        <td class="px-5 py-3 text-slate-400 font-mono">${player.sport}</td>
+                        <td class="px-5 py-3 text-right font-mono text-slate-400">${player.joined || '2026'}</td>
+                    `;
+                    tableBody.appendChild(row);
+                }
+            });
+
+            if (tableBody.children.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-5 py-8 text-center text-slate-500 font-mono italic">
+                            No registered players match the active filter criteria or players.json file is currently empty.
+                        </td>
+                    </tr>`;
+            }
+        }
+
+        // Export table data to standard downloadable CSV file
+        function exportRegistryCSV() {
+            if (activePlayersList.length === 0) return;
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Player Name,Gender,Affiliation/Team,Discipline/Sport,Joined Year\n";
+
+            activePlayersList.forEach(p => {
+                const escapedName = p.name.replace(/"/g, '""');
+                const escapedTeam = p.team.replace(/"/g, '""');
+                csvContent += `"${escapedName}","${p.gender}","${escapedTeam}","${p.sport}","${p.joined || '2026'}"\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `TSI-Player-Registry-${Date.now()}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function scrollInsideSector(id) {
@@ -1391,172 +1396,13 @@
             });
         }
 
-        // ==========================================
-        // DYNAMIC MEMBER REGISTRY FUNCTIONS
-        // ==========================================
-        
-        // Retrieve or initialize the player ledger
-        function getRegisteredPlayers() {
-            const stored = localStorage.getItem('tsi_registered_players');
-            if (stored) {
-                return JSON.parse(stored);
-            }
-            // Mock players have been fully removed. Default starts with a clean empty list.
-            localStorage.setItem('tsi_registered_players', JSON.stringify(DEFAULT_PLAYERS));
-            return DEFAULT_PLAYERS;
-        }
-
-        // Commit player registration from the HTML Form
-        function registerPlayer(event) {
-            event.preventDefault();
-            const nameInput = document.getElementById('reg-player-name');
-            const genderInput = document.getElementById('reg-player-gender');
-            const sportInput = document.getElementById('reg-player-sport');
-            const teamInput = document.getElementById('reg-player-team');
-            const yearInput = document.getElementById('reg-player-year');
-
-            const name = nameInput.value.trim();
-            const gender = genderInput.value;
-            const sport = sportInput.value;
-            const team = teamInput.value.trim();
-            const joined = yearInput.value.trim();
-
-            if (!name || !gender || !sport || !team || !joined) return;
-
-            const players = getRegisteredPlayers();
-            players.unshift({ name, gender, team, sport, joined });
-            localStorage.setItem('tsi_registered_players', JSON.stringify(players));
-
-            // Reset Form Fields
-            nameInput.value = '';
-            genderInput.selectedIndex = 0;
-            sportInput.selectedIndex = 0;
-            teamInput.value = '';
-            yearInput.value = '2026';
-
-            // Update UI components dynamically
-            updatePlayerStats();
-            drawPlayersTable();
-        }
-
-        // Remove a player from the local browser storage registry (Locked for Admin Mode)
-        function deletePlayer(index) {
-            if (!isAdminUnlocked) return;
-            const players = getRegisteredPlayers();
-            players.splice(index, 1);
-            localStorage.setItem('tsi_registered_players', JSON.stringify(players));
-            updatePlayerStats();
-            drawPlayersTable();
-        }
-
-        // Recalculate metrics on the stat cards
-        function updatePlayerStats() {
-            const players = getRegisteredPlayers();
-            const total = players.length;
-            const male = players.filter(p => p.gender === 'Male').length;
-            const female = players.filter(p => p.gender === 'Female').length;
-            
-            // Unique Teams count (excluding "Independent" or "none")
-            const uniqueTeams = new Set(
-                players
-                    .map(p => p.team.trim().toLowerCase())
-                    .filter(t => t !== '' && t !== 'independent' && t !== 'none')
-            );
-
-            document.getElementById('stat-total-players').textContent = total;
-            document.getElementById('stat-male-players').textContent = male;
-            document.getElementById('stat-female-players').textContent = female;
-            document.getElementById('stat-affiliated-teams').textContent = uniqueTeams.size;
-
-            const malePct = total > 0 ? Math.round((male / total) * 100) : 0;
-            const femalePct = total > 0 ? Math.round((female / total) * 100) : 0;
-
-            document.getElementById('stat-male-pct').textContent = `${malePct}% representation`;
-            document.getElementById('stat-female-pct').textContent = `${femalePct}% representation`;
-        }
-
-        // Populate table lines with respect to search parameters & selection filters
-        function drawPlayersTable() {
-            const players = getRegisteredPlayers();
-            const query = document.getElementById('member-search').value.toLowerCase();
-            const genderFilter = document.getElementById('member-filter-gender').value;
-            const sportFilter = document.getElementById('member-filter-sport').value;
-
-            const tableBody = document.getElementById('player-table-rows');
-            tableBody.innerHTML = '';
-
-            players.forEach((player, idx) => {
-                const matchesSearch = player.name.toLowerCase().includes(query) || player.team.toLowerCase().includes(query);
-                const matchesGender = (genderFilter === 'all' || player.gender === genderFilter);
-                const matchesSport = (sportFilter === 'all' || player.sport === sportFilter);
-
-                if (matchesSearch && matchesGender && matchesSport) {
-                    const row = document.createElement('tr');
-                    row.className = "hover:bg-slate-900/40 transition-colors";
-                    
-                    // Conditionally show Action (Delete Button) only if Admin Mode is active
-                    const deleteButtonHtml = isAdminUnlocked 
-                        ? `<button onclick="deletePlayer(${idx})" class="text-red-500 hover:text-red-400 transition hover:underline font-mono text-[10px] uppercase font-bold tracking-wider">Remove</button>` 
-                        : `<span class="text-slate-600 font-mono text-[10px] uppercase">Locked</span>`;
-
-                    row.innerHTML = `
-                        <td class="px-5 py-3 font-semibold text-white">${player.name}</td>
-                        <td class="px-5 py-3">
-                            <span class="px-2 py-0.5 text-[10px] rounded-full border ${
-                                player.gender === 'Male' ? 'bg-teal-500/10 text-teal-400 border-teal-500/20' : 'bg-pink-500/10 text-pink-400 border-pink-500/20'
-                            }">${player.gender}</span>
-                        </td>
-                        <td class="px-5 py-3 text-slate-400 font-mono">${player.team}</td>
-                        <td class="px-5 py-3 text-slate-400 font-mono">${player.sport}</td>
-                        <td class="px-5 py-3 text-slate-400 font-mono">${player.joined || '2026'}</td>
-                        <td class="px-5 py-3 text-right">
-                            ${deleteButtonHtml}
-                        </td>
-                    `;
-                    tableBody.appendChild(row);
-                }
-            });
-
-            if (tableBody.children.length === 0) {
-                tableBody.innerHTML = `
-                    <tr>
-                        <td colspan="6" class="px-5 py-8 text-center text-slate-500 font-mono italic">
-                            No registered players match the active filter criteria.
-                        </td>
-                    </tr>`;
-            }
-        }
-
-        // Export table data to standard downloadable CSV file
-        function exportRegistryCSV() {
-            const players = getRegisteredPlayers();
-            let csvContent = "data:text/csv;charset=utf-8,";
-            csvContent += "Player Name,Gender,Affiliation/Team,Discipline/Sport,Joined Year\n";
-
-            players.forEach(p => {
-                const escapedName = p.name.replace(/"/g, '""');
-                const escapedTeam = p.team.replace(/"/g, '""');
-                csvContent += `"${escapedName}","${p.gender}","${escapedTeam}","${p.sport}","${p.joined || '2026'}"\n`;
-            });
-
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `TSI-Player-Registry-${Date.now()}.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
         // Global Orchestration Run Loop
         window.onload = function() {
             const initialHash = window.location.hash.substring(1) || 'home';
             navigateTo(initialHash);
             filterDirectory('all');
 
-            // Set up Player Directory UI components
-            updatePlayerStats();
-            drawPlayersTable();
+            loadPlayersDatabase();
 
             setupFieldingDiagram();
             setupParticleAnimation();
