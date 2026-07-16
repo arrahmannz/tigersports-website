@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Mehedi Hasan",
-    "team": "Tigers Blue",
+    "team": "Fearless Mavericks",
     "sport": "Cricket",
     "gender": "Male",
     "joined": "2025"
@@ -10,8 +10,8 @@
   {
     "id": 2,
     "name": "Arifur Rahman",
-    "team": "Tigers Gold",
-    "sport": "Cricket",
+    "team": "Galacticos",
+    "sport": "Football",
     "gender": "Male",
     "joined": "2026"
   }
