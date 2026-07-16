@@ -3,141 +3,3401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tigers Sports | Official Community Hub</title>
+    <title>Bengal Bash 5.0 Official Rulebook</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-slate-950">
+    <!-- Chart.js Library - Updated to UMD build for better browser compatibility -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Enhanced Typography: Oswald for titles, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            /* TIGERS THEME: Energetic Green/Red/Black (Bangladesh Tigers Theme) */
+            background: linear-gradient(135deg, #f0fdf4 0%, #fff1f2 50%, #ecfdf5 100%);
+            color: #1f2937; /* Dark gray text for readability on light bg */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        /* Main content container styling */
+        .content-container {
+            background-color: rgba(255, 255, 255, 0.95); /* White glassmorphism */
+            backdrop-filter: blur(12px);
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Style for the NRR formula */
+        .nrr-formula {
+            background-color: #dbeafe; /* Light blue */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            border: 2px solid #3b82f6; 
+            color: #1e3a8a;
+            font-weight: 800;
+        }
+        
+        /* Custom scrollbar for better aesthetics */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #047857; /* Tigers Green */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #e5e7eb; 
+        }
+        
+        /* TOC Link Styles */
+        .toc-link {
+            transition: all 0.2s ease-in-out;
+            padding: 0.75rem 1rem; 
+            margin: 0.5rem 0;
+            display: block;
+            border-radius: 0.75rem;
+            background-color: #f3f4f6; 
+            color: #4b5563; 
+            font-weight: 600;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .toc-link:hover {
+            color: #047857; /* Emerald Green */
+            background-color: #ffffff;
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
 
-    <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="h-10 w-10 bg-gradient-to-tr from-amber-500 to-orange-600 rounded-lg flex items-center justify-center font-black text-slate-950 tracking-tighter">
-                    TSI
-                </div>
-                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                    TIGERS SPORTS
-                </span>
+        /* Active TOC link style */
+        .toc-link.active {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            color: #ffffff; 
+            background: linear-gradient(90deg, #047857, #15803d); /* Gradient Green */
+            box-shadow: 0 4px 6px rgba(5, 150, 105, 0.3);
+            transform: scale(1.02);
+            border: none;
+        }
+
+        /* Styling for ALL section titles (h1 and h2) */
+        h1, h2 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            color: #111827; /* Very Dark Gray */
+            padding-bottom: 0.5rem;
+            position: relative;
+            margin-bottom: 1.5rem !important;
+        }
+        
+        /* Specific coloring for h2 to pop */
+        h2 {
+            color: #b91c1c; /* Tigers Red */
+        }
+
+        /* Decorative Section Dividers (Red/Green Gradient) */
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; 
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #047857 0%, #b91c1c 50%, transparent 100%); 
+            border-radius: 2px;
+        }
+
+        /* Ask Arif Button Glow Animation */
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px rgba(4, 120, 87, 0.4), 0 0 0 0 rgba(4, 120, 87, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(4, 120, 87, 0.6), 0 0 0 10px rgba(4, 120, 87, 0); }
+            100% { box-shadow: 0 0 5px rgba(4, 120, 87, 0.4), 0 0 0 0 rgba(4, 120, 87, 0.4); }
+        }
+
+        #ask-arif-button {
+            animation: pulse-glow 2.5s infinite;
+        }
+        
+        /* -- NEW -- Interactive Page Break Separator */
+        .page-break-separator {
+            width: 100%;
+            height: 6px;
+            margin: 2.5rem 0;
+            background: #e5e7eb;
+            border: none;
+            position: relative;
+            overflow: hidden; 
+            border-radius: 99px;
+        }
+        
+        .page-break-separator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #047857, #b91c1c, #047857);
+            background-size: 300% 100%;
+            animation: electric-flow 3s linear infinite;
+        }
+
+        @keyframes electric-flow {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+        
+        /* DYNAMIC HEADER STYLES */
+        #sticky-header-desktop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 30;
+            transform: translateY(-100%); /* Start hidden */
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid #b91c1c;
+        }
+        #sticky-header-desktop.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        #sticky-header-desktop h1 {
+            color: #047857; /* Green Text for Header */
+            margin-bottom: 0 !important;
+        }
+
+        /* Tab button styling */
+        .tab-button {
+            padding: 0.75rem 0.5rem; 
+            transition: all 0.15s ease-in-out;
+            cursor: pointer;
+            font-size: 0.8rem; 
+            color: #4b5563;
+            background-color: #f3f4f6; 
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            flex-grow: 1;
+            margin: 0.25rem;
+            font-weight: 600;
+        }
+        .tab-button.active {
+            font-weight: 700;
+            color: #ffffff;
+            background-color: #047857;
+            border-color: #065f46;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .tab-button:not(.active):hover {
+            background-color: #e5e7eb;
+            color: #1f2937;
+        }
+        
+        /* Highlight styling */
+        .highlight {
+            background-color: #fcd34d; 
+            color: #111827;
+            font-weight: 700;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* Mobile TOC Styles */
+        @media (max-width: 1024px) {
+            .toc-menu {
+                display: block; 
+                position: fixed;
+                top: 0;
+                width: 80%;
+                max-width: 320px; 
+                height: 100%;
+                z-index: 50;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                overflow-y: auto; 
+                padding-bottom: 2rem; 
+                background-color: #ffffff; /* White mobile menu */
+                border-right: 1px solid #e5e7eb;
+            }
+            .toc-menu.open {
+                transform: translateX(0);
+                box-shadow: 10px 0 15px rgba(0,0,0,0.1);
+            }
+            #sticky-header-desktop {
+                display: none;
+            }
+            .no-scroll {
+                overflow: hidden;
+                position: fixed;
+                width: 100%;
+            }
+            .tab-button-container {
+                flex-wrap: wrap;
+            }
+            .tab-button {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.25rem;
+                flex-basis: 30%; 
+            }
+        }
+        @media (min-width: 1025px) {
+            .toc-menu {
+                display: block !important; 
+                width: 1/4; 
+                position: sticky;
+                top: 0;
+                background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent */
+                border-right: 1px solid #e5e7eb;
+            }
+            .mobile-contact {
+                display: none;
+            }
+        }
+        
+        /* Floating translate button style */
+        #floating-translate-button {
+            position: absolute;
+            z-index: 40;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            pointer-events: none;
+            background-color: #047857; 
+            color: #ffffff; 
+            padding: 0.5rem 1rem;
+            border-radius: 9999px; 
+            font-weight: 700;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        #floating-translate-button.visible {
+            opacity: 1;
+            transform: translateY(-10px);
+            pointer-events: auto;
+        }
+        
+        /* NRR Aesthetics */
+        .nrr-positive {
+            background-color: #d1fae5; 
+            border-color: #059669; 
+            color: #064e3b;
+        }
+        .nrr-negative {
+            background-color: #fee2e2; 
+            border-color: #dc2626; 
+            color: #7f1d1d;
+        }
+        .nrr-neutral {
+            background-color: #f3f4f6; 
+            border-color: #9ca3af;
+            color: #1f2937;
+        }
+
+        /* Banner Status Styles */
+        .status-banner {
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0.75rem;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 1.25rem; 
+        }
+
+        .status-live {
+            background-color: #ef4444; 
+            color: #ffffff; 
+            border: 2px solid #b91c1c;
+            animation: live-pulse 1.5s infinite alternate;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            font-size: 1.75rem; 
+        }
+
+        .status-countdown {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            border: 2px solid #064e3b; 
+            padding: 1.5rem 1rem; 
+            color: white;
+        }
+        
+        /* Countdown Styles */
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem; 
+        }
+        .countdown-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: #a7f3d0;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .countdown-blocks {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap; 
+        }
+        .countdown-block {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            min-width: 90px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .countdown-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .countdown-unit {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #d1fae5;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
+        }
+
+        .status-post {
+             background-color: #0d9488;
+             color: #ffffff; 
+             border: 2px solid #115e59;
+             font-size: 1.5rem;
+        }
+
+        /* Innings Progress Bar Styles */
+        #innings-progress-container {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        #innings-progress-bar {
+            height: 1.5rem;
+            background: linear-gradient(to right, #ef4444, #047857);
+            border-radius: 0.25rem;
+            transition: width 0.5s ease-out;
+        }
+        
+        #main-content-body {
+            font-size: 16px; 
+            transition: font-size 0.2s ease-in-out;
+        }
+        
+        /* Interactive Fielding Diagram */
+        .cricket-field {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1 / 1;
+            background-color: #10b981; /* lighter green for field */
+            border-radius: 50%;
+            margin: 1.5rem auto;
+            border: 4px solid #ffffff; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .inner-circle {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+            border: 2px dashed #fcd34d; /* yellow */
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .pitch {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60%;
+            height: 10%;
+            background-color: #e7e5e4; /* concrete color */
+            transform: translate(-50%, -50%);
+            border: 1px solid #d6d3d1;
+            z-index: 0;
+        }
+        
+         .circular-text {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; 
+            overflow: visible;
+            animation: rotate-text 40s linear infinite; 
+        }
+        .circular-text text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 5px; 
+            font-weight: 700;
+            fill: #064e3b; /* Dark Green text */
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
+        }
+        @keyframes rotate-text {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .fielder {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+        .fielder-inner { background-color: #b91c1c; border: 2px solid white; } /* Red */
+        .fielder-outer { background-color: #047857; border: 2px solid white; } /* Green */
+        .interactive-toggle {
+            transition: all 0.2s ease;
+        }
+        .interactive-toggle.active {
+            background-color: #047857;
+            color: white;
+            box-shadow: 0 4px 6px rgba(4, 120, 87, 0.3);
+        }
+
+        /* Bowler Limit Chart Slider */
+        input[type=range]::-webkit-slider-thumb {
+          background: #047857;
+          box-shadow: 0 0 0 2px white;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+          background: #d1d5db;
+        }
+        
+        /* PlayPass Widget Style */
+        .playpass-widget {
+            background: linear-gradient(145deg, #eff6ff, #ffffff);
+            border: 2px solid #3b82f6; 
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
+            color: #1e3a8a;
+        }
+        
+        /* Print Styles - UPDATED for Robustness */
+        @media print {
+            @page { margin: 1.5cm; size: auto; }
+            html, body {
+                height: auto !important;
+                overflow: visible !important;
+                background: white !important; 
+                color: black !important; 
+                -webkit-print-color-adjust: exact; 
+                font-family: 'Times New Roman', serif;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+            
+            /* RESET FLEX LAYOUTS to prevent blank pages */
+            div.flex, body.flex {
+                display: block !important;
+                position: static !important;
+            }
+            
+            /* Hide UI Elements & Backgrounds */
+            .toc-menu, 
+            #ask-arif-button, 
+            #sticky-header-desktop, 
+            header, 
+            #floating-translate-button, 
+            #scroll-to-top-button,
+            #status-banner,
+            #timezone-display,
+            #search-form,
+            #search-results-panel,
+            #chat-modal,
+            .summarize-section-btn,
+            .translate-section-btn,
+            .interactive-toggle,
+            #innings-progress-container,
+            #particle-canvas, /* Hide particles */
+            .premium-sponsor-card,
+            button { 
+                display: none !important; 
+            }
+            
+            
+            /* Main Content Container Reset */
+            #content {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: block !important;
+                flex: none !important;
+                position: static !important;
+                float: none !important;
+            }
+            
+            .content-container { 
+                box-shadow: none !important; 
+                border: none !important; 
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: none !important;
+                backdrop-filter: none !important;
+                overflow: visible !important; /* Critical for multi-page */
+            }
+
+            /* Main Content Body */
+            #main-content-body {
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                font-size: 12pt !important;
+                display: block !important;
+            }
+            
+            /* Typography Tweaks */
+            h1 { 
+                color: #000 !important; 
+                text-shadow: none !important; 
+                text-align: center; 
+                font-size: 26pt !important; 
+                margin-bottom: 20px !important;
+                border-bottom: 3px solid #000;
+                page-break-before: avoid;
+            }
+            h2 { 
+                color: #000 !important;
+                border-bottom: 2px solid #333; 
+                padding-bottom: 5px; 
+                margin-top: 30px !important;
+                margin-bottom: 15px !important;
+                font-size: 18pt !important;
+                page-break-after: avoid; 
+            }
+            h3, h4 { 
+                color: #000 !important; 
+                page-break-after: avoid; 
+                margin-top: 15px !important;
+            }
+            p, li { 
+                color: #000 !important; 
+                font-size: 11pt !important;
+                line-height: 1.4;
+                text-align: justify;
+                orphans: 3; 
+                widows: 3;
+            }
+            a { text-decoration: none; color: #000 !important; }
+            
+            /* Diagrams & Tables */
+            .key-rules-grid { display: block; }
+            .key-rule-card { 
+                border: 1px solid #000; 
+                margin-bottom: 10px; 
+                padding: 10px;
+                page-break-inside: avoid;
+            }
+            .cricket-field, canvas, svg {
+                page-break-inside: avoid;
+                max-width: 60% !important; /* Prevent huge diagrams */
+                margin: 10px auto !important;
+            }
+            table {
+                width: 100% !important;
+                border-collapse: collapse;
+                page-break-inside: avoid;
+            }
+            th, td {
+                border: 1px solid #000 !important;
+                padding: 5px !important;
+                color: #000 !important;
+            }
+            
+            /* Separators */
+            .page-break-separator { 
+                display: block !important;
+                height: 1px !important; 
+                background: #000 !important; 
+                margin: 20px 0 !important;
+                opacity: 0.5;
+            }
+        }
+        
+        /* On-Scroll Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* AI Typing Indicator */
+        .typing-indicator span {
+            background-color: #6b7280;
+        }
+
+        /* Scroll to Top Button */
+        #scroll-to-top-button {
+            background-color: #047857;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(4, 120, 87, 0.3);
+        }
+        #scroll-to-top-button:hover {
+            background-color: #065f46;
+            transform: scale(1.1);
+        }
+
+        /* Time Zone Display Styling */
+        #timezone-display {
+            background: rgba(255, 255, 255, 0.6); 
+            backdrop-filter: blur(10px);
+            border: 1px solid #a7f3d0;
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(5, 150, 105, 0.1);
+            animation: pulse-border 4s infinite alternate;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        #time-display {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #065f46;
+            letter-spacing: 0.05em;
+            line-height: 1;
+            text-shadow: none;
+        }
+        #date-display {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #059669; 
+            line-height: 1;
+        }
+        #location-display {
+            font-size: 0.9rem;
+            color: #64748b; 
+            font-weight: 500;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        @keyframes pulse-border {
+            from { box-shadow: 0 0 5px rgba(5, 150, 105, 0.1); border-color: #a7f3d0; }
+            to { box-shadow: 0 0 15px rgba(5, 150, 105, 0.2); border-color: #34d399; }
+        }
+        @media (min-width: 640px) {
+            #timezone-display {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            #time-display {
+                font-size: 3.5rem;
+                text-align: left;
+            }
+            .date-location-group {
+                text-align: right;
+            }
+        }
+
+        /* Particle Background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            pointer-events: none; 
+            opacity: 0.6;
+        }
+        
+        /* Key Rules at a Glance Styles */
+        .key-rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+        .key-rule-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .key-rule-card:hover {
+            transform: translateY(-5px);
+            background-color: #f0fdf4;
+            border-color: #86efac;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .key-rule-icon {
+            margin: 0 auto 1rem auto;
+            color: #047857;
+            background-color: #d1fae5;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .key-rule-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+        .key-rule-desc {
+            font-size: 0.85rem;
+            color: #4b5563;
+            line-height: 1.4;
+        }
+
+        /* Animated Gradient Title */
+        .animated-gradient-title {
+            background: linear-gradient(90deg, #047857, #b91c1c, #047857);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            to {
+                background-position: 200% center;
+            }
+        }
+        
+        /* Premium Sponsor Card for Sidebar (Modified for Committee) */
+        .premium-sponsor-card {
+            margin-top: 2rem;
+            padding: 1.25rem 1rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(145deg, #f0fdf4, #ffffff);
+            border: 2px solid #86efac;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(4, 120, 87, 0.1);
+        }
+        .sponsor-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #064e3b;
+        }
+        .sponsor-tagline {
+            font-size: 0.85rem;
+            color: #4b5563;
+            margin: 0.5rem 0 1rem 0;
+            line-height: 1.4;
+        }
+
+    </style>
+    <!-- PWA Manifest link (for PWA Concept implementation) -->
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body class="antialiased">
+
+    <!-- NEW: Floating Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- FLOATING TRANSLATE BUTTON (New Feature) -->
+    <button id="floating-translate-button" class="text-sm">
+        Translate to Bangla
+    </button>
+
+    <!-- DYNAMIC STICKY DESKTOP HEADER (Hidden by default, shown on scroll) -->
+    <div id="sticky-header-desktop" class="hidden lg:block">
+        <div class="p-3 text-center">
+            <h1 class="text-xl font-black text-white tracking-widest font-oswald uppercase">
+                BENGAL BASH 5.0 RULEBOOK
+            </h1>
+        </div>
+    </div>
+    
+    <!-- Header & Mobile Menu Button (Only visible on mobile) -->
+    <header class="bg-white/90 shadow-md sticky top-0 z-40 lg:hidden border-b-2 border-emerald-500 backdrop-blur-md">
+        <div class="p-4 flex items-center justify-between">
+            <h1 class="text-xl font-black text-emerald-800 tracking-wider font-oswald">Bengal Bash 5.0</h1>
+            
+            <!-- Accessibility Controls -->
+            <div class="flex items-center space-x-2">
+                <button id="theme-toggle-button" class="text-gray-600 p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-150" title="Toggle Theme">
+                   <!-- Icon logic handled by JS, default visible for light theme -->
+                   <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.121-3.536a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3.05 11.536a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4.95 6.464a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <button id="font-increase" class="text-gray-600 p-2 rounded-lg text-lg font-bold bg-gray-100 hover:bg-gray-200 transition duration-150">A+</button>
+                <button id="font-decrease" class="text-gray-600 p-2 rounded-lg text-lg font-bold bg-gray-100 hover:bg-gray-200 transition duration-150">A-</button>
+                <button id="menu-toggle" class="p-2 rounded-lg text-gray-800 hover:bg-gray-200 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
-            <span class="text-xs font-semibold tracking-widest text-amber-500 bg-amber-500/10 px-3 py-1.5 rounded-full border border-amber-500/20 uppercase">
-                Official Community Hub
-            </span>
         </div>
     </header>
-
-    <section class="relative overflow-hidden pt-24 pb-16 border-b border-slate-900">
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 uppercase">
-                Elevating Community <br>
-                <span class="bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 bg-clip-text text-transparent">
-                    Sports Infrastructure
-                </span>
-            </h1>
-            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                Welcome to Tigers Community Sports Incorporated (TSI). We are dedicated to delivering premier sports tournaments, grassroots pathways, and migrant community integration initiatives across Auckland.
-            </p>
-        </div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.05)_0%,transparent_70%)] pointer-events-none"></div>
-    </section>
-
-    <main class="max-w-6xl mx-auto px-6 py-16">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+    
+    <div class="flex">
+        
+        <!-- Left Sidebar (Table of Contents) - Sticky and Vibrant -->
+        <nav id="toc-menu" class="toc-menu p-6 shadow-2xl lg:shadow-none lg:w-1/4 xl:w-1/5 lg:sticky lg:top-0 lg:h-screen overflow-y-auto custom-scrollbar border-r border-gray-200">
+            <h2 class="text-2xl font-black text-emerald-800 mb-3 border-b-2 border-emerald-500 pb-2 font-oswald">Rulebook Contents</h2>
             
-            <div class="lg:col-span-2 space-y-8">
-                <div>
-                    <h2 class="text-2xl font-black uppercase text-white tracking-tight flex items-center gap-3">
-                        <span class="h-6 w-1 bg-amber-500 rounded-full"></span>
-                        Upcoming Events Calendar
-                    </h2>
-                    <p class="text-sm text-slate-400 mt-1">Organized by Team Tigers for the 2026-2027 competitive season.</p>
-                </div>
+            <ul id="toc-list" class="space-y-2 mt-6">
+                <!-- TOC Links will be populated here by JavaScript -->
+            </ul>
+            
+            <!-- QUICK SEARCH BAR -->
+            <form id="search-form" class="p-2 bg-white rounded-lg shadow-inner sticky top-0 mt-4 z-10 flex space-x-2 border border-gray-200">
+                <input type="text" id="rule-search" placeholder="Quick Rule Search..." class="w-full p-2 text-sm bg-gray-50 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:ring-emerald-500 focus:border-emerald-500">
+                <button type="submit" class="bg-emerald-600 text-white p-2 rounded-md hover:bg-emerald-700 transition duration-150">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </form>
 
-                <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl overflow-hidden divide-y divide-slate-800/60 backdrop-blur-sm">
-                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
-                        <div class="space-y-1">
-                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 25 October 2026</span>
-                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">BDCL Day 01</h3>
-                        </div>
-                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
-                    </div>
-
-                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
-                        <div class="space-y-1">
-                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 08 November 2026</span>
-                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">BDCL Day 02</h3>
-                        </div>
-                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
-                    </div>
-
-                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
-                        <div class="space-y-1">
-                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 22 November 2026</span>
-                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">BDCL Day 03</h3>
-                        </div>
-                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
-                    </div>
-
-                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
-                        <div class="space-y-1">
-                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 06 December 2026</span>
-                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Sweet 16</h3>
-                        </div>
-                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
-                    </div>
-
-                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
-                        <div class="space-y-1">
-                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 20 December 2026</span>
-                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Bengal Bash</h3>
-                        </div>
-                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
-                    </div>
-
-                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
-                        <div class="space-y-1">
-                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 03 January 2027</span>
-                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Tigers Cup</h3>
-                        </div>
-                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
-                    </div>
-
-                    <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-900/80 transition-all duration-250 group">
-                        <div class="space-y-1">
-                            <span class="text-xs font-semibold text-amber-500/90 uppercase tracking-wider block">Sunday, 17 January 2027</span>
-                            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">Divisional Clash</h3>
-                        </div>
-                        <span class="text-xs font-medium text-slate-400 bg-slate-800/80 px-3 py-1 rounded-md border border-slate-700/50 sm:self-center self-start">Team Tigers</span>
-                    </div>
-                </div>
+            <!-- EC COMMITTEE BANZI CARD -->
+            <div class="premium-sponsor-card">
+                <p class="font-black text-3xl text-emerald-700 mb-2 font-oswald tracking-widest">BENGAL BASH 5.0</p>
+                <p class="text-xs text-gray-500">Official Organizers</p>
             </div>
+            
+        </nav>
+        
+        <!-- Main Content Area -->
+        <main id="content" class="lg:w-3/4 xl:w-4/5 p-6 md:p-10 lg:p-12">
+            <div class="max-w-4xl mx-auto p-6 md:p-10 rounded-xl content-container">
+                
+                <!-- Search Results Panel -->
+                <div id="search-results-panel" class="hidden mb-8 p-4 bg-white rounded-xl border border-emerald-500/50 shadow-lg">
+                    <h3 class="text-xl font-bold text-emerald-600 mb-2 font-oswald">Search Results (<span id="result-count">0</span>)</h3>
+                    <div id="results-list" class="space-y-4 max-h-64 overflow-y-auto custom-scrollbar">
+                        <p class="text-gray-500">No results found.</p>
+                    </div>
+                </div>
 
-            <div class="space-y-8 lg:sticky lg:top-28">
-                <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-6 rounded-2xl shadow-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 h-24 w-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-all"></div>
-                    <h2 class="text-xl font-black uppercase text-white tracking-tight mb-3">TSI Development Calendar</h2>
-                    <p class="text-sm text-slate-400 leading-relaxed mb-6">
-                        Official regulatory frameworks, junior development pathways, and comprehensive community sports integration initiatives organized directly under Tigers Community Sports Incorporated (TSI).
+                <div id="main-content-body">
+                
+                    <h1 id="introduction" class="text-5xl font-black tracking-widest text-emerald-900 mb-6 pb-3">
+                        THE OFFICIAL RULEBOOK: <br>
+                        <span class="animated-gradient-title">BENGAL BASH 5.0</span>
+                    </h1>
+
+                    <!-- NEW TIME ZONE DISPLAY -->
+                    <div id="timezone-display">
+                        <div id="time-display">00:00:00</div>
+                        <div class="date-location-group">
+                            <div id="date-display">Loading Date...</div>
+                            <div id="location-display">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                                </svg>
+                                <span>Mount Wellington War Memorial</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NEW DYNAMIC STATUS BANNER -->
+                    <div id="status-banner" class="status-banner status-countdown">
+                        STATUS: Checking Tournament Dates...
+                    </div>
+                    
+                    <!-- INNINGS PROGRESS BAR (NEW) -->
+                    <div id="innings-progress-container" class="hidden">
+                        <div class="flex justify-between items-center mb-1">
+                            <span id="innings-team-name" class="font-bold text-lg text-blue-600"></span>
+                            <span id="innings-score" class="font-bold text-xl text-gray-800"></span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-6 shadow-inner border border-gray-300">
+                            <div id="innings-progress-bar" style="width: 0%;"></div>
+                        </div>
+                        <div class="flex justify-between items-center mt-1 text-sm text-gray-500">
+                            <span id="innings-overs">Overs: 0.0 / 10.0</span>
+                            <span id="innings-runrate">RR: 0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- NEW: Key Rules at a Glance Section -->
+                    <div class="animate-on-scroll">
+                        <h2 class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4">Key Rules at a Glance</h2>
+                        <div class="key-rules-grid">
+                            <!-- Card 1: No LBW -->
+                            <div class="key-rule-card">
+                                <div class="key-rule-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5-.28-1.15-2.28-2-4-2-1.72 0-3.72.85-4 2-.73 1.02-1.08 2.25-1 3.5 0 3.5 3 5.5 6 5.5Z"></path><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                </div>
+                                <h4 class="key-rule-title">No LBW</h4>
+                                <p class="key-rule-desc">Leg Before Wicket dismissals are not in effect for this tournament.</p>
+                            </div>
+                            <!-- Card 2: Bowling Quota -->
+                            <div class="key-rule-card">
+                                <div class="key-rule-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 12.5c-.3 2.1.2 4.1.8 5.7L6 19.8c.6 1.7 1.2 2.7 2.2 3.2.9.5 2 .5 2.8.2l3-1.2c1.7-.7 3.3-1.2 4.5-2.5 1.2-1.3 1.5-3.1.9-4.8-.6-1.7-1.2-2.7-2.2-3.2-.9-.5-2-.5-2.8-.2l-3 1.2c-1.7.7-3.3 1.2-4.5 2.5z"/><path d="M8.9 9.3c.1-.8.4-1.5.8-2.1l.6-.8c.9-1.2 2-2.4 3.7-2.4 1.7 0 2.8 1.2 3.7 2.4l.6.8c.4.6.7 1.3.8 2.1"/><path d="M12 12.5V5.8"/></svg>
+                                </div>
+                                <h4 class="key-rule-title">Bowling Quota</h4>
+                                <p class="key-rule-desc">Any bowler may bowl a maximum of 2 overs per innings (for both 8-over and 10-over games).</p>
+                            </div>
+                            <!-- Card 3: PowerPlay -->
+                            <div class="key-rule-card">
+                                <div class="key-rule-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="5" stroke-dasharray="2 2"></circle><circle cx="6" cy="6" r="1" fill="currentColor"></circle><circle cx="18" cy="18" r="1" fill="currentColor"></circle></svg>
+                                </div>
+                                <h4 class="key-rule-title">PowerPlay Rules</h4>
+                                <p class="key-rule-desc">First 3 overs: Only 2 fielders are allowed outside the 30-yard circle.</p>
+                            </div>
+                            <!-- Card 4: Super Over -->
+                            <div class="key-rule-card">
+                                <div class="key-rule-icon">
+                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+                                </div>
+                                <h4 class="key-rule-title">Tie Breaker</h4>
+                                <p class="key-rule-desc">Tied knockout games will be decided by a Super Over, repeated until a winner is found.</p>
+                            </div>
+                             <!-- Card 5: Equipment -->
+                            <div class="key-rule-card">
+                                <div class="key-rule-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M7 17a5 5 0 0 1 10 0"></path><path d="M7 7a5 5 0 0 0 10 0"></path></svg>
+                                </div>
+                                <h4 class="key-rule-title">Approved Ball</h4>
+                                <p class="key-rule-desc">Only tennis balls covered with white electrical tape are authorized for play.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-lg text-gray-700 mb-8">
+                        This document serves as the official rulebook for the **Bengal Bash 5.0**. These rules are a complete set that combines the Bengal Bash Official Game Rules with the latest regulations from the International Cricket Council (ICC). All participants are expected to be familiar with this lawbook. **In the event of a conflict, the rules specifically mentioned in this lawbook will take precedence over standard ICC rules.** For any matter not covered herein, the decisions of the Tournament Committee, guided by the general principles of the ICC, will be final.
                     </p>
-                    <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-500 bg-amber-500/5 border border-amber-500/20 px-3 py-2 rounded-lg w-full justify-center">
-                        Calendar Schedule Will Be Announced Soon
-                    </div>
-                </div>
 
-                <div class="bg-slate-900/20 border border-slate-800/60 p-6 rounded-2xl space-y-4">
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Governance & Status</h3>
-                    <div class="text-xs text-slate-500 space-y-2">
-                        <p>Incorporated Society Registration: <span class="text-slate-300 font-mono">50264993</span></p>
-                        <p>Charitable Status: <span class="text-slate-300">Application Under Assessment</span></p>
-                        <p>Location: <span class="text-slate-300">Auckland, New Zealand</span></p>
+                    <hr class="page-break-separator">
+
+                    <!-- Section 1 -->
+                    <h2 id="general-principles-code-of-conduct" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        1. General Principles & Code of Conduct
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
                     </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        All participants, including players and team officials, must uphold the **spirit of cricket**. Respect for umpires and their decisions is paramount. Any form of verbal abuse, aggressive behavior, or dissent towards a match official, opponent, or teammate is strictly prohibited and will be met with disciplinary action. Players and team officials are expected to maintain Religious values, discipline, and sportsmanship at all times.
+                    </p>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 2 -->
+                    <h2 id="tournament-structure-points-system" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        2. Tournament Structure & Points System
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        The tournament will be played in a league format, followed by a playoff stage. A win in a league match will award **2 points**. A loss will award **0 points**. A tie or a no-result will award **1 point** to each team. The top four teams based on points at the end of the league phase will advance to the playoffs. If teams have equal points, their final position will be determined by **Net Run Rate (NRR)**.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold text-blue-600 mt-6 mb-3 animate-on-scroll" id="knockout-tie-breaker">
+                        2.1. Playoff/Knockout Match Tie-Breaker (Super Over)
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        In the event that a playoff match (Eliminator, Qualifier, or Final) ends in a tie, the winner will be determined by a **Super Over**, adhering to current ICC playing conditions.
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                        <li>A Super Over involves each team playing one additional over (6 balls). The team that batted second in the main match will bat first in the Super Over.</li>
+                        <li>Each team nominates three batsmen and one bowler for the Super Over. A team's Super Over innings is over if they lose two wickets.</li>
+                        <li>The team that scores the most runs in their Super Over is declared the winner.</li>
+                        <li class="font-bold text-yellow-600">If the Super Over is Also Tied: If the first Super Over also ends in a tie, subsequent Super Overs will be played until a winner is determined. The boundary countback rule will **not** be used.</li>
+                    </ul>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 3 -->
+                    <h2 id="team-player-registration" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        3. Team & Player Registration
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        Each team must register a squad of a maximum of **13 players**. Only players who are officially registered and approved by the Tournament Committee are eligible to play in the tournament. A minimum of **8 players** is required for a team to start a match.
+                    </p>
+                    <p class="font-semibold text-emerald-700">Player Eligibility 🇧🇩 🇳🇿:</p>
+                    <p class="text-gray-700 leading-relaxed">
+                        The tournament is open only to players of **Bangladeshi origin**, regardless of their current country of residence. All players must be present in New Zealand on the day of the game.
+                    </p>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 4 -->
+                    <h2 id="match-format-timing" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        4. Match Format & Timing
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        **League & Knockout Matches:** All games will consist of **8 overs** per side. The Final match can be extended to **10 overs** per side at the discretion of the Tournament Committee.
+                        <br><br>
+                        Matches must begin on their scheduled time. A grace period of 5 minutes will be granted, after which a team unable to field a minimum of 8 players will forfeit the match.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold text-blue-600 mt-6 mb-3" id="time-limits-and-over-rate">
+                        Time Limits and Over Rate
+                    </h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                        <li>**Maximum Innings Duration (8 Overs):** Must be completed in **36 minutes**.</li>
+                        <li>**Maximum Innings Duration (10 Overs - Final):** Must be completed in **45 minutes**.</li>
+                        <li>**Maximum Over Rate:** This equates to a maximum of **4.5 minutes** per over. The penalty for slow over rates (one less fielder outside the circle) will be applied if the fielding team is not in position to bowl the final over within the allotted time.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-blue-600 mt-6 mb-3" id="intervals-and-field-management">
+                        Intervals and Field Management
+                    </h3>
+                    <div class="bg-red-50 border-l-4 border-red-600 p-4 rounded-r-lg mb-6">
+                        <p class="font-bold text-red-800 text-lg mb-2">STRICT TIME LIMIT</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-800">
+                            <li>The match duration includes the **Toss**, **1st Innings**, and a strict **4-minute Innings Break**.</li>
+                            <li>Teams must complete the **2nd Innings** and **exit the field completely** within the designated window.</li>
+                            <li>This rule applies regardless of whether there is a back-to-back game.</li>
+                            <li class="font-black uppercase">There will be no excuses for delays.</li>
+                        </ul>
+                    </div>
+
+                    <p class="font-semibold text-emerald-700 mt-4">Over Rate Penalty (Latest ICC Rule):</p>
+                    <p class="text-gray-700 leading-relaxed">
+                        To curb slow over rates, if the fielding team is not in a position to bowl the first ball of the final over within the allotted time, they will be penalized. For the remainder of the innings, one less fielder will be allowed outside the 30-yard circle.
+                    </p>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 4.1 -->
+                    <h2 id="match-scheduling-delays" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        4.1. Match Scheduling & Delays
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <p class="text-gray-700 mb-2">
+                        **Non-Start Rescheduling:** If any game **does not start at all** due to unforeseen circumstances (e.g., ground unavailability, extreme weather), it will be **rescheduled later on for one time only**. The Tournament Committee will not reschedule a game more than once.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        **Abandonment Penalty:** If the rescheduled game is not played within its designated time, or if the initial non-start game is unable to be rescheduled a second time, the game will be treated as an **abandoned match** and **1 point will be awarded to both teams**.
+                    </p>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 5 -->
+                    <h2 id="playing-conditions" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        5. Playing Conditions
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+
+                    <h3 class="text-2xl font-semibold text-blue-600 mt-6 mb-3" id="batting-rules">
+                        5.1. Batting Rules
+                    </h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                        <li>**No LBW:** There will be no LBW (Leg Before Wicket) dismissal in this tournament.</li>
+                        <li>**Stance Monitoring:** The umpire will monitor the batsman's standing position and will warn a batsman who is deliberately obstructing the stumps.</li>
+                        <li>**Penalty for Stance Violation:** After a verbal warning, if a batsman continues to stand in a position that obstructs the stumps, the umpire will deduct **5 runs** from the team's total. This deduction can be applied multiple times at the umpire's discretion.</li>
+                        <li>**No Runners:** Runners for injured batsmen are not permitted under any circumstances.</li>
+                        <li>**Free Hit:** A free hit will be awarded for all no-balls. The batsman cannot be dismissed on a free hit unless by run-out. All field placements and bowling restrictions remain the same for the free hit delivery.</li>
+                        <li>**Latest Caught Out Rule:** If a batter is out caught, the new batter must come to the striker's end, regardless of whether the batters crossed while the ball is in the air.</li>
+                        <li class="font-bold text-yellow-600">Stumped: A batsman is out stumped if they step out of their crease to play a stroke, miss the ball, and the wicket-keeper breaks the wicket with the ball before the batsman can return.</li>
+                        <li class="font-bold text-yellow-600">Hit Wicket: A batsman is out hit wicket if they knock down their own wickets with their bat or any part of their person while playing a shot or setting off for a run.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-blue-600 mt-6 mb-3" id="bowling-rules">
+                        5.2. Bowling Rules
+                    </h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                        <li>**General Maximum:** Any bowler can bowl a maximum of **2 overs** per innings.</li>
+                        <li>**No-Balls:** A no-ball will be called for any delivery that is over the batsman's waist on the full, or for overstepping the bowling crease. All no-balls result in a Free Hit.</li>
+                        <li>**Wide:** A delivery is considered wide if it passes on either side of the batsman such that they are unable to hit it.</li>
+                        <li>**Illegal Bowling Action (Chucking):** Any bowler suspected of chucking will be judged by the on-field umpire, whose decision will be final. The bowler will be warned, and subsequent violations may result in the bowler being removed from the attack for the remainder of the match. **If a bowler is confirmed by the umpire to have an illegal bowling action (chucking), the bowler will be restricted from bowling for the remainder of the tournament.**</li>
+                        <li>**Mankad Rule:** In contrast to the current ICC rule, for this tournament, a bowler must provide a **single warning** to the non-striker before attempting a run-out under the Mankad rule. A subsequent attempt will result in the non-striker being run out.</li>
+                        <li>**Saliva Ban:** The use of saliva to shine the ball is permanently banned. Players may only use sweat to maintain the ball.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-blue-600 mt-6 mb-3" id="fielding-rules-powerplay">
+                        5.3. Fielding Rules (PowerPlay)
+                    </h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                        <li>**Duration:** The powerplay lasts for the first **3 overs** of the innings (standard for 10-over format).</li>
+                        <li>**Fielding Restrictions:** During these first 3 overs, a maximum of only **two fielders** are allowed to be placed outside the 30-yard circle. After the initial 3 overs, the fielding restrictions change, and up to **five fielders** are allowed outside the inner circle.</li>
+                    </ul>
+
+                    <!-- Interactive PowerPlay Diagram -->
+                    <div class="mt-8 p-6 bg-white rounded-lg border border-emerald-500 shadow-md">
+                        <h4 class="text-xl font-bold text-emerald-800 font-oswald mb-4 text-center">Interactive Fielding Restrictions</h4>
+                        <div class="flex justify-center gap-4 mb-4">
+                            <button id="powerplay-toggle-on" class="interactive-toggle bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-lg">PowerPlay (Overs 1-3)</button>
+                            <button id="powerplay-toggle-off" class="interactive-toggle bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-lg">Overs 4-10</button>
+                        </div>
+                        <div class="cricket-field">
+                            <div class="pitch"></div>
+                            <!-- NEW/UPDATED SVG for rotating text -->
+                            <svg viewBox="0 0 100 100" class="circular-text">
+                                <path id="circlePath" fill="none" d="M 10, 50 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
+                                <text>
+                                    <textPath href="#circlePath">
+                                        BENGAL BASH 5.0 • BENGAL BASH 5.0 •
+                                    </textPath>
+                                </text>
+                            </svg>
+                            <div class="inner-circle"></div>
+                            <div id="fielders-container"></div>
+                        </div>
+                        <p id="fielding-rule-text" class="text-center text-lg text-gray-700 font-semibold mt-4"></p>
+                    </div>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 6 -->
+                    <h2 id="equipment-regulations" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        6. Equipment Regulations
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                        <li>**Ball:** Only **tennis balls covered with white electrical tape** may be used. No other type of ball is authorized.</li>
+                        <li>**Bats:** Fiber bats are strictly prohibited.</li>
+                        <li>**Unauthorized Equipment:** If any batsman uses a fiber bat or any other unauthorized equipment, and it is inspected and confirmed by the Match Referee, the player's team will be penalized **30 runs**. The player will be banned for the entire tournament, and a stern warning will be issued to both the player and the team.</li>
+                    </ul>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 7 -->
+                    <h2 id="player-availability-substitutions" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        7. Player Availability & Substitutions
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                        <li>**Player Absence:** A player who is absent from the field for more than 8 minutes must spend an equivalent amount of time on the field before they are allowed to bowl or bat.</li>
+                        <li>**Substitutions:** A substitute fielder may be used, but they are not permitted to bowl or bat. All substitutions must be approved by the umpires and the Tournament Committee prior to the start of the match.</li>
+                        <li>**Concussion Substitutes (Latest ICC Rule):** In case of a concussion, a like-for-like replacement is allowed. The player diagnosed with a concussion must observe a mandatory seven-day rest period before returning to competitive play.</li>
+                    </ul>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 8 -->
+                    <h2 id="scoring-match-results" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        8. Scoring & Match Results
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <p class="text-gray-700 mb-4">A match is decided by the team that scores the most runs.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                        <li>**Tied Match:** If a match ends with both teams having the same score after the second innings is complete, a tie is declared. Both teams will be awarded with **1 point** each.</li>
+                        <li>**Minimum Overs:** A minimum of **5 overs** must be bowled in each innings for a match to constitute a contest and for a result to be declared.</li>
+                        <li class="font-semibold mt-4 text-emerald-700">Rain-Affected Matches:</li>
+                        <ul class="list-circle list-inside ml-6 space-y-1 text-gray-700">
+                            <li>**Decision Authority:** **During or post-rain, the Match Referee will make the final decision with the advice of the On-Field Umpires on whether play is safe and possible.** No players or team management will be involved in making this decision.</li>
+                            <li>**Suspended Match:** If play is stopped but there is a possibility of resuming later, often with revised overs, the match is declared **Suspended** (not abandoned).</li>
+                            <li>**Revised Target Calculation (DLS Method):** If the match is shortened, the target for the second team (Team B) will be calculated using the official **Duckworth-Lewis-Stern (DLS) Method**. This method applies to **all scenarios** where overs are lost, including:
+                                <ul>
+                                    <li class="list-none pt-1">**Team A's Innings Interrupted (5-9 Overs):** If Team A's innings is cut short between the 5th and 9th over, the DLS calculation will compensate Team A for the loss of the final aggressive overs.</li>
+                                </ul>
+                                **The Match Referee is solely responsible for obtaining and applying the correct DLS target.**
+                            </li>
+                            <li>**Abandoned Match:** If the minimum number of overs cannot be completed in both innings, the match is **Abandoned**. It is then declared a "No Result," and both teams will be awarded **1 point** each.</li>
+                        </ul>
+                    </ul>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 9 -->
+                    <h2 id="net-run-rate-nrr-explained-scenarios" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        9. Net Run Rate (NRR) Explained & Scenarios
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <p class="text-gray-700 mb-3">
+                        Net Run Rate is a method of calculating a team's performance relative to other teams in a tournament. It is used as a tie-breaker when two or more teams finish with the same number of points.
+                    </p>
+
+                    <p class="font-bold text-lg text-emerald-700">NRR Formula:</p>
+                    <div class="nrr-formula text-lg md:text-xl font-extrabold text-center p-4">
+                        <p class="text-2xl leading-tight">
+                            <span class="block">NRR = (Total Runs Scored / Total Overs Faced)</span>
+                            <span class="text-4xl block px-4 py-2">-</span>
+                            <span class="block">(Total Runs Conceded / Total Overs Bowled)</span>
+                        </p>
+                    </div>
+                    <p class="text-center text-sm font-semibold text-gray-500 mt-2">
+                        (Team's Run Rate) - (Opponent's Run Rate)
+                    </p>
+
+                    <p class="text-gray-700 mb-3">A positive NRR indicates a team is scoring runs faster than their opponents are, while a negative NRR means the opposite.</p>
+
+                    <p class="font-bold text-lg text-blue-600">Key NRR Rules for this Tournament:</p>
+                    <ul class="list-decimal list-inside space-y-1 text-gray-700 ml-4 mb-6">
+                        <li>**All-Out Rule:** If a team is bowled out (loses 10 wickets) in less than its full quota of overs, the calculation of its Net Run Rate will be based on the full quota of overs (e.g., **8.0 overs**) to which it was entitled, and **not** the number of overs in which the team was dismissed.</li>
+                        <li>**Successful Chase Rule:** If a team successfully chases a target in less than the full quota, the **actual number of overs faced** is used for the calculation.</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold text-gray-800 mt-6 mb-3">NRR Scenarios (Based on an 8-Over Match)</h3>
+                    
+                    <p class="font-bold text-lg text-blue-600 mt-4">Scenario 1: Team Bats First and Wins (Full Quota Used)</p>
+                    <table class="min-w-full bg-white rounded-lg overflow-hidden my-4 shadow-sm text-sm text-gray-700 border border-gray-200">
+                        <thead>
+                            <tr class="bg-blue-100 text-blue-800 font-bold">
+                                <th class="px-4 py-2 text-left">Team</th>
+                                <th class="px-4 py-2 text-left">Runs Scored</th>
+                                <th class="px-4 py-2 text-left">Overs Faced</th>
+                                <th class="px-4 py-2 text-left">Runs Conceded</th>
+                                <th class="px-4 py-2 text-left">Overs Bowled</th>
+                                <th class="px-4 py-2 text-left">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-5 border-b border-gray-200">
+                                <td class="px-4 py-2">Team A</td>
+                                <td class="px-4 py-2">80</td>
+                                <td class="px-4 py-2">8.0</td>
+                                <td class="px-4 py-2">64</td>
+                                <td class="px-4 py-2">8.0</td>
+                                <td class="px-4 py-2 text-emerald-600 font-semibold">Wins by 16 runs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-gray-700">**Team A NRR:** (80 / 8.0) - (64 / 8.0) = 10.00 - 8.00 = <strong class="text-emerald-600">+2.00</strong></p>
+                    
+                    <p class="font-bold text-lg text-blue-600 mt-6">Scenario 2: Team Chases and Wins Quickly (Winning by Wickets)</p>
+                    <table class="min-w-full bg-white rounded-lg overflow-hidden my-4 shadow-sm text-sm text-gray-700 border border-gray-200">
+                        <thead>
+                            <tr class="bg-blue-100 text-blue-800 font-bold">
+                                <th class="px-4 py-2 text-left">Team</th>
+                                <th class="px-4 py-2 text-left">Runs Scored</th>
+                                <th class="px-4 py-2 text-left">Overs Faced</th>
+                                <th class="px-4 py-2 text-left">Runs Conceded</th>
+                                <th class="px-4 py-2 text-left">Overs Bowled</th>
+                                <th class="px-4 py-2 text-left">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-5 border-b border-gray-200">
+                                <td class="px-4 py-2">Team D (Batting 2nd)</td>
+                                <td class="px-4 py-2">82</td>
+                                <td class="px-4 py-2">6.2*</td>
+                                <td class="px-4 py-2">80</td>
+                                <td class="px-4 py-2">8.0</td>
+                                <td class="px-4 py-2 text-emerald-600 font-semibold">Wins by 7 wickets</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-gray-700">*Note: 6.2 overs = 6.33 overs (decimal). Actual overs faced are used.</p>
+                    <p class="text-gray-700">**Team D NRR:** (82 / 6.33) - (80 / 8.0) = 12.95 - 10.00 = <strong class="text-emerald-600">+2.95</strong></p>
+                    
+                    <p class="font-bold text-lg text-blue-600 mt-6">Scenario 3: Team is All-Out (Lost by Wickets)</p>
+                    <table class="min-w-full bg-white rounded-lg overflow-hidden my-4 shadow-sm text-sm text-gray-700 border border-gray-200">
+                        <thead>
+                            <tr class="bg-blue-100 text-blue-800 font-bold">
+                                <th class="px-4 py-2 text-left">Team</th>
+                                <th class="px-4 py-2 text-left">Runs Scored</th>
+                                <th class="px-4 py-2 text-left">Overs Faced</th>
+                                <th class="px-4 py-2 text-left">Runs Conceded</th>
+                                <th class="px-4 py-2 text-left">Overs Bowled</th>
+                                <th class="px-4 py-2 text-left">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-5 border-b border-gray-200">
+                                <td class="px-4 py-2">Team E (Batting 1st)</td>
+                                <td class="px-4 py-2">70</td>
+                                <td class="px-4 py-2">8.0**</td>
+                                <td class="px-4 py-2">72</td>
+                                <td class="px-4 py-2">7.2</td>
+                                <td class="px-4 py-2 text-emerald-600 font-semibold">Loses match</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-gray-700">**\*\*Note:** Team E was all out in 7.0 overs, but for NRR calculation, the full **8.0 overs** are counted (Rule 1).</p>
+                    <p class="text-gray-700">**Team E NRR:** (70 / 8.0) - (72 / 7.33) = 8.75 - 9.82 = <strong class="text-red-500">-1.07</strong></p>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 10 -->
+                    <h2 id="behavior-on-the-field-penalties" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        10. Behavior on the Field & Penalties
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Players must not enter the field of play without the umpire's permission. If a player from one of the competing teams enters the field without permission due to anger, aggressive behavior, or with the intention to disrupt the game, a stern warning will be issued. A second, consecutive incident will result in a **5-run penalty** for the offending team.
+                    </p>
+                    
+                    <div class="bg-red-50 border-l-4 border-red-600 p-4 my-4 rounded-r-lg">
+                        <h4 class="font-black text-red-800 text-lg mb-2 uppercase">Official Report & Severe Penalties</h4>
+                        <p class="text-gray-800 mb-3">
+                            If an umpire reports any team or player for misbehavior, abuse, or serious behavioral issues, the **Tournament Committee** will review the incident. Upon validation of the report, the Committee will impose a mandatory **15-run punishment** on the offending team.
+                        </p>
+                        <p class="text-gray-800 font-bold mb-1">Maximum Sanctions:</p>
+                        <p class="text-gray-700 text-sm">
+                            For severe misconduct, the Tournament Committee reserves the right to enforce the following maximum penalties:
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-gray-700 mt-1 ml-2">
+                            <li>Immediate suspension of the player for the remainder of the tournament.</li>
+                            <li>Suspension of the entire team from the current tournament.</li>
+                            <li>A ban on the player or team from participating in the <strong>next Bengal Bash tournament</strong> as well.</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-gray-700 leading-relaxed mt-4">
+                        All fielding concerns must be raised by the **team captain only**. For the batting team, only the striker or non-striker may speak to the umpire during the course of play. Any player or official found breaching these rules may face disciplinary action at the discretion of the Tournament Committee.
+                    </p>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 11 -->
+                    <h2 id="tournament-committee-umpire-authority" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        11. Tournament Committee & Umpire Authority
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        The **Tournament Committee** have the final authority to interpret, amend, and enforce these rules.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        The appointed **umpires** have the final authority to interpret and enforce these rules on the field of play.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold text-blue-600 mt-6 mb-3" id="match-referee-committee-roles">
+                        11.1. Match Referee & Committee Roles
+                    </h3>
+                    <p class="font-semibold text-emerald-700">Match Referee:</p>
+                    <p class="text-gray-700 mb-4">
+                        **Arifur Rahman** will serve as the official Match Referee for the tournament and will be the final authority on the continuation of play in rain-affected matches.
+                    </p>
+
+                    <hr class="page-break-separator">
+
+                    <!-- Section 12 -->
+                    <h2 id="acknowledgment-agreement" class="text-3xl font-extrabold text-gray-800 mt-10 mb-4 pt-4 animate-on-scroll">
+                        12. Acknowledgment & Agreement
+                    </h2>
+                    <div class="flex space-x-2 mb-4">
+                        <button class="summarize-section-btn bg-blue-600 hover:bg-blue-700 text-white text-sm py-1 px-3 rounded-md transition">Summarize ✨</button>
+                        <button class="translate-section-btn bg-emerald-600 hover:bg-emerald-700 text-white text-sm py-1 px-3 rounded-md transition">Translate Section</button>
+                    </div>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        By participating in the Bengal Bash 5.0, every player and team owner confirms that they have read, understood, and agreed to abide by these rules. They further agree that the Tournament Committee’s decisions will be final in all matters.
+                    </p>
+                    
+                    <!-- Signature Block/Endorsement -->
+                    <div class="mt-8 pt-6 border-t-2 border-emerald-500">
+                        <p class="text-xl font-bold text-gray-800 mb-4 font-oswald">DOCUMENT ENDORSEMENT</p>
+                        <div class="space-y-1 text-lg text-gray-700 ml-4">
+                            <p class="font-semibold text-emerald-700">Arifur Rahman</p>
+                            <ul class="list-none space-y-0 text-base ml-2">
+                                <li>— Organiser, Bengal Bash 5.0 Cricket Tournament</li>
+                                <li>— Director, Tigers FC Social Club</li>
+                            </ul>
+                            <div class="mt-4">
+                                <p class="font-semibold text-emerald-700">Technical Support</p>
+                                <p class="text-base ml-2">Team Tigers</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xl font-black text-blue-600 italic pt-4 mt-8">
+                        Let us uphold the spirit of cricket and make the Bengal Bash 5.0 a historic celebration of unity, respect, and sportsmanship within our Bangladeshi community in New Zealand.
+                    </p>
+
                 </div>
             </div>
+        </main>
+    </div>
+    
+    <!-- NEW: Scroll to Top Button -->
+    <button id="scroll-to-top-button" title="Scroll to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+    
+    <!-- Floating Ask Arif Button -->
+    <button id="ask-arif-button" class="fixed bottom-6 right-6 bg-emerald-600 hover:bg-emerald-700 text-white font-black py-3 px-6 rounded-full shadow-lg text-lg tracking-wider transition duration-300 transform hover:scale-105 z-50">
+        Ask Arif
+    </button>
+
+    <!-- Chat Modal -->
+    <div id="chat-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-[60] flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg lg:max-w-xl flex flex-col h-full max-h-[80vh]">
+            
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50 rounded-t-xl">
+                <h3 class="text-2xl font-bold text-emerald-600 font-oswald">ASK ARIF <span class="text-base text-gray-500 font-inter"> (Rules & Tools)</span></h3>
+                <button id="chat-close-button" class="text-gray-400 hover:text-gray-700 transition p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="tab-button-container flex bg-gray-50 text-gray-700 justify-around border-b border-gray-200 p-1">
+                <button id="tab-consultation" class="tab-button active">Rule Q&A</button>
+                <button id="tab-umpire" class="tab-button">Umpire Assist ✨</button>
+                <button id="tab-report" class="tab-button">Match Report ✨</button>
+                <button id="tab-nrr" class="tab-button">NRR Calc</button>
+                <button id="tab-dls" class="tab-button">DLS Target</button>
+                <button id="tab-trophy" class="tab-button">Trophy Case</button>
+                <button id="tab-translator" class="tab-button">Translator</button>
+            </div>
+
+            <!-- --- Rule Consultation (Chat) Section --- -->
+            <div id="section-consultation" class="flex-col flex-grow bg-white overflow-y-auto custom-scrollbar">
+                <!-- Chat Log -->
+                <div id="chat-log" class="flex-grow p-4 space-y-4 overflow-y-auto custom-scrollbar bg-gray-50">
+                    <div class="flex justify-start mb-4">
+                        <div class="bg-emerald-50 text-emerald-900 p-3 rounded-xl rounded-tl-none max-w-[85%] md:max-w-md shadow-md border border-emerald-100">Hi, I'm Arif, your guide to the official rulebook. How can I help? You can ask me a specific question below, or use the <strong>'Summarize ✨'</strong> buttons in the main text for a quick overview of any section.</div>
+                    </div>
+                    <!-- Dynamic messages will be appended here -->
+                </div>
+
+                <!-- Chat Input Form -->
+                <form id="chat-form" class="p-4 border-t border-gray-200 bg-white">
+                    <div class="flex space-x-3">
+                        <input type="text" id="chat-input" placeholder="Ask a question about the rules..." class="flex-grow p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" required>
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded-lg transition duration-150 shadow-lg">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+             <!-- --- NEW: Umpire Assist Section --- -->
+            <div id="section-umpire" class="hidden flex-col flex-grow p-6 bg-white overflow-y-auto custom-scrollbar">
+                <h3 class="text-xl font-bold text-emerald-600 mb-2">✨ Umpire Assist</h3>
+                <p class="text-sm text-gray-500 mb-4">Get quick, definitive rulings based on the official tournament lawbook. Use the quick buttons or ask a specific question.</p>
+                
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <button class="umpire-quick-query-btn bg-gray-100 hover:bg-gray-200 p-3 rounded-lg text-sm text-emerald-700 transition font-semibold border border-gray-200">No Ball Check</button>
+                    <button class="umpire-quick-query-btn bg-gray-100 hover:bg-gray-200 p-3 rounded-lg text-sm text-emerald-700 transition font-semibold border border-gray-200">Wide Ball Rule</button>
+                    <button class="umpire-quick-query-btn bg-gray-100 hover:bg-gray-200 p-3 rounded-lg text-sm text-emerald-700 transition font-semibold border border-gray-200">LBW Rule</button>
+                    <button class="umpire-quick-query-btn bg-gray-100 hover:bg-gray-200 p-3 rounded-lg text-sm text-emerald-700 transition font-semibold border border-gray-200">Mankad Rule</button>
+                    <button class="umpire-quick-query-btn bg-gray-100 hover:bg-gray-200 p-3 rounded-lg text-sm text-emerald-700 transition font-semibold border border-gray-200">Stance Violation</button>
+                    <button class="umpire-quick-query-btn bg-gray-100 hover:bg-gray-200 p-3 rounded-lg text-sm text-emerald-700 transition font-semibold border border-gray-200">Chuck Bowling Rules</button>
+                </div>
+
+                <form id="umpire-form" class="space-y-3">
+                    <input type="text" id="umpire-input" placeholder="Ask a specific question (e.g., 'Can a substitute bat?')" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-800" required>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">Get Ruling</button>
+                </form>
+
+                <div id="umpire-loader" class="hidden text-center text-emerald-600 mt-4">Checking the rulebook...</div>
+                <div id="umpire-output-container" class="hidden mt-4 p-4 bg-emerald-50 rounded-lg shadow-lg border border-emerald-200">
+                    <p id="umpire-output" class="text-gray-800 whitespace-pre-wrap"></p>
+                </div>
+            </div>
+
+             <!-- --- Match Report Generator Section (NEW) --- -->
+            <div id="section-report" class="hidden flex-col flex-grow p-6 bg-white overflow-y-auto custom-scrollbar">
+                <h3 class="text-xl font-bold text-emerald-600 mb-2">✨ AI Match Report Generator</h3>
+                <p class="text-sm text-gray-500 mb-4">Enter the match details below to generate a short, exciting summary for social media.</p>
+                <form id="report-form" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" id="report-team1-name" placeholder="Team 1 Name" class="w-full p-2 bg-gray-50 rounded-md border border-gray-300 text-gray-800" required>
+                        <input type="text" id="report-team1-score" placeholder="Team 1 Score (e.g., 120/8)" class="w-full p-2 bg-gray-50 rounded-md border border-gray-300 text-gray-800" required>
+                        <input type="text" id="report-team2-name" placeholder="Team 2 Name" class="w-full p-2 bg-gray-50 rounded-md border border-gray-300 text-gray-800" required>
+                        <input type="text" id="report-team2-score" placeholder="Team 2 Score (e.g., 121/5)" class="w-full p-2 bg-gray-50 rounded-md border border-gray-300 text-gray-800" required>
+                    </div>
+                    <textarea id="report-performances" placeholder="Key Performances (e.g., Arif 55* (21), Shuvo 3/15)" class="w-full p-2 bg-gray-50 rounded-md border border-gray-300 text-gray-800" rows="3" required></textarea>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-150 shadow-md">
+                        Generate Report ✨
+                    </button>
+                </form>
+                <div id="report-loader" class="hidden text-center text-emerald-600 mt-4">Generating your match report...</div>
+                <div id="report-output-container" class="hidden mt-4 p-4 bg-emerald-50 rounded-lg shadow-lg border border-emerald-200">
+                    <p id="report-output" class="text-gray-800 whitespace-pre-wrap"></p>
+                    <button id="copy-report-btn" class="w-full mt-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-sm">Copy Report Text</button>
+                </div>
+            </div>
+
+            <!-- --- NRR Calculator Section --- -->
+            <div id="section-nrr" class="hidden flex-col flex-grow p-6 bg-white overflow-y-auto custom-scrollbar">
+                <h3 class="text-xl font-bold text-emerald-600 mb-4">Calculate Match NRR (10 Overs)</h3>
+                
+                <form id="nrr-form" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- 1ST INNINGS Inputs -->
+                        <div class="p-4 bg-blue-50 rounded-lg space-y-3 shadow-inner border border-blue-200">
+                            <h4 class="text-lg font-black text-blue-700 border-b border-blue-200 pb-2 font-oswald">1ST INNINGS (Team A)</h4>
+                            <label class="block">
+                                <span class="text-sm font-bold text-gray-700">Team Name:</span>
+                                <input type="text" id="teamName1" class="w-full p-2 bg-white rounded-md border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 text-gray-800" value="Team A" required>
+                            </label>
+                            <label class="block">
+                                <span class="text-sm font-bold text-gray-700">Total Runs Scored:</span>
+                                <input type="number" id="runs1" class="w-full p-2 bg-white rounded-md border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 text-gray-800" required>
+                            </label>
+                            <label class="block">
+                                <span class="text-sm font-bold text-gray-700">Overs Faced (e.g., 9.5):</span>
+                                <input type="text" id="overs1" pattern="^\d{1,2}\.[0-5]$" title="Format: Overs.Balls (e.g., 9.2 for 9 overs, 2 balls)" class="w-full p-2 bg-white rounded-md border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 text-gray-800" placeholder="e.g., 10.0" required>
+                            </label>
+                            <label class="flex items-center space-x-2 text-gray-700">
+                                <input type="checkbox" id="isAllOut1" class="h-4 w-4 text-emerald-500 rounded border-gray-300 focus:ring-emerald-500">
+                                <span class="text-sm">Team was **All Out**? (Forces 10.0 overs for opponent's calculation)</span>
+                            </label>
+                        </div>
+
+                        <!-- 2ND INNINGS Inputs -->
+                        <div class="p-4 bg-red-50 rounded-lg space-y-3 shadow-inner border border-red-200">
+                            <h4 class="text-lg font-black text-red-700 border-b border-red-200 pb-2 font-oswald">2ND INNINGS (Team B)</h4>
+                            <label class="block">
+                                <span class="text-sm font-bold text-gray-700">Team Name:</span>
+                                <input type="text" id="teamName2" class="w-full p-2 bg-white rounded-md border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 text-gray-800" value="Team B" required>
+                            </label>
+                            <label class="block">
+                                <span class="text-sm font-bold text-gray-700">Total Runs Scored:</span>
+                                <input type="number" id="runs2" class="w-full p-2 bg-white rounded-md border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 text-gray-800" required>
+                            </label>
+                            <label class="block">
+                                <span class="text-sm font-bold text-gray-700">Overs Faced (e.g., 8.3):</span>
+                                <input type="text" id="overs2" pattern="^\d{1,2}\.[0-5]$" title="Format: Overs.Balls (e.g., 8.2 for 8 overs, 2 balls)" class="w-full p-2 bg-white rounded-md border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 text-gray-800" placeholder="e.g., 8.5" required>
+                            </label>
+                            <label class="flex items-center space-x-2 text-gray-700">
+                                <input type="checkbox" id="isAllOut2" class="h-4 w-4 text-emerald-500 rounded border-gray-300 focus:ring-emerald-500">
+                                <span class="text-sm">Team was **All Out**? (Forces 10.0 overs for this team's NRR calculation)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg transition duration-150 shadow-md">
+                        Calculate Net Run Rate
+                    </button>
+                </form>
+
+                <!-- NRR Result Output -->
+                <div id="nrrResult" class="p-4 mt-6 rounded-lg text-center shadow-lg border border-2 nrr-neutral">
+                    <p class="text-lg text-gray-600">Enter match details above and click 'Calculate' to see the NRR.</p>
+                </div>
+            </div>
+            
+            <!-- --- DLS Target Revision Section (NEW) --- -->
+            <div id="section-dls" class="hidden flex-col flex-grow p-6 bg-white overflow-y-auto custom-scrollbar">
+                <h3 class="text-xl font-bold text-emerald-600 mb-4">Rain Target Revision (DLS Resource Method)</h3>
+                <p class="text-sm text-gray-500 mb-4">
+                    This tool uses an interpolated resource table for the T10 format to provide an accurate DLS target calculation. For official results, the Match Referee's decision is final.
+                </p>
+
+                <form id="dls-form" class="space-y-4">
+                    
+                    <label class="flex items-center space-x-2 text-gray-700 p-2 bg-red-50 rounded-lg border border-red-200">
+                        <input type="checkbox" id="isTeamAInterrupted" class="h-4 w-4 text-red-500 rounded border-gray-300 focus:ring-red-500">
+                        <span class="text-sm font-semibold text-red-800">Team A's innings was interrupted.</span>
+                    </label>
+
+                    <!-- Interruption Details (Conditionally Visible) -->
+                    <div id="interruption-details" class="space-y-3 p-4 bg-gray-50 rounded-lg shadow-inner border border-yellow-300 hidden">
+                        <h4 class="text-lg font-semibold text-yellow-800 border-b border-gray-200 pb-2">Team A Interruption Details</h4>
+                        <label class="block">
+                            <span class="text-sm font-medium text-gray-700">Team A Score at Interruption:</span>
+                            <input type="number" id="scoreTeamAInterruption" class="w-full p-2 bg-white rounded-md border border-gray-300 text-gray-800">
+                        </label>
+                         <label class="block">
+                            <span class="text-sm font-medium text-gray-700">Overs Played by Team A (e.g., 6.4):</span>
+                            <input type="text" id="oversTeamAInterruption" pattern="^\d{1,2}\.[0-5]$" placeholder="e.g., 7.2" class="w-full p-2 bg-white rounded-md border border-gray-300 text-gray-800">
+                        </label>
+                        <label class="block">
+                            <span class="text-sm font-medium text-gray-700">Wickets Lost by Team A:</span>
+                            <input type="number" id="wicketsTeamAInterruption" min="0" max="10" class="w-full p-2 bg-white rounded-md border border-gray-300 text-gray-800" value="0">
+                        </label>
+                    </div>
+
+                    <!-- Match Data -->
+                    <div class="p-4 bg-blue-50 rounded-lg space-y-3 shadow-inner border border-blue-100">
+                        <h4 class="text-lg font-semibold text-blue-700 border-b border-blue-200 pb-2">Final Match Data</h4>
+                        <label class="block">
+                            <span class="text-sm font-medium text-gray-700">Team A Final Score (if no interruption):</span>
+                            <input type="number" id="scoreTeamA" class="w-full p-2 bg-white rounded-md border border-gray-300 text-gray-800">
+                        </label>
+                        <label class="block">
+                            <span class="text-sm font-medium text-gray-700">Revised Total Overs for Team B (5-10):</span>
+                            <input type="number" id="oversTeamBRevised" min="5" max="10" placeholder="e.g., 6" class="w-full p-2 bg-white rounded-md border border-gray-300 text-gray-800" required>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-150 shadow-md">
+                        Calculate Revised Target
+                    </button>
+                </form>
+
+                <div id="dlsResult" class="p-4 mt-6 bg-gray-50 rounded-lg text-center shadow-lg border border-blue-200">
+                    <p class="text-lg text-gray-600">Enter details to see the official DLS-based target.</p>
+                </div>
+            </div>
+            
+            <!-- --- Translator (Bangla) Section --- -->
+            <div id="section-translator" class="hidden flex-col flex-grow p-6 bg-white overflow-y-auto custom-scrollbar">
+                <h3 class="text-xl font-bold text-emerald-600 mb-4">English to Bangla Translator</h3>
+                <p class="text-sm text-gray-500 mb-4">Paste any section of the rulebook below and get an immediate translation into Bangla.</p>
+                
+                <form id="translator-form" class="space-y-4 flex flex-col flex-grow">
+                    <textarea id="translation-input" placeholder="Paste English text here (e.g., 'No Runners')." rows="4" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 flex-shrink-0" required></textarea>
+                    
+                    <button type="submit" id="translate-button" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-150 shadow-md flex-shrink-0">
+                        Translate to Bangla
+                    </button>
+                </form>
+
+                <div id="translation-output" class="p-4 mt-4 bg-emerald-50 rounded-lg shadow-lg border border-emerald-200 flex-grow">
+                    <p class="text-lg text-gray-600">Translation will appear here.</p>
+                </div>
+                
+                 <!-- Loader -->
+                <div id="translator-loader" class="hidden p-2 text-center text-emerald-600 font-semibold bg-white">
+                    Translating...
+                </div>
+            </div>
+            
+            <!-- --- Trophy Case Section (NEW) --- -->
+            <div id="section-trophy" class="hidden flex-col flex-grow p-6 bg-white overflow-y-auto custom-scrollbar">
+                <h3 class="text-xl font-bold text-emerald-600 mb-4">Trophy Case: Man of the Match Generator</h3>
+                <p class="text-sm text-gray-500 mb-4">Create your personalized **Man of the Match** certificate for easy sharing on social media!</p>
+
+                <form id="certificate-form" class="space-y-4 p-4 bg-gray-50 rounded-lg shadow-inner border border-yellow-300">
+                    <label class="block">
+                        <span class="text-sm font-medium text-gray-700">Player Name (Max 25 chars):</span>
+                        <input type="text" id="player-name-input" maxlength="25" class="w-full p-2 bg-white rounded-md border border-gray-300 text-gray-800" placeholder="e.g., Shahin Afridi" required>
+                    </label>
+                    <label class="block">
+                        <span class="text-sm font-medium text-gray-700">Achievement (Max 40 chars):</span>
+                        <input type="text" id="achievement-input" maxlength="40" class="w-full p-2 bg-white rounded-md border border-gray-300 text-gray-800" placeholder="e.g., 52 runs, 2 wickets & 1 catch" required>
+                    </label>
+                    <label class="block">
+                        <span class="text-sm font-medium text-gray-700">Match Against Opponent:</span>
+                        <input type="text" id="match-opponent-input" maxlength="25" class="w-full p-2 bg-white rounded-md border border-gray-300 text-gray-800" placeholder="e.g., vs. Auckland Tigers" required>
+                    </label>
+                    
+                    <button type="submit" id="generate-certificate-button" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-black py-3 rounded-lg transition duration-150 shadow-md">
+                        Generate Certificate Image
+                    </button>
+                </form>
+                
+                <div class="mt-6 border border-gray-200 rounded-lg overflow-hidden">
+                    <canvas id="certificate-canvas" class="w-full h-auto" width="1080" height="1080"></canvas>
+                </div>
+                
+                <button id="download-certificate-button" class="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg transition duration-150 shadow-md hidden">
+                    Download & Share PNG
+                </button>
+                <div id="trophy-loader" class="hidden text-center text-yellow-600 mt-3">Generating custom crest...</div>
+            </div>
+
 
         </div>
-    </main>
+    </div>
 
-    <footer class="border-t border-slate-900 bg-slate-950 py-8 text-center text-xs text-slate-600">
-        <p>&copy; 2026 Tigers Community Sports Incorporated & Team Tigers. All rights reserved.</p>
-    </footer>
+    <script>
+        // --- GLOBAL CONSTANTS ---
+        const apiKey = ""; // Canvas environment will inject API key here.
+        const LLM_MODEL_NAME = "gemini-2.5-flash-preview-05-20";
+        const IMAGE_MODEL_NAME = "imagen-3.0-generate-002";
+        // Base URLs for different API types
+        const LLM_API_BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/${LLM_MODEL_NAME}:generateContent`;
+        const IMAGE_API_BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/${IMAGE_MODEL_NAME}:predict`;
 
+        // CUSTOM CONSTANT for specific tournament contact
+        const ARIIF_CONTACT = '02101876461';
+        const FULL_OVERS = 8.0;
+        const TABLE_MAX_OVERS = 10; // The DLS table is still built on a 10-over curve
+        
+        // Tournament Game Dates (Month is 0-indexed: 0 = January, 2 = March)
+        const GAME_DAYS = [
+            new Date(2026, 2, 29) // March 29, 2026
+        ];
+        
+        // --- NEW: T10 DLS RESOURCE TABLE ---
+        // An approximation for a T10 format, with a steeper resource curve than T20.
+        // Array maps [Wickets Lost][Overs Remaining], from 10 down to 0.
+        const T10_RESOURCE_TABLE = [
+          // Overs Rem: 10,    9,    8,    7,    6,    5,    4,    3,    2,    1,    0
+          [100.0, 94.5, 88.0, 80.5, 71.5, 61.0, 49.5, 37.0, 24.5, 12.5, 0.0], // 0 wkts
+          [92.0,  87.5, 82.0, 75.0, 66.5, 57.0, 46.0, 34.5, 22.5, 11.0, 0.0],  // 1 wkt
+          [83.0,  79.5, 74.5, 68.0, 60.0, 51.5, 41.5, 31.0, 20.0, 10.0, 0.0],  // 2 wkts
+          [73.0,  70.0, 66.0, 60.5, 53.5, 46.0, 37.0, 27.5, 17.5, 8.5,  0.0],  // 3 wkts
+          [62.0,  59.5, 56.0, 51.5, 46.0, 39.5, 31.5, 23.5, 15.0, 7.0,  0.0],  // 4 wkts
+          [50.0,  48.0, 45.5, 42.0, 37.5, 32.0, 25.5, 19.0, 12.0, 5.5,  0.0],  // 5 wkts
+          [38.0,  36.5, 34.5, 31.5, 28.0, 24.0, 19.0, 14.0, 9.0,  4.0,  0.0],  // 6 wkts
+          [26.0,  25.0, 23.5, 21.5, 19.0, 16.5, 13.0, 9.5,  6.0,  2.5,  0.0],  // 7 wkts
+          [15.0,  14.0, 13.0, 12.0, 10.5, 9.0,  7.0,  5.0,  3.0,  1.0,  0.0],  // 8 wkts
+          [6.0,   5.5,  5.0,  4.5,  4.0,  3.5,  2.5,  1.5,  1.0,  0.5,  0.0]   // 9 wkts
+        ];
+        
+        // --- UTILITY FUNCTIONS ---
+
+        /**
+         * Converts overs.balls format (e.g., 7.3) into total decimal overs (e.g., 7.5).
+         * @param {string | number} oversString - The overs in "Overs.Balls" format or decimal.
+         * @returns {number} - Total decimal overs. Returns NaN if invalid.
+         */
+        function oversToDecimal(oversString) {
+            try {
+                if (typeof oversString === 'number') return oversString;
+                
+                const parts = oversString.split('.');
+                const fullOvers = parseInt(parts[0]);
+                let balls = 0;
+                
+                if (parts.length > 1) {
+                    balls = parseInt(parts[1]);
+                }
+                
+                if (isNaN(fullOvers) || isNaN(balls) || balls < 0 || balls > 5) {
+                    return NaN; 
+                }
+                
+                // Max overs check for 10-over format
+                if (fullOvers > 10 || (fullOvers === 10 && balls > 0)) {
+                    return 10.0; // Cap at max quota
+                }
+
+                return fullOvers + (balls / 6);
+            } catch (e) {
+                console.error("Error in oversToDecimal:", e);
+                return NaN;
+            }
+        }
+        
+        /**
+         * Generic API call function with exponential backoff.
+         * @param {string} url - The full API URL.
+         * @param {object} payload - The request body.
+         * @param {number} maxRetries - Maximum number of retries.
+         * @param {number} delay - Initial delay in milliseconds.
+         * @returns {Promise<object>} The JSON response from the API.
+         */
+        async function fetchWithBackoff(url, payload, maxRetries = 3, delay = 1000) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        return response.json();
+                    } else if (response.status === 429 && i < maxRetries - 1) {
+                        // Rate limit error (429) -> retry
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        delay *= 2; // Exponential backoff
+                    } else {
+                        // Other HTTP error -> throw
+                        const errorBody = await response.text();
+                        throw new Error(`API request failed with status ${response.status}: ${errorBody}`);
+                    }
+                } catch (error) {
+                    if (i === maxRetries - 1) {
+                        throw new Error(`API call failed after ${maxRetries} attempts: ${error.message}`);
+                    }
+                    // Connection error or error during parsing -> retry
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+        }
+        
+        /**
+         * Utility to extract text from the Gemini response.
+         * @param {object} result - The parsed JSON response.
+         * @returns {string} The generated text, or an error message.
+         */
+        function extractTextFromResponse(result) {
+            try {
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (!text) {
+                    return "Sorry, I couldn't get a clear response from the rules engine.";
+                }
+                return text;
+            } catch (e) {
+                console.error("Error extracting text:", e);
+                return "An unexpected error occurred while processing the response.";
+            }
+        }
+
+        // --- TOC and Scroll Tracking ---
+        
+        function populateTOC() {
+            const tocList = document.getElementById('toc-list');
+            const mainContent = document.getElementById('main-content-body');
+            const headings = mainContent.querySelectorAll('h2[id]');
+            
+            tocList.innerHTML = ''; 
+
+            headings.forEach(heading => {
+                const id = heading.id;
+                // Use innerText to capture section numbers like "1. General Principles..."
+                const text = heading.innerText.trim(); 
+                
+                const listItem = document.createElement('li');
+                const anchor = document.createElement('a');
+                
+                anchor.href = `#${id}`;
+                anchor.className = 'toc-link';
+                anchor.textContent = text;
+
+                // Add scroll handler for smooth scrolling and active state logic
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+                    // Close menu on mobile after click
+                    if (window.innerWidth <= 1024) {
+                        closeMenu();
+                    }
+                });
+
+                listItem.appendChild(anchor);
+                tocList.appendChild(listItem);
+            });
+        }
+        
+        function updateActiveTOC() {
+            const sections = document.querySelectorAll('#main-content-body h2[id]');
+            const tocLinks = document.querySelectorAll('#toc-list .toc-link');
+            let activeSectionId = '';
+            const scrollY = window.scrollY;
+            
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                // Check if the section top is near the top of the viewport (with offset for sticky header)
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    activeSectionId = section.id;
+                }
+            });
+            
+            // If no section is close to 100px from top, find the one closest to the very top.
+            if (!activeSectionId) {
+                // This handles the case when the user is scrolled to the very bottom or very top.
+                for (let i = 0; i < sections.length; i++) {
+                    const rect = sections[i].getBoundingClientRect();
+                    if (rect.top < window.innerHeight / 2) {
+                        activeSectionId = sections[i].id;
+                    }
+                }
+            }
+
+            // Fallback for top of the page
+            if (scrollY < 200 && !activeSectionId) {
+                 activeSectionId = sections.length > 0 ? sections[0].id : '';
+            }
+
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === activeSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function toggleStickyHeader() {
+            const stickyHeader = document.getElementById('sticky-header-desktop');
+            const mainHeaderHeight = document.querySelector('h1').offsetHeight;
+            
+            if (window.scrollY > mainHeaderHeight + 50) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
+            }
+        }
+        
+        // --- Mobile Menu Toggle ---
+        
+        function openMenu() {
+            const tocMenu = document.getElementById('toc-menu');
+            document.body.classList.add('no-scroll');
+            tocMenu.classList.add('open');
+        }
+
+        function closeMenu() {
+            const tocMenu = document.getElementById('toc-menu');
+            document.body.classList.remove('no-scroll');
+            tocMenu.classList.remove('open');
+        }
+
+        // --- DLS Calculator Logic (NEW IMPLEMENTATION) ---
+        
+        /**
+         * Gets resource percentage from the T10 table with interpolation.
+         * @param {number} oversRemaining - Decimal overs remaining (e.g., 7.5).
+         * @param {number} wicketsLost - Number of wickets lost (0-9).
+         * @returns {number} The interpolated resource percentage.
+         */
+        function getResource(oversRemaining, wicketsLost) {
+            if (oversRemaining <= 0) return 0.0;
+            if (wicketsLost >= 10) return 0.0;
+            
+            wicketsLost = Math.max(0, Math.min(9, wicketsLost));
+            oversRemaining = Math.max(0, Math.min(TABLE_MAX_OVERS, oversRemaining));
+
+            const floorOvers = Math.floor(oversRemaining);
+            const ceilOvers = Math.ceil(oversRemaining);
+            const fraction = oversRemaining - floorOvers;
+
+            // Use TABLE_MAX_OVERS (10) for indexing, not FULL_OVERS (10)
+            // This ensures 10 overs maps to index 0 correctly in the table
+            if (fraction === 0) {
+                const index = TABLE_MAX_OVERS - floorOvers;
+                return T10_RESOURCE_TABLE[wicketsLost][index];
+            }
+            
+            const indexFloor = TABLE_MAX_OVERS - floorOvers;
+            const indexCeil = TABLE_MAX_OVERS - ceilOvers;
+
+            const resFloor = T10_RESOURCE_TABLE[wicketsLost][indexFloor];
+            const resCeil = T10_RESOURCE_TABLE[wicketsLost][indexCeil];
+            
+            const interpolatedValue = resFloor + (resCeil - resFloor) * fraction;
+            return interpolatedValue;
+        }
+
+        function setupDLS_Calculator() {
+            const dlsForm = document.getElementById('dls-form');
+            const isTeamAInterruptedCheckbox = document.getElementById('isTeamAInterrupted');
+            const interruptionDetailsDiv = document.getElementById('interruption-details');
+            const scoreTeamAInput = document.getElementById('scoreTeamA');
+
+
+            isTeamAInterruptedCheckbox.addEventListener('change', function() {
+                interruptionDetailsDiv.classList.toggle('hidden', !this.checked);
+                // When interrupted, the final score input is not needed.
+                scoreTeamAInput.disabled = this.checked;
+                scoreTeamAInput.required = !this.checked;
+                if(this.checked){
+                    scoreTeamAInput.value = '';
+                }
+            });
+
+            dlsForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const dlsResultDiv = document.getElementById('dlsResult');
+                
+                const isInterrupted = isTeamAInterruptedCheckbox.checked;
+                const revisedOversB = parseFloat(document.getElementById('oversTeamBRevised').value);
+
+                let effectiveScoreA;
+                let resource1, resource2;
+                let calculationExplanation = '';
+
+                if (isNaN(revisedOversB) || revisedOversB < 5 || revisedOversB > FULL_OVERS) {
+                    dlsResultDiv.innerHTML = `<p class="text-lg text-red-400">Invalid Input: Team B's revised overs must be between 5 and ${FULL_OVERS}.</p>`;
+                    return;
+                }
+                
+                resource2 = getResource(revisedOversB, 0);
+
+                if (isInterrupted) {
+                    effectiveScoreA = parseFloat(document.getElementById('scoreTeamAInterruption').value);
+                    const oversTeamAStr = document.getElementById('oversTeamAInterruption').value;
+                    const wicketsTeamA = parseInt(document.getElementById('wicketsTeamAInterruption').value);
+                    const oversTeamADec = oversToDecimal(oversTeamAStr);
+
+                    if (isNaN(effectiveScoreA) || !oversTeamAStr || isNaN(oversTeamADec) || isNaN(wicketsTeamA)) {
+                        dlsResultDiv.innerHTML = `<p class="text-lg text-red-400">Invalid Input: Please fill all interruption details correctly.</p>`;
+                        return;
+                    }
+
+                    const oversRemainingA = FULL_OVERS - oversTeamADec;
+                    const resourceRemaining = getResource(oversRemainingA, wicketsTeamA);
+                    
+                    // For the base resource (R1), we calculate what resources Team A *started* with.
+                    // Since it's a 10-over match, they started with 10 overs of resources.
+                    // getResource(10, 0) returns 100%
+                    const resourceStart = getResource(FULL_OVERS, 0); 
+                    const resourceUsed = resourceStart - resourceRemaining; 
+                    
+                    // Actually, simpler logic for interruption:
+                    // R1 = Resources Team A had available to them (Start - Lost).
+                    // If match started as 10 overs, they had getResource(10,0) available.
+                    // If interrupted at 6 overs, they lost the remaining 4 overs resources.
+                    // R1 = getResource(10, 0) - getResource(4, wickets_at_interruption).
+                    
+                    resource1 = getResource(FULL_OVERS, 0) - resourceRemaining;
+                    
+                    calculationExplanation = `
+                        <p class="text-sm text-gray-500">Team A's innings was interrupted at ${oversTeamAStr} overs (${wicketsTeamA} wkts).</p>
+                        <p class="text-sm text-gray-500">Resources Used by Team A (R1): <span class="font-bold text-gray-800">${resource1.toFixed(2)}%</span></p>
+                        <p class="text-sm text-gray-500">Resources Available to Team B (R2): <span class="font-bold text-gray-800">${resource2.toFixed(2)}%</span> (for ${revisedOversB} overs)</p>
+                    `;
+                } else {
+                    effectiveScoreA = parseFloat(document.getElementById('scoreTeamA').value);
+
+                    if (isNaN(effectiveScoreA)) {
+                        dlsResultDiv.innerHTML = `<p class="text-lg text-red-400">Invalid Input: Please enter Team A's final score.</p>`;
+                        return;
+                    }
+                    
+                    // R1 is the resource for the full 10 overs
+                    resource1 = getResource(FULL_OVERS, 0); 
+                    
+                    calculationExplanation = `
+                        <p class="text-sm text-gray-500">Team A completed a full 10-over innings.</p>
+                        <p class="text-sm text-gray-500">Resources for Team A (R1): <span class="font-bold text-gray-800">${resource1.toFixed(2)}%</span></p>
+                        <p class="text-sm text-gray-500">Resources for Team B (R2): <span class="font-bold text-gray-800">${resource2.toFixed(2)}%</span></p>
+                    `;
+                }
+
+                if (resource1 <= 0) {
+                    dlsResultDiv.innerHTML = `<p class="text-lg text-red-400">Calculation Error: Team A's resources are zero. Cannot calculate target.</p>`;
+                    return;
+                }
+                
+                const parScore = effectiveScoreA * (resource2 / resource1);
+                const target = Math.floor(parScore) + 1;
+                
+                dlsResultDiv.innerHTML = `
+                    <div class="mb-3">
+                        <p class="text-gray-600 font-semibold">Par Score for Team B:</p>
+                        <p class="text-4xl font-black text-yellow-500">${parScore.toFixed(2)}</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-800 font-bold text-xl">TARGET TO WIN:</p>
+                        <p class="text-6xl font-black text-emerald-600">${target}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-gray-300 text-left">
+                        <h4 class="font-bold text-blue-600 mb-1">Calculation Breakdown:</h4>
+                        ${calculationExplanation}
+                        <p class="text-xs text-gray-500 mt-2">Formula: Target = floor(Score_A × (R2 / R1)) + 1</p>
+                    </div>
+                `;
+            });
+        }
+
+
+        // --- NEW/FIXED: NRR Calculator Logic ---
+        function setupNRRCalculator() {
+            const nrrForm = document.getElementById('nrr-form');
+            if (!nrrForm) return;
+
+            nrrForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const resultDiv = document.getElementById('nrrResult');
+                try {
+                    // Get Team A (1st Innings) data
+                    const teamName1 = document.getElementById('teamName1').value.trim() || 'Team A';
+                    const runs1 = parseInt(document.getElementById('runs1').value);
+                    const overs1Str = document.getElementById('overs1').value;
+                    const isAllOut1 = document.getElementById('isAllOut1').checked;
+
+                    // Get Team B (2nd Innings) data
+                    const teamName2 = document.getElementById('teamName2').value.trim() || 'Team B';
+                    const runs2 = parseInt(document.getElementById('runs2').value);
+                    const overs2Str = document.getElementById('overs2').value;
+                    const isAllOut2 = document.getElementById('isAllOut2').checked;
+
+                    const overs1Dec = oversToDecimal(overs1Str);
+                    const overs2Dec = oversToDecimal(overs2Str);
+
+                    // Basic validation
+                    if (isNaN(runs1) || isNaN(runs2) || isNaN(overs1Dec) || isNaN(overs2Dec)) {
+                        throw new Error("Invalid input. Please check runs and overs format (e.g., 9.5).");
+                    }
+                    
+                    // Determine the overs denominator for each team's run rate calculation.
+                    // If a team is all out, their run rate is calculated over the full quota of overs.
+                    const team1_OversForCalc = isAllOut1 ? FULL_OVERS : overs1Dec;
+                    const team2_OversForCalc = isAllOut2 ? FULL_OVERS : overs2Dec;
+                    
+                    // Calculate the run rate FOR each team and AGAINST each team.
+                    const team1_RunRateFor = runs1 / team1_OversForCalc;
+                    const team1_RunRateAgainst = runs2 / team2_OversForCalc;
+
+                    // Calculate NRR for Team 1
+                    const team1_NRR = team1_RunRateFor - team1_RunRateAgainst;
+                    const team2_NRR = -team1_NRR; // Team 2's NRR is the inverse.
+                    
+                    // Determine winner for display
+                    let winnerMessage = '';
+                    if (runs1 > runs2) {
+                        winnerMessage = `${teamName1} wins by ${runs1 - runs2} runs.`;
+                    } else if (runs2 > runs1) {
+                        winnerMessage = `${teamName2} wins.`; // Wickets info isn't in the form
+                    } else {
+                        winnerMessage = 'Match Tied.';
+                    }
+
+                    // Update result display
+                    resultDiv.innerHTML = `
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">${winnerMessage}</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                            <div class="p-3 bg-blue-50 rounded-lg">
+                                <p class="font-bold text-blue-700">${teamName1} NRR:</p>
+                                <p class="text-3xl font-black ${team1_NRR >= 0 ? 'text-green-600' : 'text-red-500'}">${team1_NRR.toFixed(2)}</p>
+                                <p class="text-xs text-gray-500">Scored at ${(runs1/overs1Dec).toFixed(2)} RPO</p>
+                            </div>
+                            <div class="p-3 bg-red-50 rounded-lg">
+                                <p class="font-bold text-red-700">${teamName2} NRR:</p>
+                                <p class="text-3xl font-black ${team2_NRR >= 0 ? 'text-green-600' : 'text-red-500'}">${team2_NRR.toFixed(2)}</p>
+                                <p class="text-xs text-gray-500">Scored at ${(runs2/overs2Dec).toFixed(2)} RPO</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-3">*If a team is all out, their run rate is calculated against the full ${FULL_OVERS} overs.</p>
+                    `;
+                    
+                    // Update result box style
+                    resultDiv.classList.remove('nrr-positive', 'nrr-negative', 'nrr-neutral');
+                    if (Math.abs(team1_NRR) > 0.001) { // Use a small epsilon for floating point comparison
+                         resultDiv.classList.add(team1_NRR > 0 ? 'nrr-positive' : 'nrr-negative');
+                    } else {
+                        resultDiv.classList.add('nrr-neutral');
+                    }
+
+                } catch (error) {
+                    resultDiv.innerHTML = `<p class="text-lg text-red-500 font-semibold">Error: ${error.message}</p>`;
+                    resultDiv.className = 'p-4 mt-6 rounded-lg text-center shadow-2xl border border-2 nrr-negative';
+                }
+            });
+        }
+
+        // --- Dynamic Tournament Status Banner ---
+        function updateTournamentStatus() {
+            const statusBanner = document.getElementById('status-banner');
+            const now = new Date();
+            let statusText = "Tournament Concluded. Check the final standings!";
+            let statusClass = "status-post";
+            
+            const firstGameDay = GAME_DAYS[0];
+            const lastGameDay = GAME_DAYS[GAME_DAYS.length - 1];
+
+            const tournamentEnd = new Date(lastGameDay.getFullYear(), lastGameDay.getMonth(), lastGameDay.getDate(), 23, 59, 59);
+            if (now > tournamentEnd) {
+                statusText = "Tournament Concluded! Check the final standings and prize-giving details.";
+                statusClass = "status-post";
+            }
+            
+            let isLive = false;
+            let timeToNextGame = null;
+
+            for (const day of GAME_DAYS) {
+                const gameStart = new Date(day.getFullYear(), day.getMonth(), day.getDate(), 9, 0, 0); // Start at 9 AM
+                const gameEnd = new Date(day.getFullYear(), day.getMonth(), day.getDate(), 17, 0, 0); // End at 5 PM
+
+                if (now >= gameStart && now <= gameEnd) {
+                    isLive = true;
+                    break;
+                } else if (now < gameStart) {
+                    if (!timeToNextGame || gameStart < timeToNextGame) {
+                        timeToNextGame = gameStart;
+                    }
+                }
+            }
+            
+            if (isLive) {
+                statusText = "MATCH DAY IS LIVE! Follow the action and check the rules instantly.";
+                statusClass = "status-live";
+            } else if (timeToNextGame) {
+                statusClass = "status-countdown";
+                const diff = timeToNextGame.getTime() - now.getTime();
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                statusText = `
+                    <div class="countdown-container">
+                        <div class="countdown-label">Next Game Day In</div>
+                        <div class="countdown-blocks">
+                            <div class="countdown-block">
+                                <div class="countdown-number">${days}</div>
+                                <div class="countdown-unit">Days</div>
+                            </div>
+                            <div class="countdown-block">
+                                <div class="countdown-number">${hours}</div>
+                                <div class="countdown-unit">Hours</div>
+                            </div>
+                            <div class="countdown-block">
+                                <div class="countdown-number">${minutes}</div>
+                                <div class="countdown-unit">Minutes</div>
+                            </div>
+                            <div class="countdown-block">
+                                <div class="countdown-number">${seconds}</div>
+                                <div class="countdown-unit">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            statusBanner.className = `status-banner ${statusClass}`;
+            statusBanner.innerHTML = statusText;
+            
+            if (statusClass === 'status-countdown') {
+                setTimeout(updateTournamentStatus, 1000);
+            }
+        }
+
+        // --- Main Chat Logic (Rule Consultation & Translator) ---
+        
+        // Reusable function to append messages to the chat log
+        function appendMessage(sender, text, isSummary = false) {
+            const chatLog = document.getElementById('chat-log');
+            const messageContainer = document.createElement('div');
+            messageContainer.className = `flex mb-4 ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            const messageBubble = document.createElement('div');
+            messageBubble.className = `p-3 rounded-xl max-w-[85%] md:max-w-md shadow-md`;
+            
+            if (sender === 'user') {
+                messageBubble.className += ' bg-blue-600 text-white rounded-br-none';
+            } else { // 'arif' or 'system' response
+                messageBubble.className += ' bg-gray-100 text-gray-800 rounded-tl-none border border-gray-200';
+            }
+            
+            // Replace markdown with HTML
+            let formattedText = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                .replace(/(\r\n|\n|\r)/gm, '<br>'); // Line breaks
+
+            if (isSummary) {
+                formattedText = `<strong class="text-emerald-600 block mb-2">Rule Summary:</strong>` + formattedText;
+            }
+
+            messageBubble.innerHTML = formattedText;
+            messageContainer.appendChild(messageBubble);
+            chatLog.appendChild(messageContainer);
+            
+            // Scroll to the bottom
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        // --- NEW/UPDATED --- AI Typing Indicator Logic
+        function showTypingIndicator() {
+            const chatLog = document.getElementById('chat-log');
+            if (document.getElementById('typing-indicator-bubble')) return; // Don't add more than one
+
+            const indicatorBubble = document.createElement('div');
+            indicatorBubble.id = 'typing-indicator-bubble';
+            indicatorBubble.className = 'flex justify-start mb-4';
+            indicatorBubble.innerHTML = `
+                <div class="bg-gray-100 text-gray-800 p-3 rounded-xl rounded-tl-none max-w-max shadow-md border border-gray-200">
+                    <div class="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            `;
+            chatLog.appendChild(indicatorBubble);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator-bubble');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+
+        // --- Trophy Case Constants and Logic ---
+        
+        const CERTIFICATE_WIDTH = 1080;
+        const CERTIFICATE_HEIGHT = 1080;
+
+        async function generateAndDrawCrest(ctx, W, H) {
+            const prompt = "A photorealistic, highly detailed, professional cricket crest logo. The design symbolizes the partnership and bond between Bangladesh and New Zealand. The logo must feature the Bengal Tiger and the Kiwi bird, with the Bangladesh flag colors (red/green) and New Zealand colors (blue/red/Southern Cross) incorporated. Include a cricket bat and ball. The overall style should be premium, metallic, and world-class, with a deep blue and gold aesthetic. The words BANGLADESH and NEW ZEALAND must be clearly visible on the design.";
+            
+            const payload = {
+                instances: [{ prompt: prompt }],
+                parameters: { "sampleCount": 1 }
+            };
+
+            try {
+                const result = await fetchWithBackoff(IMAGE_API_BASE_URL + `?key=${apiKey}`, payload); 
+                
+                if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
+                    const base64Data = result.predictions[0].bytesBase64Encoded;
+                    const img = new Image();
+                    
+                    return new Promise((resolve) => {
+                        img.onload = () => {
+                            const imgSize = 300;
+                            const imgX = (W / 2) - (imgSize / 2);
+                            const imgY = 170;
+                            ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+                            ctx.shadowBlur = 10;
+                            ctx.shadowOffsetX = 5;
+                            ctx.shadowOffsetY = 5;
+                            ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
+                            ctx.shadowBlur = 0;
+                            ctx.shadowOffsetX = 0;
+                            ctx.shadowOffsetY = 0;
+                            resolve(true);
+                        };
+                        img.src = `data:image/png;base64,${base64Data}`;
+                    });
+                }
+            } catch (error) {
+                console.error('Image Generation API Error:', error);
+                ctx.shadowBlur = 0;
+                ctx.font = '400 30px Inter';
+                ctx.fillStyle = '#f87171';
+                ctx.textAlign = 'center';
+                ctx.fillText('Custom Crest Failed to Load.', W / 2, 300);
+                return false;
+            }
+        }
+
+        function loadOswaldFont(callback) {
+            if (document.fonts && document.fonts.check('700 48px Oswald')) {
+                callback();
+                return;
+            }
+            
+            const font = new FontFace('Oswald', 'url(https://fonts.gstatic.com/s/oswald/v16/MjQ6mgd4C_k_Gg8g7HhH.woff2) format("woff2")', { weight: '700' });
+            font.load().then(() => {
+                document.fonts.add(font);
+                callback();
+            }).catch(err => {
+                console.error("Failed to load Oswald font for canvas:", err);
+                callback(); 
+            });
+        }
+        
+        function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            let lineCount = 0;
+            
+            for (let n = 0; n < words.length; n++) {
+                const testLine = line + words[n] + ' ';
+                const metrics = ctx.measureText(testLine);
+                const testWidth = metrics.width;
+                
+                if (testWidth > maxWidth && n > 0) {
+                    ctx.fillText(line.trim(), x, y + lineCount * lineHeight);
+                    line = words[n] + ' ';
+                    lineCount++;
+                } else {
+                    line = testLine;
+                }
+            }
+            ctx.fillText(line.trim(), x, y + lineCount * lineHeight);
+            return y + (lineCount + 1) * lineHeight;
+        }
+
+        async function generateCertificate(playerName, achievement, opponent) {
+            const canvas = document.getElementById('certificate-canvas');
+            const ctx = canvas.getContext('2d');
+            const loader = document.getElementById('trophy-loader');
+            const downloadButton = document.getElementById('download-certificate-button');
+
+            loader.classList.remove('hidden');
+            downloadButton.classList.add('hidden');
+            
+            canvas.width = CERTIFICATE_WIDTH;
+            canvas.height = CERTIFICATE_HEIGHT;
+            const W = canvas.width;
+            const H = canvas.height;
+            const centerX = W / 2;
+            
+            ctx.fillStyle = '#f3f4f6'; 
+            ctx.fillRect(0, 0, W, H);
+            ctx.font = '700 40px Oswald';
+            ctx.fillStyle = '#059669';
+            ctx.textAlign = 'center';
+            ctx.fillText('GENERATING WORLD-CLASS CREST...', W / 2, H / 2);
+
+            await new Promise(resolve => loadOswaldFont(resolve));
+            
+            // Certificate Background
+            ctx.fillStyle = '#f3f4f6';
+            ctx.fillRect(0, 0, W, H);
+            
+            // Gradient Border
+            const gradient = ctx.createLinearGradient(0, 0, W, H);
+            gradient.addColorStop(0, '#047857'); // Green
+            gradient.addColorStop(1, '#b91c1c'); // Red
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, W, H);
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(15, 15, W - 30, H - 30);
+            
+            ctx.strokeStyle = '#FBBF24';
+            ctx.lineWidth = 15;
+            ctx.strokeRect(30, 30, W - 60, H - 60);
+            ctx.shadowBlur = 0;
+            
+            await generateAndDrawCrest(ctx, W, H);
+
+            ctx.textAlign = 'center';
+            ctx.font = '700 40px Oswald';
+            ctx.fillStyle = '#111827';
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
+            ctx.shadowBlur = 4;
+            ctx.fillText('BENGAL BASH 5.0', centerX, 60);
+
+            ctx.strokeStyle = '#FBBF24'; 
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(centerX - 400, 130);
+            ctx.lineTo(centerX + 400, 130);
+            ctx.stroke();
+
+            ctx.font = '700 90px Oswald';
+            ctx.fillStyle = '#047857';
+            ctx.shadowColor = 'rgba(4, 120, 87, 0.2)';
+            ctx.shadowBlur = 10;
+            ctx.fillText('MAN OF THE MATCH', centerX, 550); 
+            ctx.shadowBlur = 0;
+
+            ctx.font = '900 120px Oswald';
+            ctx.fillStyle = '#1f2937';
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
+            ctx.shadowBlur = 15;
+            ctx.fillText(playerName.toUpperCase(), centerX, 690); 
+            ctx.shadowBlur = 0;
+
+            ctx.font = '400 36px Inter';
+            ctx.fillStyle = '#6b7280';
+            ctx.fillText('MATCH PERFORMANCE vs ' + opponent.toUpperCase(), centerX, 760); 
+            
+            ctx.font = '600 45px Inter';
+            ctx.fillStyle = '#047857';
+            wrapText(ctx, achievement, centerX, 840, W * 0.8, 55);
+
+            const footerY = H - 150;
+            ctx.strokeStyle = '#047857'; 
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(centerX - 350, footerY - 50);
+            ctx.lineTo(centerX + 350, footerY - 50);
+            ctx.stroke();
+            
+            ctx.font = '700 30px Oswald';
+            ctx.fillStyle = '#111827';
+            ctx.fillText('Arifur Rahman', centerX, footerY);
+
+            ctx.font = '400 24px Inter';
+            ctx.fillStyle = '#6b7280';
+            ctx.fillText('Match Referee', centerX, footerY + 30);
+            
+            ctx.font = '400 24px Inter';
+            ctx.fillStyle = '#1f2937';
+            ctx.fillText(new Date().toLocaleDateString('en-NZ', { year: 'numeric', month: 'long', day: 'numeric' }), centerX, footerY + 70);
+
+            loader.classList.add('hidden');
+            downloadButton.classList.remove('hidden');
+        }
+        
+        function downloadCertificate() {
+            const canvas = document.getElementById('certificate-canvas');
+            const playerName = document.getElementById('player-name-input').value.trim() || 'PlayerName';
+            
+            const link = document.createElement('a');
+            link.download = `BENGAL_BASH_MOM_${playerName.replace(/\s/g, '_')}_${new Date().toISOString().slice(0, 10)}.png`;
+            link.href = canvas.toDataURL('image/png');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function setupTrophyCase() {
+            const form = document.getElementById('certificate-form');
+            const downloadButton = document.getElementById('download-certificate-button');
+            const canvas = document.getElementById('certificate-canvas');
+
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#f3f4f6'; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.font = '400 30px Inter';
+            ctx.fillStyle = '#6b7280';
+            ctx.textAlign = 'center';
+            ctx.fillText('Enter details above and click Generate!', canvas.width / 2, canvas.height / 2);
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const playerName = document.getElementById('player-name-input').value.trim();
+                const achievement = document.getElementById('achievement-input').value.trim();
+                const opponent = document.getElementById('match-opponent-input').value.trim();
+
+                if (playerName && achievement && opponent) {
+                    await generateCertificate(playerName, achievement, opponent);
+                }
+            });
+
+            downloadButton.addEventListener('click', downloadCertificate);
+        }
+
+        // --- Other Utility Functions ---
+        // (Bowler limit chart removed due to simplified rule)
+
+        // --- PWA & Accessibility Functions ---
+        
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/rulebook_app_sw.js')
+                        .then(reg => console.log('Service Worker registered.'))
+                        .catch(err => console.error('Service Worker registration failed:', err));
+                });
+            }
+        }
+        
+        let baseFontSize = 16;
+        const mainContentElement = document.getElementById('main-content-body'); 
+        
+        function adjustFontSize(change) {
+            baseFontSize = Math.max(12, Math.min(24, baseFontSize + change)); 
+            if (mainContentElement) {
+                mainContentElement.style.fontSize = `${baseFontSize}px`;
+            }
+        }
+        
+        // --- Other Utility Functions ---
+
+        function copyContact() {
+            const contact = '02108176461';
+            const tempInput = document.createElement('input');
+            tempInput.value = contact;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                const msg = document.getElementById('copy-message');
+                msg.textContent = 'Contact Copied!';
+                msg.classList.remove('hidden');
+                setTimeout(() => msg.classList.add('hidden'), 2000);
+            } catch (err) {
+                console.error('Copy command failed', err);
+            }
+            document.body.removeChild(tempInput);
+        }
+        
+        // --- NEW: Interactive Elements Setup ---
+        
+        // --- Interactive Fielding Diagram Logic ---
+        function setupFieldingDiagram() {
+            const toggleOn = document.getElementById('powerplay-toggle-on');
+            const toggleOff = document.getElementById('powerplay-toggle-off');
+            const container = document.getElementById('fielders-container');
+            const ruleText = document.getElementById('fielding-rule-text');
+
+            function updateDiagram(isPowerPlay) {
+                container.innerHTML = '';
+                toggleOn.classList.toggle('active', isPowerPlay);
+                toggleOff.classList.toggle('active', !isPowerPlay);
+
+                const outerFieldersCount = isPowerPlay ? 2 : 5;
+                const innerFieldersCount = 11 - outerFieldersCount;
+                
+                ruleText.innerHTML = `During these overs, a maximum of <strong class="text-yellow-600">${outerFieldersCount} fielders</strong> are allowed outside the inner circle.`;
+
+                // Position outer fielders (BD Red)
+                for (let i = 0; i < outerFieldersCount; i++) {
+                    const angle = (i / outerFieldersCount) * 2 * Math.PI;
+                    const fielder = document.createElement('div');
+                    fielder.className = 'fielder fielder-outer';
+                    fielder.style.left = `${50 + 42.5 * Math.cos(angle)}%`;
+                    fielder.style.top = `${50 + 42.5 * Math.sin(angle)}%`;
+                    container.appendChild(fielder);
+                }
+
+                // Position inner fielders (NZ Blue)
+                for (let i = 0; i < innerFieldersCount; i++) {
+                    const angle = i * 0.9 + 0.5;
+                    const radius = 5 + i * 2.5;
+                    const fielder = document.createElement('div');
+                    fielder.className = 'fielder fielder-inner';
+                    fielder.style.left = `${50 + radius * Math.cos(angle)}%`;
+                    fielder.style.top = `${50 + radius * Math.sin(angle)}%`;
+                    container.appendChild(fielder);
+                }
+            }
+
+            toggleOn.addEventListener('click', () => updateDiagram(true));
+            toggleOff.addEventListener('click', () => updateDiagram(false));
+            updateDiagram(true); // Initial state
+        }
+
+        // --- Interactive Bowler Limit Chart Logic ---
+        let bowlerLimitChart; 
+
+        function setupBowlerLimitChart() {
+            if (typeof Chart === 'undefined') {
+                console.error("Chart.js library not loaded.");
+                // Graceful fallback UI
+                const container = document.getElementById('bowler-limit-chart').parentElement;
+                container.innerHTML = '<p class="text-red-500 text-center text-sm">Chart visualization unavailable (Library failed to load).</p>';
+                return;
+            }
+
+            const slider = document.getElementById('overs-slider');
+            const sliderValue = document.getElementById('overs-slider-value');
+            const ctx = document.getElementById('bowler-limit-chart').getContext('2d');
+
+            const getChartData = (overs) => {
+                const limits = { 5: 0, 6: 1, 7: 2, 8: 3, 9: 4, 10: 5 }; // Updated limits for 10 max
+                const maxTwoOvers = limits[overs] || 0;
+                // Rule Logic Implementation:
+                // 5 overs: max 1 over per bowler (0 bowlers bowl 2)
+                // 6 overs: 1 bowler can bowl 2 overs
+                // 7 overs: 2 bowlers can bowl 2 overs
+                // 8 overs: 3 bowlers can bowl 2 overs
+                // 9 overs: 4 bowlers can bowl 2 overs
+                // 10 overs: 5 bowlers can bowl 2 overs (all)
+                
+                let max2 = 0;
+                if(overs == 10) max2 = 5;
+                if(overs == 9) max2 = 4;
+                if(overs == 8) max2 = 3;
+                if(overs == 7) max2 = 2;
+                if(overs == 6) max2 = 1;
+                if(overs == 5) max2 = 0;
+                
+                const maxOneOver = 0; 
+                return { maxTwoOvers: max2, maxOneOver: 0 };
+            };
+
+            bowlerLimitChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Bowlers allowed max 2 overs', 'Bowlers allowed max 1 over'],
+                    datasets: [{
+                        label: 'Number of Bowlers',
+                        data: [5, 0], // Initial for 10 overs
+                        backgroundColor: ['#10b981', '#06b6d4'],
+                        borderColor: ['#059669', '#0891b2'],
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 5,
+                            ticks: { color: '#4b5563', stepSize: 1 },
+                            grid: { color: 'rgba(107, 114, 128, 0.1)' }
+                        },
+                        y: {
+                            ticks: { color: '#1f2937', font: { weight: 'bold' } },
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${c.raw}` } }
+                    }
+                }
+            });
+
+            const updateChart = () => {
+                const overs = slider.value;
+                sliderValue.textContent = overs;
+                const { maxTwoOvers, maxOneOver } = getChartData(overs);
+                bowlerLimitChart.data.datasets[0].data = [maxTwoOvers, maxOneOver];
+                bowlerLimitChart.update();
+            };
+
+            slider.addEventListener('input', updateChart);
+            updateChart(); // Initial call
+        }
+
+        // --- Floating Translator Logic ---
+        function setupFloatingTranslator() {
+            const mainContentBody = document.getElementById('main-content-body');
+            const floatButton = document.getElementById('floating-translate-button');
+
+            mainContentBody.addEventListener('mouseup', function(e) {
+                const selection = window.getSelection();
+                const selectedText = selection.toString().trim();
+                
+                if (selectedText.length > 5) { // Only show for selections longer than 5 chars
+                    const range = selection.getRangeAt(0);
+                    const rect = range.getBoundingClientRect();
+                    
+                    floatButton.style.left = `${rect.left + window.scrollX + (rect.width / 2) - (floatButton.offsetWidth / 2)}px`;
+                    floatButton.style.top = `${rect.top + window.scrollY - floatButton.offsetHeight - 5}px`;
+                    floatButton.classList.add('visible');
+                } else {
+                    floatButton.classList.remove('visible');
+                }
+            });
+
+            document.addEventListener('mousedown', function(e) {
+                // Hide the button if clicking anywhere else, except on the button itself
+                if (e.target !== floatButton) {
+                    floatButton.classList.remove('visible');
+                }
+            });
+
+            floatButton.addEventListener('click', function() {
+                const selectedText = window.getSelection().toString().trim();
+                if (selectedText) {
+                    chatModal.classList.remove('hidden');
+                    document.body.classList.add('no-scroll');
+                    document.getElementById('tab-translator').click();
+                    const translationInput = document.getElementById('translation-input');
+                    translationInput.value = selectedText;
+                    document.getElementById('translate-button').click(); // Auto-click translate
+                }
+                floatButton.classList.remove('visible');
+            });
+        }
+
+        // --- NEW GEMINI FEATURES ---
+
+        // 1. Section Summarizer Logic
+        async function handleSummaryRequest(textToSummarize) {
+            askArifButton.click(); // Open the modal
+            document.getElementById('tab-consultation').click(); // Switch to chat tab
+            showTypingIndicator();
+            
+            const url = `${LLM_API_BASE_URL}?key=${apiKey}`;
+            try {
+                const systemPrompt = "You are an expert cricket analyst for the Bengal Bash 5.0 Tournament. Summarize the following cricket rule text into a simple, easy-to-understand paragraph of 2-3 sentences. Focus on the single most important takeaway for a player or captain.";
+                const userQuery = `Please summarize this rule: "${textToSummarize}"`;
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+                const result = await fetchWithBackoff(url, payload);
+                const summary = extractTextFromResponse(result);
+                removeTypingIndicator(); // Remove indicator before showing message
+                appendMessage('arif', summary, true); // `true` indicates it's a summary
+            } catch (error) {
+                console.error('Summary API Error:', error);
+                removeTypingIndicator();
+                appendMessage('system', "Sorry, I couldn't summarize that section right now. Please try again.");
+            }
+        }
+        
+        // 2. Umpire Assist Logic (NEWLY IMPLEMENTED)
+        async function handleUmpireQuery(query) {
+            const loader = document.getElementById('umpire-loader');
+            const outputContainer = document.getElementById('umpire-output-container');
+            const outputEl = document.getElementById('umpire-output');
+
+            loader.classList.remove('hidden');
+            outputContainer.classList.add('hidden');
+
+            const url = `${LLM_API_BASE_URL}?key=${apiKey}`;
+            try {
+                const rulebookContent = document.getElementById('main-content-body').innerText;
+                const systemPrompt = "You are an expert Umpire's assistant for the Bengal Bash 5.0 tournament. Your role is to provide quick, accurate, and definitive answers to on-field queries based *only* on the provided official rulebook. Be direct and clear. Start your answer with a clear 'Yes' or 'No' if possible, then briefly explain the relevant rule. Reference the rule number if you can find it. Use **bold** for keywords.";
+                const userQueryWithContext = `OFFICIAL RULEBOOK:\n---\n${rulebookContent}\n---\nUMPIRE'S QUESTION: ${query}`;
+                
+                const payload = {
+                    contents: [{ parts: [{ text: userQueryWithContext }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+                const result = await fetchWithBackoff(url, payload);
+                const ruling = extractTextFromResponse(result);
+                
+                outputEl.innerHTML = ruling.replace(/\n/g, '<br>'); // Keep line breaks from LLM
+                outputContainer.classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Umpire Assist API Error:', error);
+                outputEl.textContent = "Sorry, I could not retrieve that ruling. Please check your connection and try again.";
+                outputContainer.classList.remove('hidden');
+            } finally {
+                loader.classList.add('hidden');
+            }
+        }
+
+        function setupUmpireAssist() {
+            const form = document.getElementById('umpire-form');
+            const input = document.getElementById('umpire-input');
+            const quickButtons = document.querySelectorAll('.umpire-quick-query-btn');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const query = input.value.trim();
+                if (query) {
+                    handleUmpireQuery(query);
+                }
+            });
+
+            quickButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const query = this.textContent;
+                    input.value = query; // Optional: fill the input box
+                    handleUmpireQuery(query);
+                });
+            });
+        }
+
+        // 3. Match Report Generator Logic
+        async function handleReportGeneration(e) {
+            e.preventDefault();
+            const form = e.target;
+            const team1Name = form.querySelector('#report-team1-name').value;
+            const team1Score = form.querySelector('#report-team1-score').value;
+            const team2Name = form.querySelector('#report-team2-name').value;
+            const team2Score = form.querySelector('#report-team2-score').value;
+            const performances = form.querySelector('#report-performances').value;
+            const loader = document.getElementById('report-loader');
+            const outputContainer = document.getElementById('report-output-container');
+            const outputEl = document.getElementById('report-output');
+
+            loader.classList.remove('hidden');
+            outputContainer.classList.add('hidden');
+
+            const url = `${LLM_API_BASE_URL}?key=${apiKey}`;
+            try {
+                const systemPrompt = "You are an enthusiastic cricket commentator. Write a brief, exciting match summary (around 3-4 sentences) for the 'Bengal Bash 5.0 Tournament'. The summary should be suitable for social media. Highlight the winner and any key performances mentioned. Use an energetic and positive tone. ALWAYS include the hashtag #BengalBash50. ALWAYS end the report with the full link to the tournament Facebook page: https://www.facebook.com/BANZICup";
+                const userQuery = `Generate a match report for the following game:
+                - ${team1Name}: ${team1Score}
+                - ${team2Name}: ${team2Score}
+                - Key Performances: ${performances}`;
+                
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+                const result = await fetchWithBackoff(url, payload);
+                const report = extractTextFromResponse(result);
+                
+                outputEl.textContent = report;
+                outputContainer.classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Report Generation API Error:', error);
+                outputEl.textContent = "Sorry, couldn't generate the report. Please check the details and try again.";
+                outputContainer.classList.remove('hidden');
+            } finally {
+                loader.classList.add('hidden');
+            }
+        }
+        
+        function copyReportText() {
+            const reportText = document.getElementById('report-output').textContent;
+            navigator.clipboard.writeText(reportText).then(() => {
+                const btn = document.getElementById('copy-report-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = originalText; }, 2000);
+            }).catch(err => console.error('Failed to copy text: ', err));
+        }
+
+        // --- NEW: Search Functionality ---
+        function setupSearch() {
+            const searchForm = document.getElementById('search-form');
+            const searchInput = document.getElementById('rule-search');
+            const resultsPanel = document.getElementById('search-results-panel');
+            const resultsList = document.getElementById('results-list');
+            const resultCount = document.getElementById('result-count');
+            const mainContent = document.getElementById('main-content-body');
+            let highlightTimeout;
+
+            // A function to remove highlights from previous searches in the main content
+            function clearContentHighlights() {
+                const highlighted = mainContent.querySelectorAll('span.highlight-search-result');
+                highlighted.forEach(span => {
+                    span.outerHTML = span.innerHTML; // Replace the span with its text content
+                });
+            }
+
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // This is the key fix to prevent the "flash"
+                clearContentHighlights();
+
+                const query = searchInput.value.trim().toLowerCase();
+                if (!query) {
+                    resultsPanel.classList.add('hidden');
+                    return;
+                }
+
+                const searchableElements = mainContent.querySelectorAll('p, li, h3');
+                let results = [];
+
+                searchableElements.forEach(el => {
+                    const text = el.innerText.toLowerCase();
+                    if (text.includes(query)) {
+                        let parentH2 = el.closest('h2');
+                        let sectionId = parentH2 ? parentH2.id : 'introduction';
+                        let sectionTitle = parentH2 ? parentH2.innerText.split('\n')[0] : 'Introduction';
+
+                        results.push({
+                            text: el.innerText,
+                            element: el,
+                            sectionId: sectionId,
+                            sectionTitle: sectionTitle
+                        });
+                    }
+                });
+
+                resultsList.innerHTML = ''; // Clear previous results
+
+                if (results.length > 0) {
+                    resultCount.textContent = results.length;
+                    const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+
+                    results.forEach(res => {
+                        const resultItem = document.createElement('a');
+                        resultItem.href = `#${res.sectionId}`;
+                        resultItem.className = 'block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition cursor-pointer border border-gray-200';
+                        
+                        resultItem.innerHTML = `
+                            <p class="text-xs font-bold text-blue-600 mb-1">In Section: ${res.sectionTitle}</p>
+                            <p class="text-sm text-gray-700">${res.text.replace(regex, `<span class="bg-yellow-300 text-black font-bold rounded-sm px-1">$1</span>`)}</p>
+                        `;
+
+                        resultItem.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const targetElement = document.getElementById(res.sectionId);
+                            if (targetElement) {
+                                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                
+                                // Briefly highlight the original element
+                                clearTimeout(highlightTimeout);
+                                clearContentHighlights();
+                                
+                                const originalHTML = res.element.innerHTML;
+                                res.element.innerHTML = originalHTML.replace(regex, `<span class="highlight-search-result bg-yellow-300 text-black font-bold rounded-sm px-1 transition duration-300">$1</span>`);
+                                
+                                highlightTimeout = setTimeout(() => {
+                                   clearContentHighlights();
+                                }, 3000);
+                            }
+                        });
+                        resultsList.appendChild(resultItem);
+                    });
+                } else {
+                    resultCount.textContent = 0;
+                    resultsList.innerHTML = '<p class="text-gray-500">No results found for your query.</p>';
+                }
+
+                resultsPanel.classList.remove('hidden');
+                resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            });
+        }
+
+        // --- NEW: Time Zone Display Logic ---
+        function setupTimezoneDisplay() {
+            const timeEl = document.getElementById('time-display');
+            const dateEl = document.getElementById('date-display');
+            
+            function updateTime() {
+                const now = new Date();
+                const timeOptions = {
+                    timeZone: 'Pacific/Auckland',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                };
+                const dateOptions = {
+                    timeZone: 'Pacific/Auckland',
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                };
+                
+                timeEl.textContent = now.toLocaleTimeString('en-NZ', timeOptions);
+                dateEl.textContent = now.toLocaleDateString('en-NZ', dateOptions);
+            }
+            
+            updateTime(); // Initial call
+            setInterval(updateTime, 1000); // Update every second
+        }
+
+        // --- NEW: Floating Particle Background Logic ---
+        function setupParticleAnimation() {
+            const canvas = document.getElementById('particle-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const particleCount = 75; // Adjust number of particles here
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedY = Math.random() * 1.5 + 0.5;
+                    this.opacity = Math.random() * 0.5 + 0.2;
+                }
+                update() {
+                    this.y -= this.speedY;
+                    if (this.y < 0) {
+                        this.y = canvas.height;
+                        this.x = Math.random() * canvas.width;
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(16, 185, 129, ${this.opacity})`; // Soft green particles
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+                requestAnimationFrame(animate);
+            }
+
+            init();
+            animate();
+
+            // Handle window resizing
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                init();
+            });
+        }
+
+
+        // --- NEW: On-Scroll Animation Logic ---
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Animate only once
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach(el => observer.observe(el));
+        }
+
+        // --- NEW: Scroll to Top Logic ---
+        function setupScrollToTop() {
+            const button = document.getElementById('scroll-to-top-button');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    button.classList.add('visible');
+                } else {
+                    button.classList.remove('visible');
+                }
+            });
+            button.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // --- NEW: Theme Toggle Logic ---
+        function setupThemeToggle() {
+            const toggleButton = document.getElementById('theme-toggle-button');
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const body = document.body;
+
+            // Simplified theme toggle logic as we're primarily energetic/light now
+            const applyTheme = (theme) => {
+               // Logic simplified for this version to just handle icon visibility if needed
+               // but predominantly uses the new vibrant CSS variables
+            };
+        }
+
+
+        // --- Initialization ---
+        window.onload = function() {
+            populateTOC();
+            updateTournamentStatus();
+            setupTrophyCase();
+            setupDLS_Calculator();
+            setupNRRCalculator(); 
+            setupFieldingDiagram();
+            setupFloatingTranslator();
+            registerServiceWorker();
+            setupSearch(); // Initialize the search function
+            setupTimezoneDisplay(); // Initialize the time display
+            setupScrollAnimations(); // Initialize the scroll animations
+            setupScrollToTop(); // Initialize scroll to top button
+            setupParticleAnimation(); // Initialize the new particle background
+
+            // Add listeners for NEW Gemini features
+            document.querySelectorAll('.summarize-section-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    let textToSummarize = '';
+                    let nextElement = this.parentElement.nextElementSibling;
+                    while (nextElement && !nextElement.classList.contains('page-break-separator') && nextElement.tagName !== 'H2') {
+                        if (['P', 'UL', 'H3'].includes(nextElement.tagName)) {
+                            textToSummarize += nextElement.innerText + '\n\n';
+                        }
+                        nextElement = nextElement.nextElementSibling;
+                    }
+                    handleSummaryRequest(textToSummarize.trim());
+                });
+            });
+            document.getElementById('report-form').addEventListener('submit', handleReportGeneration);
+            document.getElementById('copy-report-btn').addEventListener('click', copyReportText);
+            
+            // NEW: Setup for Umpire Assist
+            setupUmpireAssist();
+
+            // Handler for the Rule Consultation Chat
+            document.getElementById('chat-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const input = document.getElementById('chat-input');
+                const query = input.value.trim();
+                
+                if (!query) return;
+
+                appendMessage('user', query);
+                input.value = ''; // Clear input
+
+                // Show loader and disable input
+                showTypingIndicator();
+                input.disabled = true;
+                
+                const url = `${LLM_API_BASE_URL}?key=${apiKey}`;
+
+                try {
+                    // System instructions to guide Arif's persona and focus
+                    const systemPrompt = "You are Arifur Rahman, the Match Referee and Principal Organiser for the 'Bengal Bash 5.0 Tournament'. Your purpose is to answer rule-related questions using the full text of the official rulebook provided. Your answers must be concise, definitive, and strictly adhere to the rules in the text. Do not invent rules or information. If the rulebook does not cover a topic, state that the Tournament Committee or Match Referee's decision will be final. Use **bold** formatting for keywords.";
+                    
+                    // The prompt combines the user query with the full rulebook text.
+                    const rulebookContent = document.getElementById('main-content-body').innerText;
+                    const userQueryWithContext = `OFFICIAL RULEBOOK:\n---\n${rulebookContent}\n---\nUSER QUESTION: ${query}\n\nBased ONLY on the OFFICIAL RULEBOOK provided above, answer the user's question.`;
+
+                    const payload = {
+                        contents: [{ parts: [{ text: userQueryWithContext }] }],
+                        tools: [{ "google_search": {} }],
+                        systemInstruction: {
+                            parts: [{ text: systemPrompt }]
+                        },
+                    };
+                    
+                    const result = await fetchWithBackoff(url, payload);
+                    const arifResponse = extractTextFromResponse(result);
+                    
+                    removeTypingIndicator(); // Remove indicator before showing message
+                    appendMessage('arif', arifResponse);
+
+                } catch (error) {
+                    console.error('Gemini API Error:', error);
+                    removeTypingIndicator();
+                    appendMessage('system', "I'm sorry, I'm currently unable to access the rule book to answer your query. Please try again later.");
+                } finally {
+                    input.disabled = false;
+                    input.focus();
+                }
+            });
+
+            // Handler for the English to Bangla Translator
+            document.getElementById('translator-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const input = document.getElementById('translation-input');
+                const output = document.getElementById('translation-output');
+                const textToTranslate = input.value.trim();
+                const loader = document.getElementById('translator-loader');
+
+                if (!textToTranslate) return;
+                
+                loader.classList.remove('hidden');
+                output.innerHTML = '<p class="text-lg text-gray-500">Translating...</p>';
+                
+                const url = `${LLM_API_BASE_URL}?key=${apiKey}`;
+
+                try {
+                    const systemPrompt = "You are a professional, accurate translator. Translate the provided English text into formal Bengali (Bangla) language. Do not add any extra commentary or context.";
+                    
+                    const userQuery = `Translate the following English text to Bengali (Bangla): "${textToTranslate}"`;
+
+                    const payload = {
+                        contents: [{ parts: [{ text: userQuery }] }],
+                        systemInstruction: {
+                            parts: [{ text: systemPrompt }]
+                        },
+                    };
+                    
+                    const result = await fetchWithBackoff(url, payload);
+                    const translatedText = extractTextFromResponse(result);
+                    
+                    output.innerHTML = `<p class="text-xl text-emerald-900 font-inter">${translatedText}</p>`;
+
+                } catch (error) {
+                    console.error('Translation API Error:', error);
+                    output.innerHTML = `<p class="text-lg text-red-500">Error: Could not complete translation. Please check your connection and try a shorter text.</p>`;
+                } finally {
+                    loader.classList.add('hidden');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', () => {
+            updateActiveTOC();
+            if (window.innerWidth > 1024) {
+                toggleStickyHeader();
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const tocMenu = document.getElementById('toc-menu');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    if (tocMenu.classList.contains('open')) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                });
+            }
+
+            // Handle clicks outside the menu on mobile
+            document.addEventListener('click', (e) => {
+                const menuToggle = document.getElementById('menu-toggle');
+                const tocMenu = document.getElementById('toc-menu');
+                if (window.innerWidth <= 1024 && tocMenu.classList.contains('open') && !tocMenu.contains(e.target) && e.target !== menuToggle && !menuToggle.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            const fontIncreaseButton = document.getElementById('font-increase');
+            const fontDecreaseButton = document.getElementById('font-decrease');
+            // const printButton = document.getElementById('print-button'); // Removed
+            if (fontIncreaseButton) fontIncreaseButton.addEventListener('click', () => adjustFontSize(1));
+            if (fontDecreaseButton) fontDecreaseButton.addEventListener('click', () => adjustFontSize(-1));
+            // if (printButton) printButton.addEventListener('click', () => saveAsPDF()); // Removed
+
+            updateActiveTOC();
+            if (window.innerWidth > 1024) {
+                toggleStickyHeader();
+            }
+        });
+
+        // --- Modal/Tab Switching Logic ---
+        const askArifButton = document.getElementById('ask-arif-button');
+        const chatModal = document.getElementById('chat-modal');
+        const chatCloseButton = document.getElementById('chat-close-button');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const sections = document.querySelectorAll('[id^="section-"]');
+
+        askArifButton.addEventListener('click', () => {
+            chatModal.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
+            document.getElementById('tab-consultation').click();
+        });
+
+        chatCloseButton.addEventListener('click', () => {
+            chatModal.classList.add('hidden');
+            document.body.classList.remove('no-scroll');
+        });
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.id.replace('tab-', 'section-');
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                sections.forEach(sec => sec.classList.add('hidden'));
+                button.classList.add('active');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                    targetSection.classList.add('flex-col');
+                }
+            });
+        });
+        
+        // --- Section Translate Button Logic ---
+
+        document.querySelectorAll('.translate-section-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                let textToTranslate = '';
+                let nextElement = this.parentElement.nextElementSibling;
+                while (nextElement && !nextElement.classList.contains('page-break-separator') && nextElement.tagName !== 'H2') {
+                    if (['P', 'UL', 'H3'].includes(nextElement.tagName)) {
+                         textToTranslate += nextElement.innerText + '\n\n';
+                    }
+                    nextElement = nextElement.nextElementSibling;
+                }
+                
+                chatModal.classList.remove('hidden');
+                document.body.classList.add('no-scroll');
+                document.getElementById('tab-translator').click();
+                document.getElementById('translation-input').value = textToTranslate.trim();
+            });
+        });
+
+    </script>
 </body>
 </html>
