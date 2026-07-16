@@ -713,158 +713,64 @@
             </div>
         </section>
 
-        <!-- PAGE 7: MEMBER & TEAM REGISTRY (NEW REQUIREMENT) -->
-        <section id="view-members" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
-            <div class="space-y-4 border-b border-slate-900 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase font-mono">Tigers Sports Registry</span>
-                    <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3 mt-1">
-                        <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Member Database & Stats
-                    </h1>
-                </div>
-                <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
-                    <!-- Admin Unlock Control Status Button -->
-                    <button id="admin-lock-btn" onclick="toggleAdminModePrompt()" class="bg-slate-900 text-amber-400 border border-amber-500/30 px-4 py-2.5 rounded-xl transition font-bold flex items-center gap-2 hover:bg-slate-850">
-                        <span id="admin-status-dot" class="h-2 w-2 bg-amber-500 rounded-full"></span>
-                        <span id="admin-status-text">Unlock Admin Mode</span>
-                    </button>
-                    <!-- Sync database backup/restore tool -->
-                    <button id="admin-sync-btn" onclick="toggleSyncModal(true)" class="bg-slate-900 hover:bg-slate-850 text-slate-300 border border-slate-800 px-4 py-2.5 rounded-xl transition font-bold flex items-center gap-2 hidden">
-                        💾 Backup / Sync DB
-                    </button>
-                    <button onclick="exportRegistryCSV()" class="bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/20 px-4 py-2.5 rounded-xl transition font-bold flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                        Export CSV Ledger
-                    </button>
-                </div>
-            </div>
+        <!-- PAGE 7: REGISTERED MEMBERS & DATABASE -->
+<section id="view-members" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
+    <div class="space-y-4 border-b border-slate-900 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+            <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase font-mono">Official Census</span>
+            <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3 mt-1">
+                <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Member Database & Statistics
+            </h1>
+        </div>
+        <button onclick="exportCSV()" class="bg-slate-900 hover:bg-slate-850 text-emerald-400 border border-slate-800 px-5 py-2.5 rounded-xl transition text-xs font-mono font-bold shadow-inner">
+            📥 Export CSV Ledger
+        </button>
+    </div>
 
-            <!-- Live Community Counts -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
-                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Total Registered</span>
-                    <div id="stat-total-players" class="text-3xl font-black text-white font-oswald">0</div>
-                    <span class="text-[10px] text-emerald-400/80 block leading-none font-mono">Across All Portfolios</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
-                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Male Division</span>
-                    <div id="stat-male-players" class="text-3xl font-black text-teal-400 font-oswald">0</div>
-                    <span id="stat-male-pct" class="text-[10px] text-slate-500 block leading-none font-mono">0% representation</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
-                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Female Division</span>
-                    <div id="stat-female-players" class="text-3xl font-black text-pink-400 font-oswald">0</div>
-                    <span id="stat-female-pct" class="text-[10px] text-slate-500 block leading-none font-mono">0% representation</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
-                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Affiliated Teams</span>
-                    <div id="stat-affiliated-teams" class="text-3xl font-black text-amber-400 font-oswald">0</div>
-                    <span class="text-[10px] text-slate-500 block leading-none font-mono">Active Community Clubs</span>
-                </div>
-            </div>
+    <!-- Real-time Stats Scoreboards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass-card p-4 rounded-xl text-center"><span class="text-[10px] uppercase text-slate-500 font-mono font-bold block">Total Roster</span><span id="stat-total" class="text-3xl font-black font-oswald text-emerald-400 mt-1 block">0</span></div>
+        <div class="glass-card p-4 rounded-xl text-center"><span class="text-[10px] uppercase text-slate-500 font-mono font-bold block">Male Athletes</span><span id="stat-male" class="text-2xl font-black font-oswald text-slate-200 mt-1 block">0</span></div>
+        <div class="glass-card p-4 rounded-xl text-center"><span class="text-[10px] uppercase text-slate-500 font-mono font-bold block">Female Athletes</span><span id="stat-female" class="text-2xl font-black font-oswald text-slate-200 mt-1 block">0</span></div>
+        <div class="glass-card p-4 rounded-xl text-center"><span class="text-[10px] uppercase text-slate-500 font-mono font-bold block">Affiliated Teams</span><span id="stat-teams" class="text-2xl font-black font-oswald text-amber-400 mt-1 block">0</span></div>
+    </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-                
-                <!-- Registration Submission Form Card (Locked by default unless admin unlocks it) -->
-                <div class="lg:col-span-1 space-y-6">
-                    <div id="registration-locked-notice" class="glass-card p-8 rounded-3xl text-center space-y-4 border border-dashed border-slate-800">
-                        <span class="text-3xl block">🔒</span>
-                        <h4 class="font-bold font-oswald text-white uppercase tracking-wider">Registration Form Locked</h4>
-                        <p class="text-xs text-slate-400 leading-normal">The Active Player Registry is managed directly by authorized TSI administrators. To unlock this form and complete registration updates, click "Unlock Admin Mode" above.</p>
-                    </div>
+    <!-- Searching Filter Panels -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-slate-950/50 p-3 rounded-2xl border border-slate-900">
+        <input type="text" id="member-search" oninput="filterMembers()" placeholder="Search active names or teams..." class="px-4 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+        <select id="member-sport-filter" onchange="filterMembers()" class="px-3 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-emerald-500">
+            <option value="all">All Sports Disciplines</option>
+            <option value="Cricket">Cricket</option>
+            <option value="Football">Football</option>
+            <option value="Badminton">Badminton</option>
+        </select>
+        <select id="member-gender-filter" onchange="filterMembers()" class="px-3 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-emerald-500">
+            <option value="all">All Gender Roster</option>
+            <option value="Male">Male Roster</option>
+            <option value="Female">Female Roster</option>
+        </select>
+    </div>
 
-                    <div id="registration-form-card" class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl border border-slate-800 hidden">
-                        <div>
-                            <h3 class="text-lg font-bold text-white font-oswald uppercase tracking-wider flex items-center gap-2">
-                                <span class="h-4 w-1 bg-emerald-500 rounded"></span> Register New Player
-                            </h3>
-                            <p class="text-xs text-slate-400 mt-1 leading-normal">Submit details to instantly update our active community athletic metrics ledger.</p>
-                        </div>
-
-                        <form id="player-register-form" onsubmit="registerPlayer(event)" class="space-y-4 text-xs">
-                            <div class="space-y-1.5">
-                                <label class="text-slate-400 text-[10px] uppercase font-mono font-semibold">Player Full Name</label>
-                                <input type="text" id="reg-player-name" placeholder="E.g. Mehedi Hasan" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-slate-200 placeholder-slate-600 focus:outline-none focus:border-emerald-500" required>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="space-y-1.5">
-                                    <label class="text-slate-400 text-[10px] uppercase font-mono font-semibold">Gender Division</label>
-                                    <select id="reg-player-gender" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-slate-300 focus:outline-none focus:border-emerald-500" required>
-                                        <option value="" disabled selected>Select</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                </div>
-                                <div class="space-y-1.5">
-                                    <label class="text-slate-400 text-[10px] uppercase font-mono font-semibold">Sport Activity</label>
-                                    <select id="reg-player-sport" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-slate-300 focus:outline-none focus:border-emerald-500" required>
-                                        <option value="Cricket">Cricket</option>
-                                        <option value="Football">Football</option>
-                                        <option value="Badminton">Badminton</option>
-                                        <option value="Micro Sports">Micro Sports</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="space-y-1.5 col-span-2 sm:col-span-1">
-                                    <label class="text-slate-400 text-[10px] uppercase font-mono font-semibold">Community Affiliation</label>
-                                    <input type="text" id="reg-player-team" placeholder="E.g. Tigers United" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-slate-200 placeholder-slate-600 focus:outline-none focus:border-emerald-500" required>
-                                </div>
-                                <div class="space-y-1.5 col-span-2 sm:col-span-1">
-                                    <label class="text-slate-400 text-[10px] uppercase font-mono font-semibold">Joined (Year)</label>
-                                    <input type="number" id="reg-player-year" min="2000" max="2100" value="2026" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-slate-200 focus:outline-none focus:border-emerald-500" required>
-                                </div>
-                            </div>
-
-                            <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-3.5 rounded-xl font-oswald uppercase text-xs tracking-wider transition">Commit to Registry</button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Database Live Grid Board -->
-                <div class="lg:col-span-2 space-y-4">
-                    <!-- Filters Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-950/50 p-3 rounded-2xl border border-slate-900">
-                        <input type="text" id="member-search" oninput="drawPlayersTable()" placeholder="Search members..." class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-light">
-                        <select id="member-filter-gender" onchange="drawPlayersTable()" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none">
-                            <option value="all">All Genders</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                        <select id="member-filter-sport" onchange="drawPlayersTable()" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none">
-                            <option value="all">All Sports</option>
-                            <option value="Cricket">Cricket</option>
-                            <option value="Football">Football</option>
-                            <option value="Badminton">Badminton</option>
-                            <option value="Micro Sports">Micro Sports</option>
-                        </select>
-                    </div>
-
-                    <!-- Scrollable Registry Table Container -->
-                    <div class="border border-slate-900 rounded-2xl overflow-hidden bg-slate-950/20 max-h-[500px] overflow-y-auto custom-scrollbar">
-                        <table class="min-w-full text-left border-collapse text-xs">
-                            <thead class="sticky top-0 bg-slate-950/90 text-slate-400 font-mono border-b border-slate-900 select-none z-10">
-                                <tr>
-                                    <th class="px-5 py-3">Player Name</th>
-                                    <th class="px-5 py-3">Gender</th>
-                                    <th class="px-5 py-3">Affiliation</th>
-                                    <th class="px-5 py-3">Discipline</th>
-                                    <th class="px-5 py-3">Joined</th>
-                                    <th class="px-5 py-3 text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="player-table-rows" class="divide-y divide-slate-900/60 font-light text-slate-300">
-                                <!-- Data elements mapped dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
+    <!-- Main Live Roster Spreadsheet Table View -->
+    <div class="glass-card rounded-2xl overflow-hidden shadow-2xl border border-slate-850">
+        <div class="overflow-x-auto custom-scrollbar">
+            <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                    <tr class="bg-slate-950 text-slate-400 font-mono uppercase border-b border-slate-850 tracking-wider">
+                        <th class="p-4 font-semibold">Player Name</th>
+                        <th class="p-4 font-semibold">Community Team</th>
+                        <th class="p-4 font-semibold">Sport</th>
+                        <th class="p-4 font-semibold">Gender</th>
+                        <th class="p-4 font-semibold">Joined (Year)</th>
+                    </tr>
+                </thead>
+                <tbody id="member-table-body" class="divide-y divide-slate-900/60 bg-slate-950/10 font-light">
+                    <!-- Loaded dynamically via JSON file -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
     </main>
 
     <!-- Admin Pin Verification Modal (To avoid native browser prompts) -->
