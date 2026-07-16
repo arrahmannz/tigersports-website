@@ -7,7 +7,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=Oswald:wght=500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root { scroll-behavior: smooth; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; }
@@ -53,7 +53,7 @@
             <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
                 
                 <!-- NEW IMAGE FOLDER PATH -->
-                <img src="images/tsi-logo.png" alt="TSI Logo" class="h-12 w-auto object-contain transition-transform group-hover:scale-105">
+                <img src="images/tsi-logo.png" alt="TSI Logo" class="h-12 w-auto object-contain transition-transform group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/48x48/10b981/030712?text=TSI'">
                 
                 <div>
                     <span class="font-black text-2xl tracking-wider font-oswald block text-white leading-none group-hover:text-emerald-400 transition-colors">TIGERS SPORTS</span>
@@ -69,6 +69,7 @@
                 <a href="#football" onclick="navigateTo('football')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Football</a>
                 <a href="#indoor" onclick="navigateTo('indoor')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Indoor Sports</a>
                 <a href="#youth-family" onclick="navigateTo('youth-family')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Youth & Family</a>
+                <a href="#members" onclick="navigateTo('members')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Player Registry</a>
             </nav>
 
             <div class="flex items-center gap-4">
@@ -92,7 +93,8 @@
             <a href="#cricket" onclick="navigateTo('cricket'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Cricket</a>
             <a href="#football" onclick="navigateTo('football'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Football</a>
             <a href="#indoor" onclick="navigateTo('indoor'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Indoor Sports</a>
-            <a href="#youth-family" onclick="navigateTo('youth-family'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2">Youth & Family</a>
+            <a href="#youth-family" onclick="navigateTo('youth-family'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Youth & Family</a>
+            <a href="#members" onclick="navigateTo('members'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2">Player Registry</a>
         </div>
     </header>
 
@@ -119,7 +121,7 @@
                     </p>
                     <div class="pt-6 flex flex-wrap justify-center gap-4">
                         <button onclick="navigateTo('about')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-8 py-4 rounded-xl transition font-oswald tracking-wide uppercase text-xs shadow-lg shadow-emerald-500/20">Governance & Directory</button>
-                        <button onclick="navigateTo('cricket')" class="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800/80 font-semibold px-8 py-4 rounded-xl transition text-xs tracking-wider uppercase">Explore Sporting Sectors</button>
+                        <button onclick="navigateTo('members')" class="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800/80 font-semibold px-8 py-4 rounded-xl transition text-xs tracking-wider uppercase">Active Player Registry</button>
                     </div>
                 </div>
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.06)_0%,transparent_65%)] pointer-events-none"></div>
@@ -219,7 +221,7 @@
             </div>
         </section>
 
-        <!-- PAGE 2: ABOUT TSI & EXECUTIVE COMMITTEE (UPDATED DIRECTORY SYSTEM) -->
+        <!-- PAGE 2: ABOUT TSI & EXECUTIVE COMMITTEE -->
         <section id="view-about" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
             <div class="space-y-4 border-b border-slate-900 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
@@ -757,12 +759,182 @@
             </div>
         </section>
 
+        <!-- PAGE 7: MEMBER & TEAM REGISTRY (NEW REQUIREMENT) -->
+        <section id="view-members" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+            <div class="space-y-4 border-b border-slate-900 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase font-mono">Tigers Sports Registry</span>
+                    <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3 mt-1">
+                        <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Member Database & Stats
+                    </h1>
+                </div>
+                <div class="flex gap-2 text-xs font-mono">
+                    <button onclick="exportRegistryCSV()" class="bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/20 px-4 py-2.5 rounded-xl transition font-bold flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        Export CSV Ledger
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Community Counts -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Total Registered</span>
+                    <div id="stat-total-players" class="text-3xl font-black text-white font-oswald">0</div>
+                    <span class="text-[10px] text-emerald-400/80 block leading-none font-mono">Across All Portfolios</span>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Male Division</span>
+                    <div id="stat-male-players" class="text-3xl font-black text-teal-400 font-oswald">0</div>
+                    <span id="stat-male-pct" class="text-[10px] text-slate-500 block leading-none font-mono">0% representation</span>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Female Division</span>
+                    <div id="stat-female-players" class="text-3xl font-black text-pink-400 font-oswald">0</div>
+                    <span id="stat-female-pct" class="text-[10px] text-slate-500 block leading-none font-mono">0% representation</span>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-1 shadow-md">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono font-semibold">Affiliated Teams</span>
+                    <div id="stat-affiliated-teams" class="text-3xl font-black text-amber-400 font-oswald">0</div>
+                    <span class="text-[10px] text-slate-500 block leading-none font-mono">Active Community Clubs</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+                
+                <!-- Registration Submission Form Card -->
+                <div class="lg:col-span-1 glass-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl border border-slate-800">
+                    <div>
+                        <h3 class="text-lg font-bold text-white font-oswald uppercase tracking-wider flex items-center gap-2">
+                            <span class="h-4 w-1 bg-emerald-500 rounded"></span> Register New Player
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-normal">Submit details to instantly update our active community athletic metrics ledger.</p>
+                    </div>
+
+                    <form id="player-register-form" onsubmit="registerPlayer(event)" class="space-y-4 text-xs">
+                        <div class="space-y-1.5">
+                            <label class="text-slate-400 text-[10px] uppercase font-mono font-semibold">Player Full Name</label>
+                            <input type="text" id="reg-player-name" placeholder="E.g. Mehedi Hasan" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-slate-200 placeholder-slate-600 focus:outline-none focus:border-emerald-500" required>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-1.5">
+                                <label class="text-slate-400 text-[10px] uppercase font-mono font-semibold">Gender Division</label>
+                                <select id="reg-player-gender" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-slate-300 focus:outline-none focus:border-emerald-500" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="text-slate-400 text-[10px] uppercase font-mono font-semibold">Sport Activity</label>
+                                <select id="reg-player-sport" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-slate-300 focus:outline-none focus:border-emerald-500" required>
+                                    <option value="Cricket">Cricket</option>
+                                    <option value="Football">Football</option>
+                                    <option value="Badminton">Badminton</option>
+                                    <option value="Micro Sports">Micro Sports</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label class="text-slate-400 text-[10px] uppercase font-mono font-semibold">Community Team Affiliation</label>
+                            <input type="text" id="reg-player-team" placeholder="E.g. Mt Roskill Tigers (or Independent)" class="w-full p-3 bg-slate-950 border border-slate-850 rounded-xl text-slate-200 placeholder-slate-600 focus:outline-none focus:border-emerald-500" required>
+                        </div>
+
+                        <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-3.5 rounded-xl font-oswald uppercase text-xs tracking-wider transition">Commit to Registry</button>
+                    </form>
+                </div>
+
+                <!-- Database Live Grid Board -->
+                <div class="lg:col-span-2 space-y-4">
+                    <!-- Filters Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-950/50 p-3 rounded-2xl border border-slate-900">
+                        <input type="text" id="member-search" oninput="drawPlayersTable()" placeholder="Search members..." class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-light">
+                        <select id="member-filter-gender" onchange="drawPlayersTable()" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none">
+                            <option value="all">All Genders</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <select id="member-filter-sport" onchange="drawPlayersTable()" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none">
+                            <option value="all">All Sports</option>
+                            <option value="Cricket">Cricket</option>
+                            <option value="Football">Football</option>
+                            <option value="Badminton">Badminton</option>
+                            <option value="Micro Sports">Micro Sports</option>
+                        </select>
+                    </div>
+
+                    <!-- Scrollable Registry Table Container -->
+                    <div class="border border-slate-900 rounded-2xl overflow-hidden bg-slate-950/20 max-h-[500px] overflow-y-auto custom-scrollbar">
+                        <table class="min-w-full text-left border-collapse text-xs">
+                            <thead class="sticky top-0 bg-slate-950/90 text-slate-400 font-mono border-b border-slate-900 select-none z-10">
+                                <tr>
+                                    <th class="px-5 py-3">Player Name</th>
+                                    <th class="px-5 py-3">Gender</th>
+                                    <th class="px-5 py-3">Affiliation</th>
+                                    <th class="px-5 py-3">Discipline</th>
+                                    <th class="px-5 py-3 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="player-table-rows" class="divide-y divide-slate-900/60 font-light text-slate-300">
+                                <!-- Data elements mapped dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
     <!-- Global Footer -->
-    <footer class="border-t border-slate-900 bg-slate-950 py-12 text-center text-xs text-slate-500 tracking-wide mt-12">
-        <p>&copy; 2026 Tigers Sports Incorporated. All rights reserved.</p>
-        <p class="mt-2 font-semibold text-slate-400 font-mono">Incorporated Society Registry ID: 50264993 • Auckland, New Zealand</p>
+    <footer class="border-t border-slate-900 bg-slate-950 py-16 mt-16 text-xs text-slate-500 tracking-wide">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <img src="images/tsi-logo.png" alt="TSI Logo" class="h-10 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/40x40/10b981/030712?text=TSI'">
+                    <span class="font-bold text-slate-200 font-oswald text-lg tracking-wider">TIGERS SPORTS</span>
+                </div>
+                <p class="text-slate-500 font-light leading-relaxed">
+                    Connecting ethnic sports groups, standardizing operational execution models, and supporting multicultural integration across the Auckland Region.
+                </p>
+                <div class="flex items-center gap-3 pt-2">
+                    <a href="https://www.facebook.com/TigersSportsIncorporated" target="_blank" class="h-8 w-8 bg-slate-900 hover:bg-emerald-500/10 border border-slate-800 text-slate-300 hover:text-emerald-400 rounded-lg flex items-center justify-center transition" title="Official Facebook Page">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="font-bold text-white font-oswald uppercase tracking-wider text-sm">Administrative Contact</h4>
+                <ul class="space-y-3 font-mono text-slate-400 text-[11px] font-light">
+                    <li class="flex items-center gap-2">
+                        <span class="text-slate-600">Tel:</span>
+                        <a href="tel:02108176461" class="text-emerald-400 hover:underline">02108176461</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-slate-600">Email:</span>
+                        <a href="mailto:arrahman_01@yahoo.com" class="text-emerald-400 hover:underline">arrahman_01@yahoo.com</a>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-slate-600 shrink-0">HQ:</span>
+                        <span class="leading-snug">2/421 Mount Albert Road, Mount Roskill, Auckland 1041, NZ</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="font-bold text-white font-oswald uppercase tracking-wider text-sm">Compliancy Registry</h4>
+                <p class="text-slate-500 font-light leading-normal">
+                    Incorporated Societies Ledger Registry ID: 50264993. Operated strictly in compliance with MBIE standards as an active New Zealand community sports body.
+                </p>
+                <div class="text-[10px] text-slate-600">
+                    &copy; 2026 Tigers Sports Incorporated. All rights reserved.
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!-- Scripting Infrastructure -->
@@ -791,10 +963,25 @@
             { name: "Md Zubaer Rahman", role: "Head of Indoor Operations & Development", group: "board_ec", desc: "Coordinating badminton, table tennis, and strategic indoor micro sports rosters. Specialist in Badminton, Chess and Micro Sports Logistics.", initials: "ZR" },
             
             // ADVISORY BOARD (advisory)
-            { name: "Faisal Alam", role: "Advisory Board Lead", group: "advisory", desc: "Directing strategic governance, independent audits, and structural development alignments.", initials: "FA" },
+            { name: "Faisal Alam", role: "Advisory Board Lead", group: "advisory", desc: "Directing strategic governance, independent audits, and structural development alignments.", initials: "FA" }
 
-            // LIFETIME MEMBERS (lifetime)
-            { name: "Arifur Rahman", role: "Founding Executive Director & Life Time Member", group: "lifetime", desc: "Inducted as a permanent Lifetime Member for outstanding operational development, founding administrative sacrifice, and strategic dedication to Tigers Sports Incorporated.", initials: "AR" }
+            // LIFETIME MEMBERS (lifetime) - Leave empty for now as requested
+        ];
+
+        // Default mock registered players to demonstrate statistics & directory properly
+        const DEFAULT_PLAYERS = [
+            { name: "Tanvir Hasan Saikat", gender: "Male", team: "Auckland Tigers United", sport: "Football" },
+            { name: "Arifur Rahman", gender: "Male", team: "Tigers Green Gold", sport: "Cricket" },
+            { name: "Nazmul Hasan Roni", gender: "Male", team: "Mount Roskill Stars", sport: "Cricket" },
+            { name: "Mehedi Hasan Khan", gender: "Male", team: "Tigers Blue", sport: "Cricket" },
+            { name: "Sultana Jahan", gender: "Female", team: "Auckland Queens Club", sport: "Badminton" },
+            { name: "Samira Ahmed", gender: "Female", team: "Independent", sport: "Micro Sports" },
+            { name: "Niaz Monir", gender: "Male", team: "Mt Albert Warriors", sport: "Football" },
+            { name: "Tasnim Rahman", gender: "Female", team: "Auckland Queens Club", sport: "Badminton" },
+            { name: "Zubaer Rahman", gender: "Male", team: "Sandringham Knights", sport: "Badminton" },
+            { name: "Anowar Shuvo", gender: "Male", team: "Tigers Blue", sport: "Cricket" },
+            { name: "Fatima Al-Fihri", gender: "Female", team: "Mt Roskill Girls Club", sport: "Micro Sports" },
+            { name: "Faisal Alam", gender: "Male", team: "Auckland Tigers United", sport: "Football" }
         ];
 
         // T10 Resource Decay Table
@@ -855,6 +1042,16 @@
 
             const items = group === 'all' ? directoryData : directoryData.filter(d => d.group === group);
             
+            if (items.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center border border-dashed border-slate-800 rounded-2xl">
+                        <span class="text-3xl">🏆</span>
+                        <h4 class="font-bold font-oswald text-white uppercase tracking-wider mt-3">Inductions Under Review</h4>
+                        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">No members currently listed in this category. Nominations for lifetime status are pending TSI Executive Board review.</p>
+                    </div>`;
+                return;
+            }
+
             items.forEach(item => {
                 const card = document.createElement('div');
                 card.className = "glass-card p-6 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg";
@@ -1216,12 +1413,164 @@
             });
         }
 
+        // ==========================================
+        // DYNAMIC MEMBER REGISTRY FUNCTIONS
+        // ==========================================
+        
+        // Retrieve or initialize the player ledger
+        function getRegisteredPlayers() {
+            const stored = localStorage.getItem('tsi_registered_players');
+            if (stored) {
+                return JSON.parse(stored);
+            }
+            // If empty, save the default mock dataset for rich representation out of the box
+            localStorage.setItem('tsi_registered_players', JSON.stringify(DEFAULT_PLAYERS));
+            return DEFAULT_PLAYERS;
+        }
+
+        // Commit player registration from the HTML Form
+        function registerPlayer(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('reg-player-name');
+            const genderInput = document.getElementById('reg-player-gender');
+            const sportInput = document.getElementById('reg-player-sport');
+            const teamInput = document.getElementById('reg-player-team');
+
+            const name = nameInput.value.trim();
+            const gender = genderInput.value;
+            const sport = sportInput.value;
+            const team = teamInput.value.trim();
+
+            if (!name || !gender || !sport || !team) return;
+
+            const players = getRegisteredPlayers();
+            players.unshift({ name, gender, team, sport });
+            localStorage.setItem('tsi_registered_players', JSON.stringify(players));
+
+            // Reset Form Fields
+            nameInput.value = '';
+            genderInput.selectedIndex = 0;
+            sportInput.selectedIndex = 0;
+            teamInput.value = '';
+
+            // Update UI components dynamically
+            updatePlayerStats();
+            drawPlayersTable();
+        }
+
+        // Remove a player from the local browser storage registry
+        function deletePlayer(index) {
+            const players = getRegisteredPlayers();
+            players.splice(index, 1);
+            localStorage.setItem('tsi_registered_players', JSON.stringify(players));
+            updatePlayerStats();
+            drawPlayersTable();
+        }
+
+        // Recalculate metrics on the stat cards
+        function updatePlayerStats() {
+            const players = getRegisteredPlayers();
+            const total = players.length;
+            const male = players.filter(p => p.gender === 'Male').length;
+            const female = players.filter(p => p.gender === 'Female').length;
+            
+            // Unique Teams count (excluding "Independent" or "none")
+            const uniqueTeams = new Set(
+                players
+                    .map(p => p.team.trim().toLowerCase())
+                    .filter(t => t !== '' && t !== 'independent' && t !== 'none')
+            );
+
+            document.getElementById('stat-total-players').textContent = total;
+            document.getElementById('stat-male-players').textContent = male;
+            document.getElementById('stat-female-players').textContent = female;
+            document.getElementById('stat-affiliated-teams').textContent = uniqueTeams.size;
+
+            const malePct = total > 0 ? Math.round((male / total) * 100) : 0;
+            const femalePct = total > 0 ? Math.round((female / total) * 100) : 0;
+
+            document.getElementById('stat-male-pct').textContent = `${malePct}% representation`;
+            document.getElementById('stat-female-pct').textContent = `${femalePct}% representation`;
+        }
+
+        // Populate table lines with respect to search parameters & selection filters
+        function drawPlayersTable() {
+            const players = getRegisteredPlayers();
+            const query = document.getElementById('member-search').value.toLowerCase();
+            const genderFilter = document.getElementById('member-filter-gender').value;
+            const sportFilter = document.getElementById('member-filter-sport').value;
+
+            const tableBody = document.getElementById('player-table-rows');
+            tableBody.innerHTML = '';
+
+            players.forEach((player, idx) => {
+                const matchesSearch = player.name.toLowerCase().includes(query) || player.team.toLowerCase().includes(query);
+                const matchesGender = (genderFilter === 'all' || player.gender === genderFilter);
+                const matchesSport = (sportFilter === 'all' || player.sport === sportFilter);
+
+                if (matchesSearch && matchesGender && matchesSport) {
+                    const row = document.createElement('tr');
+                    row.className = "hover:bg-slate-900/40 transition-colors";
+                    row.innerHTML = `
+                        <td class="px-5 py-3 font-semibold text-white">${player.name}</td>
+                        <td class="px-5 py-3">
+                            <span class="px-2 py-0.5 text-[10px] rounded-full border ${
+                                player.gender === 'Male' ? 'bg-teal-500/10 text-teal-400 border-teal-500/20' : 'bg-pink-500/10 text-pink-400 border-pink-500/20'
+                            }">${player.gender}</span>
+                        </td>
+                        <td class="px-5 py-3 text-slate-400 font-mono">${player.team}</td>
+                        <td class="px-5 py-3 text-slate-400 font-mono">${player.sport}</td>
+                        <td class="px-5 py-3 text-right">
+                            <button onclick="deletePlayer(${idx})" class="text-red-500 hover:text-red-400 transition hover:underline font-mono text-[10px] uppercase font-bold tracking-wider">
+                                Remove
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                }
+            });
+
+            if (tableBody.children.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-5 py-8 text-center text-slate-500 font-mono italic">
+                            No registered players match the active filter criteria.
+                        </td>
+                    </tr>`;
+            }
+        }
+
+        // Export table data to standard downloadable CSV file
+        function exportRegistryCSV() {
+            const players = getRegisteredPlayers();
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Player Name,Gender,Affiliation/Team,Discipline/Sport\n";
+
+            players.forEach(p => {
+                const escapedName = p.name.replace(/"/g, '""');
+                const escapedTeam = p.team.replace(/"/g, '""');
+                csvContent += `"${escapedName}","${p.gender}","${escapedTeam}","${p.sport}"\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `TSI-Player-Registry-${Date.now()}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
         // Global Orchestration Run Loop
         window.onload = function() {
             const initialHash = window.location.hash.substring(1) || 'home';
             navigateTo(initialHash);
             filterDirectory('all');
             updateSim();
+
+            // Set up Player Directory UI components
+            updatePlayerStats();
+            drawPlayersTable();
 
             setupFieldingDiagram();
             setupParticleAnimation();
