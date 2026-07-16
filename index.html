@@ -257,7 +257,7 @@
                         <!-- Partner 2: Trips n Tours Ltd -->
                         <div class="glass-card flex-1 p-6 rounded-2xl flex flex-col items-center justify-between text-center space-y-4 hover:border-amber-500/30 transition-all">
                             <div class="h-20 flex items-center justify-center">
-                                <img src="images/Trips%20n%20logo.jpg" alt="Trips n Tours Ltd Logo" class="max-h-16 w-auto object-contain transition-all filter grayscale hover:grayscale-0 duration-300" onerror="this.onerror=null; this.outerHTML='<div class=&quot;h-14 px-6 bg-slate-900 border border-slate-800 text-amber-400 font-bold font-oswald text-base flex items-center justify-center rounded-xl shadow-inner&quot;>TRIPS N TOURS LTD</div>'">
+                                <img src="images/Trips%20n%20logo.png" alt="Trips n Tours Ltd Logo" class="max-h-16 w-auto object-contain transition-all filter grayscale hover:grayscale-0 duration-300" onerror="this.onerror=null; this.outerHTML='<div class=&quot;h-14 px-6 bg-slate-900 border border-slate-800 text-amber-400 font-bold font-oswald text-base flex items-center justify-center rounded-xl shadow-inner&quot;>TRIPS N TOURS LTD</div>'">
                             </div>
                             <div class="space-y-1">
                                 <span class="text-[9px] font-mono text-amber-400 uppercase tracking-widest font-bold bg-emerald-500/10 px-2.5 py-1 rounded">Official Travel Partner</span>
@@ -565,7 +565,7 @@
                                         <input type="number" id="wicketsTeamAInterruption" min="0" max="10" placeholder="Wickets lost at suspension" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200" value="0">
                                     </div>
                                     <div class="p-4 bg-slate-950/80 border border-slate-850 rounded-2xl space-y-3">
-                                        <input type="number" id="scoreTeamA" placeholder="First Innings Score (If no interruptions)" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-200">
+                                        <input type="number" id="scoreTeamA" placeholder="First Innings Score (If no interruptions)" class="w-full p-2.5 bg-slate-900 border border-slate-850 rounded-xl text-slate-200">
                                         <input type="number" id="oversTeamBRevised" min="5" max="10" placeholder="Revised target overs allocated to Team B (5-10)" class="w-full p-2.5 bg-slate-900 border border-slate-850 rounded-xl text-slate-200" required>
                                     </div>
                                     <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold py-3 rounded-xl font-oswald uppercase text-xs tracking-wider transition">Calculate DLS Target</button>
@@ -983,7 +983,7 @@
                 <!-- Partner 2: Trips n Tours Ltd -->
                 <div class="glass-card flex-1 p-6 rounded-2xl flex flex-col items-center justify-between text-center space-y-4 hover:border-amber-500/30 transition-all">
                     <div class="h-20 flex items-center justify-center">
-                        <img src="images/Trips%20n%20logo.jpg" alt="Trips n Tours Ltd Logo" class="max-h-16 w-auto object-contain transition-all filter grayscale hover:grayscale-0 duration-300" onerror="this.onerror=null; this.outerHTML='<div class=&quot;h-14 px-6 bg-slate-900 border border-slate-800 text-amber-400 font-bold font-oswald text-base flex items-center justify-center rounded-xl shadow-inner&quot;>TRIPS N TOURS LTD</div>'">
+                        <img src="images/Trips%20n%20logo.png" alt="Trips n Tours Ltd Logo" class="max-h-16 w-auto object-contain transition-all filter grayscale hover:grayscale-0 duration-300" onerror="this.onerror=null; this.outerHTML='<div class=&quot;h-14 px-6 bg-slate-900 border border-slate-800 text-amber-400 font-bold font-oswald text-base flex items-center justify-center rounded-xl shadow-inner&quot;>TRIPS N TOURS LTD</div>'">
                     </div>
                     <div class="space-y-1">
                         <span class="text-[9px] font-mono text-amber-400 uppercase tracking-widest font-bold bg-emerald-500/10 px-2.5 py-1 rounded">Official Travel Partner</span>
@@ -1332,7 +1332,7 @@
             const parts = oversString.split('.');
             const fullOvers = parseInt(parts[0]);
             let balls = parts.length > 1 ? parseInt(parts[1]) : 0;
-            if (isNaN(fullOvers) || iSNaN(balls) || balls < 0 || balls > 5) return NaN;
+            if (isNaN(fullOvers) || isNaN(balls) || balls < 0 || balls > 5) return NaN;
             return fullOvers + (balls / 6);
         }
 
@@ -1491,18 +1491,6 @@
                         <span class="text-slate-500 block text-[10px]">Required in ${revOvers} Overs (Target Rate: ${(target/revOvers).toFixed(2)} RPO)</span>
                     </div>`;
             });
-        }
-
-        function getResource(oversRemaining, wicketsLost) {
-            if (oversRemaining <= 0 || wicketsLost >= 10) return 0.0;
-            wicketsLost = Math.max(0, Math.min(9, wicketsLost));
-            oversRemaining = Math.max(0, Math.min(TABLE_MAX_OVERS, oversRemaining));
-            const floorOvers = Math.floor(oversRemaining);
-            const fraction = oversRemaining - floorOvers;
-            if (fraction === 0) return T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - floorOvers];
-            const resFloor = T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - floorOvers];
-            const resCeil = T10_RESOURCE_TABLE[wicketsLost][TABLE_MAX_OVERS - Math.ceil(oversRemaining)];
-            return resFloor + (resCeil - resFloor) * fraction;
         }
 
         // Professional MOTM Social Card Renderer with Direct Save Functionality
