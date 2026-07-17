@@ -80,6 +80,8 @@
                 <a href="#football" onclick="navigateTo('football')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Football</a>
                 <a href="#indoor" onclick="navigateTo('indoor')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Indoor Sports</a>
                 <a href="#youth-family" onclick="navigateTo('youth-family')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Youth & Family</a>
+                <!-- NEWLY INTEGRATED GALLERY LINK -->
+                <a href="#gallery" onclick="navigateTo('gallery')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Media Gallery</a>
                 <a href="#partners" onclick="navigateTo('partners')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Sponsors & Partners</a>
                 <a href="#members" onclick="navigateTo('members')" class="nav-link text-slate-300 hover:text-emerald-400 transition-colors py-2 border-b-2 border-transparent">Player Registry</a>
             </nav>
@@ -106,6 +108,8 @@
             <a href="#football" onclick="navigateTo('football'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Football</a>
             <a href="#indoor" onclick="navigateTo('indoor'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Indoor Sports</a>
             <a href="#youth-family" onclick="navigateTo('youth-family'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Youth & Family</a>
+            <!-- NEWLY INTEGRATED GALLERY LINK FOR MOBILE -->
+            <a href="#gallery" onclick="navigateTo('gallery'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Media Gallery</a>
             <a href="#partners" onclick="navigateTo('partners'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2 border-b border-slate-900">Sponsors & Partners</a>
             <a href="#members" onclick="navigateTo('members'); toggleMobileMenu()" class="block text-slate-300 hover:text-emerald-400 transition py-2">Player Registry</a>
         </div>
@@ -116,6 +120,7 @@
         
         <!-- PAGE 1: HOME (THE face of the organization) -->
         <section id="view-home" class="page-view hidden">
+            <!-- ... existing home content ... -->
             <div class="relative overflow-hidden py-24 lg:py-36 border-b border-slate-900 bg-gradient-to-b from-slate-950 via-slate-900/10 to-slate-950">
                 <div class="max-w-6xl mx-auto px-4 text-center relative z-10 space-y-8">
                     <span class="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest text-emerald-400 bg-emerald-500/10 px-5 py-2 rounded-full border border-emerald-500/20 uppercase font-mono">
@@ -627,7 +632,7 @@
             <div class="glass-card p-6 rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-xl border border-slate-800 bg-slate-950/20">
                 <div class="h-16 w-16 bg-teal-500/10 text-teal-400 rounded-2xl flex items-center justify-center shrink-0 border border-teal-500/20 font-bold font-oswald text-xl">TS</div>
                 <div class="space-y-1 text-center sm:text-left flex-grow">
-                    <span class="text-[9px] text-teal-400 font-mono uppercase tracking-widest font-bold bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20">Sector Leadership</span>
+                    <span class="text-[9px] text-teal-400 font-mono uppercase tracking-widest font-bold bg-teal-500/10 px-2.5 py-0.5 rounded border border-teal-500/20">Sector Leadership</span>
                     <h3 class="font-bold text-white text-lg font-oswald uppercase tracking-wider mt-1.5">Md Tanvir Hasan Saikat</h3>
                     <p class="text-xs text-slate-400 font-mono uppercase">Head of Football Operations & Development</p>
                     <p class="text-xs text-slate-500 font-light mt-1">Directing seasonal football cups, tournament architecture, and talent growth pools across Auckland Council grounds.</p>
@@ -805,7 +810,63 @@
             </div>
         </section>
 
-        <!-- PAGE 7: STRATEGIC PARTNERS & SPONSORS (DEDICATED PAGE) -->
+        <!-- NEW PAGE 7: MEDIA PHOTO GALLERY WORKSPACE -->
+        <section id="view-gallery" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+            <div class="space-y-4 border-b border-slate-900 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase font-mono">Visual Archive</span>
+                    <h1 class="text-4xl font-black uppercase font-oswald tracking-tight text-white flex items-center gap-3 mt-1">
+                        <span class="h-7 w-1.5 bg-emerald-500 rounded-full"></span> Event Photo Gallery
+                    </h1>
+                </div>
+                <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] uppercase font-mono rounded-full border border-emerald-500/20">Weekly & Matchday Updates</span>
+            </div>
+
+            <!-- Dynamic Guidance Widget (Foldable/Toggleable) -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-800 bg-slate-950/20 space-y-4">
+                <div class="flex items-center justify-between cursor-pointer" onclick="toggleGalleryGuide()">
+                    <div class="flex items-center gap-4">
+                        <div class="h-10 w-10 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-lg">💡</div>
+                        <div>
+                            <h4 class="font-bold text-white uppercase font-oswald tracking-wide text-sm">How to Upload & Display Event Photos</h4>
+                            <p class="text-xs text-slate-400 font-light">Simple guidelines for the TSI admin team.</p>
+                        </div>
+                    </div>
+                    <button id="guide-toggle-btn" class="text-xs text-emerald-400 font-mono font-bold hover:underline">Show Guide</button>
+                </div>
+                <div id="gallery-guide-content" class="hidden pt-4 border-t border-slate-900 text-xs text-slate-400 space-y-3 leading-relaxed font-light font-mono">
+                    <p class="text-slate-300">To publish your physical matchday photos and render them live on this view:</p>
+                    <ol class="list-decimal list-inside space-y-2 text-slate-400 text-[11px]">
+                        <li>Upload your images directly to your GitHub repository inside a folder named <span class="text-emerald-400">images/gallery/</span> (e.g. <code class="bg-slate-900 px-1 py-0.5 rounded">images/gallery/cricket-match.jpg</code>).</li>
+                        <li>Scroll down inside this <span class="text-emerald-400">index.html</span> code to the <code class="bg-slate-900 px-1.5 py-0.5 rounded">galleryImagesData</code> variable.</li>
+                        <li>Add your photographic logs entry to the array (e.g. <code class="bg-slate-900 px-1.5 py-0.5 rounded">{ src: 'images/gallery/your-file.jpg', category: 'cricket', title: 'Match Title', desc: 'Brief description' }</code>).</li>
+                        <li>Commit the code and wait 10 seconds. Vercel automatically deploys your updates!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Category Filter & Active Media Controls -->
+            <div class="space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-900 pb-4">
+                    <h3 class="text-2xl font-bold font-oswald text-white uppercase tracking-wider">Photo Logs</h3>
+                    <!-- Filter Triggers -->
+                    <div class="flex flex-wrap gap-2 text-xs font-mono">
+                        <button onclick="filterGallery('all')" id="btn-gal-all" class="px-4 py-2 bg-slate-900 border border-emerald-500/30 text-emerald-400 rounded-xl transition font-bold shadow-md">All Photos</button>
+                        <button onclick="filterGallery('cricket')" id="btn-gal-cricket" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Cricket</button>
+                        <button onclick="filterGallery('football')" id="btn-gal-football" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Football</button>
+                        <button onclick="filterGallery('indoor')" id="btn-gal-indoor" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Indoor Sports</button>
+                        <button onclick="filterGallery('community')" id="btn-gal-community" class="px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200">Youth & Family</button>
+                    </div>
+                </div>
+
+                <!-- Gallery Photo Grid -->
+                <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Managed Dynamically by JavaScript filterGallery() -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 8: STRATEGIC PARTNERS & SPONSORS (DEDICATED PAGE) -->
         <section id="view-partners" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
             <div class="space-y-4 border-b border-slate-900 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
@@ -902,7 +963,7 @@
             </div>
         </section>
 
-        <!-- PAGE 8: MEMBER & TEAM REGISTRY -->
+        <!-- PAGE 9: MEMBER & TEAM REGISTRY -->
         <section id="view-members" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
             <div class="space-y-4 border-b border-slate-900 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
@@ -1108,6 +1169,14 @@
             // LIFETIME MEMBERS (lifetime) - Left empty as requested
         ];
 
+        // NEWLY INTEGRATED GALLERY DATA ARRAY (Admin team can update this directly on GitHub)
+        const galleryImagesData = [
+            { src: "images/gallery/cricket-1.jpg", category: "cricket", title: "Tigers Cup Fixture", desc: "Action shot from the premier community tournament in Mt Wellington." },
+            { src: "images/gallery/football-1.jpg", category: "football", title: "Auckland Football Cup", desc: "TSI squad battling for the seasonal title at Glover Park turf." },
+            { src: "images/gallery/indoor-1.jpg", category: "indoor", title: "Badminton Doubles", desc: "High-intensity indoor badminton knockouts logged during winter season." },
+            { src: "images/gallery/community-1.jpg", category: "community", title: "Junior Sports Clinic", desc: "Subsidized coaching session encouraging physical fitness for children." }
+        ];
+
         // Global variable for fetched players
         let activePlayersList = [];
 
@@ -1148,7 +1217,7 @@
                 activeLink.classList.add('text-emerald-400', 'border-emerald-500');
             }
 
-            // Dynamic Partners display location toggler based on page state
+            // Dynamic Partners display location toggler based on page state (Hidden on Home & Dedicated Partners view)
             const partnersFooter = document.getElementById('partners-footer-wrapper');
             if (targetPageId === 'home' || targetPageId === 'partners') {
                 partnersFooter.classList.add('hidden');
@@ -1220,6 +1289,62 @@
                 `;
                 grid.appendChild(card);
             });
+        }
+
+        // NEWLY INTEGRATED DYNAMIC GALLERY FILTER & RENDER ENGINE
+        function filterGallery(category) {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = '';
+
+            const buttons = ['all', 'cricket', 'football', 'indoor', 'community'];
+            buttons.forEach(b => {
+                const el = document.getElementById(`btn-gal-${b}`);
+                if (el) {
+                    if (b === category) {
+                        el.className = "px-4 py-2 bg-slate-900 border border-emerald-500/30 text-emerald-400 rounded-xl transition font-bold shadow-md";
+                    } else {
+                        el.className = "px-4 py-2 bg-slate-950 border border-slate-900 text-slate-400 rounded-xl transition hover:text-slate-200";
+                    }
+                }
+            });
+
+            const items = category === 'all' ? galleryImagesData : galleryImagesData.filter(g => g.category === category);
+
+            if (items.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center border border-dashed border-slate-800 rounded-2xl">
+                        <span class="text-3xl">📸</span>
+                        <h4 class="font-bold font-oswald text-white uppercase tracking-wider mt-3">Images Logged Under Review</h4>
+                        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">No pictures have been uploaded to this category yet. Follow the steps inside our Guide to upload yours on GitHub!</p>
+                    </div>`;
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "glass-card p-4 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg group overflow-hidden";
+                card.innerHTML = `
+                    <div class="relative rounded-xl overflow-hidden aspect-video bg-slate-900 border border-slate-850">
+                        <img src="${item.src}" alt="${item.title}" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300 cursor-zoom-in" onclick="enlargeImage('${item.src}', '${item.title} - ${item.desc}')" onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/10b981?text=${encodeURIComponent(item.title)}'">
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-white text-sm font-oswald uppercase tracking-wider">${item.title}</h4>
+                            <span class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">${item.category}</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-1 font-light leading-normal">${item.desc}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Collapse control for media guidance widget
+        function toggleGalleryGuide() {
+            const content = document.getElementById('gallery-guide-content');
+            const btn = document.getElementById('guide-toggle-btn');
+            content.classList.toggle('hidden');
+            btn.textContent = content.classList.contains('hidden') ? 'Show Guide' : 'Hide Guide';
         }
 
         // Searchable and filterable Rulebook logic
@@ -1649,6 +1774,7 @@
             modal.classList.remove('hidden');
         }
 
+        // Close image lightbox
         function closeZoomModal() {
             document.getElementById('image-zoom-modal').classList.add('hidden');
         }
@@ -1658,6 +1784,7 @@
             const initialHash = window.location.hash.substring(1) || 'home';
             navigateTo(initialHash);
             filterDirectory('all');
+            filterGallery('all'); // Initialize our newly integrated photo logs engine on load
 
             loadPlayersDatabase();
 
